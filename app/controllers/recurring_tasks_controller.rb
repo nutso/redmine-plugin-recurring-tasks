@@ -21,7 +21,7 @@ class RecurringTasksController < ApplicationController
   def create
     @recurring_task = RecurringTask.new(params[:recurring_task])
     if @recurring_task.save
-      flash[:notice] = "Created recurring task" # TODO localize
+      flash[:notice] = l(:recurring_task_created)
       redirect_to :action => :show, :id => @recurring_task.id
     else
       logger.debug "Could not create recurring task from #{params[:post]}"
@@ -36,7 +36,7 @@ class RecurringTasksController < ApplicationController
   # saves the task and redirects to show
   def update
     if @recurring_task.update_attributes(params[:recurring_task])
-      flash[:notice] = 'Recurring task saved.' # TODO localize
+      flash[:notice] = l(:recurring_task_saved)
       redirect_to :action => :show
     else
       logger.debug "Could not save recurring task #{@recurring_task}"
@@ -46,10 +46,10 @@ class RecurringTasksController < ApplicationController
 
   def destroy
     if @recurring_task.destroy
-      flash[:notice] = 'Recurrence removed.' # TODO localize
+      flash[:notice] = l(:recurring_task_removed)
       redirect_to :action => :index
     else
-      flash[:notice] = 'Could not remove recurrence.' # TODO localize
+      flash[:notice] = l(:error_recurring_task_could_not_remove)
       redirect_to :action => :show, :id => @recurring_task
     end
   end

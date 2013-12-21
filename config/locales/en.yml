@@ -16,6 +16,7 @@ en:
 
   error_invalid_interval:   "Interval provided is invalid."
   error_recurring_task_not_found: "Could not find recurring task. "
+  error_recurring_task_could_not_remove: "Could not remove recurrence from task. "
   
   field_interval_unit: "Interval Unit(s)"
   field_fixed_schedule: "Fixed Schedule?"
@@ -24,3 +25,7 @@ en:
   interval_week: "week"
   interval_month: "month"
   interval_year: "year"
+
+  recurring_task_created: "Created recurring task. "
+  recurring_task_saved: "Recurring task saved. "
+  recurring_task_removed: "Removed recurring task. "
