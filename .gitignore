@@ -1,5 +1,8 @@
 # Eclipse project file
 .project
+# OS generated files
+.DS_Store
+.DS_Store?
 
 *.rbc
 *.sassc
