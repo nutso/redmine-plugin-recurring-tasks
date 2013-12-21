@@ -10,4 +10,6 @@ ruby script/rails generate redmine_plugin_model recurring_tasks RecurringTask cu
 ruby script/rails generate redmine_plugin_controller RecurringTasks recurring_tasks index show new create edit update destroy
 ```
 Crontab example (running the check for recurrence every 6 hours):
+```bash
 * */4 * * * cd {path_to_redmine} && rake RAILS_ENV=production redmine:recur_tasks >> log/cron_rake.log 2>&1
+```
