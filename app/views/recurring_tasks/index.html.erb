@@ -1,0 +1,32 @@
+<h2><%= l(:label_recurring_tasks) %></h2>
+
+<div class="contextual">
+    <%= link_to(l(:label_add_recurring_task), {:action => 'new'}, :class => 'icon icon-add') %>
+</div>
+
+<% if @recurring_tasks.empty? %>
+    <p><%= l(:label_no_recurring_tasks)%></p>
+
+<% else %>
+    <!-- at least one recurring task exists -->
+    <table class="list">
+        <thead>
+            <tr>
+               <th><%= l(:label_current_issue)%></th>
+               <th><%= l(:label_recurrence_pattern)%></th>
+               <th><%= l(:field_fixed_schedule)%></th>
+               <th><%= l(:button_edit) %></th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @recurring_tasks.each do |rt| %>
+                <tr class="<%= cycle('odd', 'even') %>">
+                    <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id}) %></td>
+                    <td><%= pluralize(rt.interval_number, rt.interval_unit) %></td>
+                    <td><%= rt.fixed_schedule %></td>
+                    <td><%= link_to(l(:button_edit), {:action => 'edit', :id => rt.id}, :class => 'icon icon-edit') %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+<% end %>

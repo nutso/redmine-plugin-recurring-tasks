@@ -1,0 +1,10 @@
+<h2><%= @recurring_task.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(@recurring_task.issue.subj_date, {:controller => 'issues', :action => 'show', :id => @recurring_task.issue.id}) %></h2>
+
+ 
+<p><%= l(:label_recurrence_pattern) %> <%= pluralize(@recurring_task.interval_number, @recurring_task.interval_unit) %></p>
+<p><%= @recurring_task.fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent) %></p>
+
+<!-- TODO display next run -->
+
+<p><%= link_to(l(:button_edit), {:action => 'edit', :id => @recurring_task}, :class => 'icon icon-edit')%></p>
+<p><%= link_to(l(:button_delete), {:action => 'destroy', :id => @recurring_task}, :class => 'icon icon-del', :confirm => l(:text_are_you_sure)) %></p>

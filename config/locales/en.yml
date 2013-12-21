@@ -1,0 +1,26 @@
+# English strings go here for Rails i18n
+en:
+  label_recurring_tasks:    "Recurring Tasks"
+  label_current_issue:      "Current Issue for Recurrence"
+  label_recurrence_pattern: "Recurs every"
+  label_add_recurring_task: "Add Recurring Task"
+  label_no_recurring_tasks: "No recurring tasks found on the system."
+  
+  label_recurs_fixed: "on a fixed schedule"
+  label_recurs_dependent: "after previous task completion"
+  
+  label_recurring_task_issue_empty: "N/A"
+  
+  label_belongs_to_project: "Belongs to project"
+  label_assigned_to: "Assigned to"
+
+  error_invalid_interval:   "Interval provided is invalid."
+  error_recurring_task_not_found: "Could not find recurring task. "
+  
+  field_interval_unit: "Interval Unit(s)"
+  field_fixed_schedule: "Fixed Schedule?"
+  
+  interval_day:  "day"
+  interval_week: "week"
+  interval_month: "month"
+  interval_year: "year"
