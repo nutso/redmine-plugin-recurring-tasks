@@ -1,16 +1,13 @@
 redmine-plugin-recurring-tasks
 ==============================
 
-Plugin for Redmine project management software to configure recurring tasks
+Plugin for Redmine project management software to configure recurring tasks. Any task can be set to recur on a fixed (e.g. every Monday) or flexible (e.g. 2 days after task was last completed) schedule.
 
-Crontab example (running the check for recurrence every 6 hours):
-```bash
-* */4 * * * cd {path_to_redmine} && rake RAILS_ENV=production redmine:recur_tasks >> log/cron_rake.log 2>&1
-```
+Installation
 
-Steps taken to generate the plugin
-```bash
-ruby script/rails generate redmine_plugin recurring_tasks
-ruby script/rails generate redmine_plugin_model recurring_tasks RecurringTask current_issue_id:integer, fixed_schedule:boolean, interval_number:integer, interval_unit:string
-ruby script/rails generate redmine_plugin_controller RecurringTasks recurring_tasks index show new create edit update destroy
-```
+1. Follow standard Redmine plugin installation (http://www.redmine.org/projects/redmine/wiki/Plugins)
+2. Set the check for recurrence via Crontab.
+   Crontab example (running the check for recurrence every 6 hours):
+   ```bash
+   * */4 * * * cd {path_to_redmine} && rake RAILS_ENV=production redmine:recur_tasks >> log/cron_rake.log 2>&1
+   ```
