@@ -1,3 +1,6 @@
+# Eclipse project file
+.project
+
 *.rbc
 *.sassc
 .sass-cache
