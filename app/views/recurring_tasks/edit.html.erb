@@ -3,4 +3,4 @@
 <%= render partial: "form", locals: {next_step: 'update', rt: @recurring_task} %>
 
 <p><%= link_to l(:button_cancel), "#", :onclick => 'Element.hide("add-task")' %></p>
-<p><%= link_to(l(:button_delete), {:action => 'destroy', :id => @recurring_task}, :class => 'icon icon-del', :confirm => l(:text_are_you_sure)) %></p>
+<p><%= link_to(l(:button_delete), {:action => 'destroy', :id => @recurring_task}, :method => :delete, :class => 'icon icon-del', :confirm => l(:text_are_you_sure)) %></p>
