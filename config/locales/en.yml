@@ -18,6 +18,7 @@ en:
   error_recurring_task_not_found: "Could not find recurring task. "
   error_recurring_task_could_not_remove: "Could not remove recurrence from task. "
   
+  field_interval_number: "Interval number"
   field_interval_unit: "Interval Unit(s)"
   field_fixed_schedule: "Fixed Schedule?"
   
