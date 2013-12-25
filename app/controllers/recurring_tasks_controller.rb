@@ -35,6 +35,8 @@ class RecurringTasksController < ApplicationController
 
   # saves the task and redirects to show
   def update
+    logger.info "Updating recurring task #{id}"
+  
     if @recurring_task.update_attributes(params[:recurring_task])
       flash[:notice] = l(:recurring_task_saved)
       redirect_to :action => :show
@@ -45,6 +47,8 @@ class RecurringTasksController < ApplicationController
   end
 
   def destroy
+    logger.info "Destroying recurring task #{id}"
+  
     if @recurring_task.destroy
       flash[:notice] = l(:recurring_task_removed)
       redirect_to :action => :index
