@@ -1,5 +1,10 @@
 # Recurring Tasks Redmine Plugin -- Release Notes
 
+## Version 1.0.1
+
+* Added missing translations
+* Fixed missing routes
+
 ## Version 1.0.0
 
 * Initial functionality to configure recurring tasks. 
