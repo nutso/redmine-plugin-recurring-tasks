@@ -30,30 +30,28 @@ class RecurringTask < ActiveRecord::Base
     end
   end
   
+  # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
+  def next_scheduled_recurrence
+    previous_date_for_recurrence + recurrence_pattern unless previous_date_for_recurrence.nil?
+  end
+  
+  # whether a recurrence needs to be added
+  def need_to_recur?
+    if(fixed_schedule and (issue.due_date + recurrence_pattern) <= (Time.now.to_date + 1.day)) then true else issue.closed? end
+  end
+  
+  # check whether a recurrence is needed, and add one if not
   def recur_issue_if_needed!
-    recur = false
+    return true unless need_to_recur?
     
-    # scheduled to recur
-    if(fixed_schedule and (issue.due_date + recurrence_pattern) <= (Time.now.to_date + 1.day))
-      recur = true
-      prev_date = issue.due_date
-    # marked complete, ready to recur
-    else
-      recur = issue.closed?
-      prev_date = issue.closed_on
-    end
+    # TODO Add more than one recurrence to 'catch up' if warranted (issue #10)
     
-    # no recurrence needed
-    if(!recur)
-      return true
-    end
-
     # recurrence needed
     new_issue = issue.copy
-    new_issue.due_date = prev_date + recurrence_pattern
+    new_issue.due_date = previous_date_for_recurrence + recurrence_pattern
     new_issue.start_date = new_issue.due_date
     new_issue.status = IssueStatus.default # issue status is NOT automatically new, default is whatever the default status for new issues is
-    new_issue.save
+    new_issue.save # TODO check for save failure
     
     puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
     
@@ -79,4 +77,12 @@ class RecurringTask < ActiveRecord::Base
       task.recur_issue_if_needed!
     end # do each
   end # end add_recurrences
+  
+private
+  # the date from which to recur
+  # for a fixed schedule, this is the due date
+  # for a relative schedule, this is the date closed
+  def previous_date_for_recurrence
+    if fixed_schedule then issue.due_date else issue.closed_on end
+  end
 end
