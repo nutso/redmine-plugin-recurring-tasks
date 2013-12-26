@@ -7,7 +7,7 @@
 <p><%= l(:label_recurrence_pattern) %> <%= pluralize(@recurring_task.interval_number, @recurring_task.interval_unit) %></p>
 <p><%= @recurring_task.fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent) %></p>
 
-<p><%= l(:label_next_scheduled_run) %>: <%= l(@recurring_task.next_scheduled_recurrence) %></p>
+<p><%= l(:label_next_scheduled_run) %>: <%= format_date(@recurring_task.next_scheduled_recurrence) %></p>
 
 <p><%= button_to(l(:button_edit), {:action => 'edit', :id => @recurring_task}, :class => 'icon icon-edit')%></p>
 <p><%= button_to(l(:button_delete), {:action => 'destroy', :id => @recurring_task}, :method => :delete, :class => 'icon icon-del', :confirm => l(:text_are_you_sure)) %></p>
