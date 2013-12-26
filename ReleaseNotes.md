@@ -1,5 +1,11 @@
 # Recurring Tasks Redmine Plugin -- Release Notes
 
+## Version 1.0.2
+
+* Show next scheduled recurrence when displaying a recurring task (#9)
+* Add more than one recurrence to 'catch up' if warranted when recurring (#10)
+* Localized date format display
+
 ## Version 1.0.1
 
 * Added missing translations
