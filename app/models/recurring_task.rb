@@ -44,19 +44,19 @@ class RecurringTask < ActiveRecord::Base
   def recur_issue_if_needed!
     return true unless need_to_recur?
     
-    # TODO Add more than one recurrence to 'catch up' if warranted (issue #10)
+    # Add more than one recurrence to 'catch up' if warranted (issue #10)
     
-    # recurrence needed
-    new_issue = issue.copy
-    new_issue.due_date = previous_date_for_recurrence + recurrence_pattern
-    new_issue.start_date = new_issue.due_date
-    new_issue.status = IssueStatus.default # issue status is NOT automatically new, default is whatever the default status for new issues is
-    new_issue.save # TODO check for save failure
+    while need_to_recur?
+      new_issue = issue.copy
+      new_issue.due_date = previous_date_for_recurrence + recurrence_pattern
+      new_issue.start_date = new_issue.due_date
+      new_issue.status = IssueStatus.default # issue status is NOT automatically new, default is whatever the default status for new issues is
+      new_issue.save!
+      puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
     
-    puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
-    
-    self.issue = new_issue
-    save!
+      self.issue = new_issue
+      save!
+    end
   end
   
   def to_s
