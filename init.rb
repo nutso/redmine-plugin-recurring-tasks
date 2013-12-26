@@ -2,7 +2,7 @@ require 'issues_patch'
 
 Redmine::Plugin.register :recurring_tasks do
   name 'Recurring Tasks'
-  author 'Teresa N.'
+  author '<nutsoapps@gmail.com>'
   description 'Allows you to set a task to recur on a regular schedule, or when marked complete, regenerate a new task due in the future. Plugin is based -- very loosely -- on the periodic tasks plugin published by Tanguy de Courson'
   version '1.0.2'
   

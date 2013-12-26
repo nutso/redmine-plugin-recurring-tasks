@@ -10,7 +10,7 @@ Follow standard Redmine plugin installation -- (barely) modified from http://www
 
 1. Copy or clone the plugin directory into #{RAILS_ROOT}/plugins/recurring_tasks
    
-   e.g. git clone https://github.com/teresan/redmine-plugin-recurring-tasks.git recurring_tasks
+   e.g. git clone https://github.com/nutso/redmine-plugin-recurring-tasks.git recurring_tasks
 
 2. Rake the database migration (make a db backup before)
 
