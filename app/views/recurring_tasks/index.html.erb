@@ -25,7 +25,7 @@
                     <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id}) %></td>
                     <td><%= pluralize(rt.interval_number, rt.interval_unit) %></td>
                     <td><%= rt.fixed_schedule %></td>
-                    <td><%= format_date(@recurring_task.next_scheduled_recurrence) %></td>
+                    <td><%= format_date(rt.next_scheduled_recurrence) %></td>
                     <td><%= link_to(l(:button_edit), {:action => 'edit', :id => rt.id}, :class => 'icon icon-edit') %></td>
                 </tr>
             <% end %>
