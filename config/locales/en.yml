@@ -5,6 +5,7 @@ en:
   label_recurrence_pattern: "Recurs every"
   label_add_recurring_task: "Add Recurring Task"
   label_no_recurring_tasks: "No recurring tasks found on the system."
+  label_next_scheduled_run: "Next scheduled run"
   
   label_recurs_fixed: "on a fixed schedule"
   label_recurs_dependent: "after previous task completion"
