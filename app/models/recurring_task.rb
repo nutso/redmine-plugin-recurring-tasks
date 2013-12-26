@@ -62,7 +62,7 @@ class RecurringTask < ActiveRecord::Base
   def to_s
     i = "No issue associated "
     if !(issue.nil?)
-      i = issue.subj_date
+      i = format_date issue.subj_date
     end
     "#{i} (#{l(:label_recurrence_pattern)} #{interval_number} #{interval_unit}s " + (:fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)) + ")"
   end
