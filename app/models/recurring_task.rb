@@ -2,6 +2,7 @@ class RecurringTask < ActiveRecord::Base
   unloadable
 
   belongs_to :issue, :foreign_key => 'current_issue_id'
+  has_one :project, through: :issue
   
   # must come before validations otherwise unitialized
   INTERVAL_UNITS = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
@@ -28,6 +29,11 @@ class RecurringTask < ActiveRecord::Base
     else
       logger.error "Unsupported interval unit: #{interval_unit}"
     end
+  end
+  
+  # retrieve all recurring tasks given a project
+  def self.all_for_project project
+    if project.nil? then all else RecurringTask.includes(:issue).where("issues.project_id" => project.id) end
   end
   
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)

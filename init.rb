@@ -1,25 +1,29 @@
 require 'issues_patch'
 
 Redmine::Plugin.register :recurring_tasks do
-  name 'Recurring Tasks'
+  name 'Recurring Tasks (Issues)'
   author 'Teresa N.'
   author_url 'https://github.com/nutso/'
   url 'https://github.com/nutso/redmine-plugin-recurring-tasks'
   description 'Allows you to set a task to recur on a regular schedule, or when marked complete, regenerate a new task due in the future. Plugin is based -- very loosely -- on the periodic tasks plugin published by Tanguy de Courson'
-  version '1.0.2'
+  version '1.1.0'
   
-  menu :top_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks'
+  Redmine::MenuManager.map :top_menu do |menu|
+    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Issues', :if => Proc.new { User.current.admin? } # TODO localize string
+  end
   
-  # TODO project-specific recurring tasks view (#11)
-  # menu :project_menu, :periodic_tasks, { :controller => 'periodic_tasks', :action => 'index' }, :caption => 'Periodic Task', :after => :settings, :param => :project_id
+  # Permissions map to issue permissions (#12)
+  # Modeled after #{redmine root}/lib/redmine.rb permissions setup
+  project_module :issue_tracking do
+    permission :view_issue_recurrence,   {:recurring_tasks => [:index, :show]}, :read => true
+    permission :add_issue_recurrence,    {:recurring_tasks => [:new, :create]}
+    permission :edit_issue_recurrence,   {:recurring_tasks => [:edit, :update]}
+    permission :delete_issue_recurrence, {:recurring_tasks => [:destroy]}, :require => :member
+  end
   
-  # TODO better permissions (#12)
+  # project-specific recurring tasks view (#11)
+  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Issues', :after => :new_issue, :param => :project_id # TODO localize string
   
-  #  project_module :recurring_tasks do
-  #    permission :recurring_tasks, {:recurring_tasks => [:index, :edit]}
-  #  end
-
-
   # Send patches to models and controllers
   Rails.configuration.to_prepare do
     Issue.send(:include, RecurringTasks::IssuePatch)

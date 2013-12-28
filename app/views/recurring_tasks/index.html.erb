@@ -4,7 +4,7 @@
     <%= link_to(l(:label_add_recurring_task), {:action => 'new'}, :class => 'icon icon-add') %>
 </div>
 
-<% if @recurring_tasks.empty? %>
+<% if @recurring_tasks.nil? or @recurring_tasks.empty? %>
     <p><%= l(:label_no_recurring_tasks)%></p>
 
 <% else %>
@@ -16,7 +16,7 @@
                <th><%= l(:label_recurrence_pattern)%></th>
                <th><%= l(:field_fixed_schedule)%></th>
                <th><%= l(:label_next_scheduled_run) %></th>
-               <th><%= l(:button_edit) %></th>
+               <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +26,7 @@
                     <td><%= pluralize(rt.interval_number, rt.interval_unit) %></td>
                     <td><%= rt.fixed_schedule %></td>
                     <td><%= format_date(rt.next_scheduled_recurrence) %></td>
-                    <td><%= link_to(l(:button_edit), {:action => 'edit', :id => rt.id}, :class => 'icon icon-edit') %></td>
+                    <td><%= edit_button rt %></td>
                 </tr>
             <% end %>
         </tbody>
