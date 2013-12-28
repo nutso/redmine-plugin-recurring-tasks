@@ -1,5 +1,13 @@
-resources :recurring_tasks
+# resources :recurring_tasks
 
-# another way to view recurring tasks
+# admin view
+match 'recurring_tasks', :to => 'recurring_tasks#index'
+
+# project view 
 match 'projects/:project_id/recurring_tasks', :to => 'recurring_tasks#index'
 match 'projects/:project_id/recurring_tasks/:id', :to => 'recurring_tasks#show'
+match 'projects/:project_id/recurring_tasks/new', :to => 'recurring_tasks#new'
+match 'projects/:project_id/recurring_tasks/create', :to => 'recurring_tasks#create'
+match 'projects/:project_id/recurring_tasks/edit', :to => 'recurring_tasks#edit'
+match 'projects/:project_id/recurring_tasks/update', :to => 'recurring_tasks#update'
+match 'projects/:project_id/recurring_tasks/destroy', :to => 'recurring_tasks#destroy'
