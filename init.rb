@@ -16,11 +16,11 @@ Redmine::Plugin.register :recurring_tasks do
   # TODO better permissions (#12)
   # This doesn't seem to do the trick
   # Modeled after #{redmine root}/lib/redmine.rb permissions setup
-  project_module :issue_tracking do
-    permission :view_issues,   {:recurring_tasks => [:index, :show]}, :read => true
-    permission :add_issues,    {:recurring_tasks => [:new, :create]}
-    permission :edit_issues,   {:recurring_tasks => [:edit, :update]}
-    permission :delete_issues, {:recurring_tasks => [:destroy]}, :require => :member
+  project_module :issue_tracking do |p|
+    p.permission :view_issues,   {:recurring_tasks => [:index, :show]}, :read => true
+    p.permission :add_issues,    {:recurring_tasks => [:new, :create]}
+    p.permission :edit_issues,   {:recurring_tasks => [:edit, :update]}
+    p.permission :delete_issues, {:recurring_tasks => [:destroy]}, :require => :member
   end
   
   #  project_module :recurring_tasks do
