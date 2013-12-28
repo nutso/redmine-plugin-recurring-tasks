@@ -9,5 +9,5 @@
 
 <p><%= l(:label_next_scheduled_run) %>: <%= format_date(@recurring_task.next_scheduled_recurrence) %></p>
 
-<p><%= button_to(l(:button_edit), {:action => 'edit', :id => @recurring_task}, :class => 'icon icon-edit')%></p>
+<p><%= edit_button @recurring_task %></p>
 <p><%= delete_button @recurring_task %></p>
