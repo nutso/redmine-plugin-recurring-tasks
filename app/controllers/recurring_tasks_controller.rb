@@ -9,8 +9,6 @@ class RecurringTasksController < ApplicationController
   before_filter :set_recurrable_issues, :except => [:index, :show]
 
   def index
-    # TODO authorize
-
     @recurring_tasks = RecurringTask.all_for_project(@project)
   end
 
