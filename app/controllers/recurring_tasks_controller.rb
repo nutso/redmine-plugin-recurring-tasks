@@ -6,6 +6,7 @@ class RecurringTasksController < ApplicationController
   before_filter :find_optional_project # this also checks permissions
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
+  before_filter :set_recurrable_issues, :except => [:index, :show]
 
   def index
     # TODO authorize
@@ -63,16 +64,13 @@ class RecurringTasksController < ApplicationController
   end
   
 private
-#  def find_project
-#    @project = nil
-#    if params[:project_id]
-#      begin
-#        @project = Project.find(params[:project_id])
-#      rescue ActiveRecord::RecordNotFound
-#        show_error "#{l(:error_project_not_found)} #{params[:project_id]}" # TODO localize
-##      end
-#    end
-#  end
+  def set_recurrable_issues
+    if @project
+      @recurrable_issues = @project.issues
+    else 
+      @recurrable_issues = Issue.all
+    end
+  end
 
   def find_recurring_task
     begin
