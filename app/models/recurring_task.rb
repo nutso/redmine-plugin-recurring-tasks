@@ -31,7 +31,7 @@ class RecurringTask < ActiveRecord::Base
   end
   
   # retrieve all recurring tasks given a project id
-  def all_for_project project_id
+  def self.all_for_project project_id
     # TODO implement
   end
   
