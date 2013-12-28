@@ -4,7 +4,7 @@
     <%= link_to(l(:label_add_recurring_task), {:action => 'new'}, :class => 'icon icon-add') %>
 </div>
 
-<% if @recurring_tasks.empty? %>
+<% if @recurring_tasks.nil? or @recurring_tasks.empty? %>
     <p><%= l(:label_no_recurring_tasks)%></p>
 
 <% else %>
