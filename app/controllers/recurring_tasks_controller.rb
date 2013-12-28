@@ -7,6 +7,8 @@ class RecurringTasksController < ApplicationController
   before_filter :set_interval_units, :except => [:index, :show]
 
   def index
+    # TODO check for :project_id parameter and if so, limit the results
+  
     @recurring_tasks = RecurringTask.all
   end
 

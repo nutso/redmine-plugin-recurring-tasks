@@ -8,10 +8,11 @@ Redmine::Plugin.register :recurring_tasks do
   description 'Allows you to set a task to recur on a regular schedule, or when marked complete, regenerate a new task due in the future. Plugin is based -- very loosely -- on the periodic tasks plugin published by Tanguy de Courson'
   version '1.0.2'
   
+  # TODO only if admin
   menu :top_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks'
   
-  # TODO project-specific recurring tasks view (#11)
-  # menu :project_menu, :periodic_tasks, { :controller => 'periodic_tasks', :action => 'index' }, :caption => 'Periodic Task', :after => :settings, :param => :project_id
+  # project-specific recurring tasks view (#11)
+  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Task', :after => :settings, :param => :project_id
   
   # TODO better permissions (#12)
   # This doesn't seem to do the trick
