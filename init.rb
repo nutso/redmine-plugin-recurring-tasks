@@ -1,17 +1,15 @@
 require 'issues_patch'
 
 Redmine::Plugin.register :recurring_tasks do
-  name 'Recurring Tasks'
+  name 'Recurring Tasks (Issues)'
   author 'Teresa N.'
   author_url 'https://github.com/nutso/'
   url 'https://github.com/nutso/redmine-plugin-recurring-tasks'
   description 'Allows you to set a task to recur on a regular schedule, or when marked complete, regenerate a new task due in the future. Plugin is based -- very loosely -- on the periodic tasks plugin published by Tanguy de Courson'
-  version '1.0.2'
-  
+  version '1.0.3'
   
   Redmine::MenuManager.map :top_menu do |menu|
-    # Only if current user.admin?
-    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :if => Proc.new { User.current.admin? }
+    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Issues', :if => Proc.new { User.current.admin? } # TODO localize string
   end
   
   # Permissions map to issue permissions (#12)
@@ -23,12 +21,8 @@ Redmine::Plugin.register :recurring_tasks do
     permission :delete_issue_recurrence, {:recurring_tasks => [:destroy]}, :require => :member
   end
   
-#  Redmine::MenuManager.map :project_menu do |menu|
-    # project-specific recurring tasks view (#11)
-#    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :activity, :param => :project_id
-#  end
-  
-  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :settings, :param => :project_id
+  # project-specific recurring tasks view (#11)
+  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Issues', :after => :new_issue, :param => :project_id # TODO localize string
   
   # Send patches to models and controllers
   Rails.configuration.to_prepare do
