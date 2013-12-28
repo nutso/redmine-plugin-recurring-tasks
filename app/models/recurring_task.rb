@@ -37,7 +37,7 @@ class RecurringTask < ActiveRecord::Base
     # get all recurring tasks
     # where current_issue_id = issue.issue_id
     # and issue.project_id = project_id
-    find_by_project(project_id)
+    RecurringTask.where(project_id project_id)
   end
   
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
