@@ -14,8 +14,11 @@ Redmine::Plugin.register :recurring_tasks do
     menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :if => Proc.new { User.current.admin? }
   end
   
-  # project-specific recurring tasks view (#11)
-  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :activity, :param => :project_id
+  Redmine::MenuManager.map :project_menu do |menu|
+    # project-specific recurring tasks view (#11)
+    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :activity, :param => :project_id
+  end
+  
     
   # TODO better permissions (#12)
   # This doesn't seem to do the trick
