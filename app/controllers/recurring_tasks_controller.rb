@@ -10,8 +10,7 @@ class RecurringTasksController < ApplicationController
     # TODO authorize
 
     if params[:project_id]
-      @project_identifier = params[:project_id]
-      @recurring_tasks = RecurringTask.all_for_project(Project.find(params[:project_id]))
+      @recurring_tasks = RecurringTask.all_for_project(params[:project_id])
     else
       @recurring_tasks = RecurringTask.all
     end
