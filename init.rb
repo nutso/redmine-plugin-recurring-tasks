@@ -15,8 +15,8 @@ Redmine::Plugin.register :recurring_tasks do
   end
   
   # project-specific recurring tasks view (#11)
-  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Task', :param => :project_id
-  
+  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :activity, :param => :project_id
+    
   # TODO better permissions (#12)
   # This doesn't seem to do the trick
   # Modeled after #{redmine root}/lib/redmine.rb permissions setup
