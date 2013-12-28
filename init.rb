@@ -14,11 +14,9 @@ Redmine::Plugin.register :recurring_tasks do
     menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :if => Proc.new { User.current.admin? }
   end
   
-    
-  # TODO better permissions (#12)
-  # This doesn't seem to do the trick
+  # Permissions map to issue permissions (#12)
   # Modeled after #{redmine root}/lib/redmine.rb permissions setup
-  project_module :issue_tracking do |p|
+  project_module :recurring_tasks do |p|
     p.permission :view_issues,   {:recurring_tasks => [:index, :show]}, :read => true
     p.permission :add_issues,    {:recurring_tasks => [:new, :create]}
     p.permission :edit_issues,   {:recurring_tasks => [:edit, :update]}
