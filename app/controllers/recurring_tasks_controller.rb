@@ -3,7 +3,6 @@ class RecurringTasksController < ApplicationController
   unloadable
 
   before_filter :authorize, :except => :index # not sure why index is excluded, but this is true for issues ...
-  before_filter :set_recurrence_permissions
   before_filter :find_project
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
@@ -11,11 +10,7 @@ class RecurringTasksController < ApplicationController
   def index
     # TODO authorize
 
-    if params[:project_id]
-      @recurring_tasks = RecurringTask.all_for_project(params[:project_id])
-    else
-      @recurring_tasks = RecurringTask.all
-    end
+    @recurring_tasks = RecurringTask.all_for_project(@project)
   end
 
   def show
@@ -68,11 +63,6 @@ class RecurringTasksController < ApplicationController
   end
   
 private
-  def set_recurrence_permissions
-    @edit_allowed = User.current.allowed_to?(:edit_issue_recurrence, @project)
-    @destroy_allowed = User.current.allowed_to?(:delete_issue_recurrence, @project)
-  end
-
   def find_project
     @project = nil
     if params[:project_id]

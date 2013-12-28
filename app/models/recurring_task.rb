@@ -31,13 +31,9 @@ class RecurringTask < ActiveRecord::Base
     end
   end
   
-  # retrieve all recurring tasks given a project id
-  def self.all_for_project project_id
-    # TODO implement
-    # get all recurring tasks
-    # where current_issue_id = issue.issue_id
-    # and issue.project_id = project_id
-    RecurringTask.includes(:issue).where("issues.project_id" => project_id)
+  # retrieve all recurring tasks given a project
+  def self.all_for_project project
+    if project.nil? then all else RecurringTask.includes(:issue).where("issues.project_id" => project.id) end
   end
   
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
