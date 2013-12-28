@@ -9,7 +9,7 @@ Redmine::Plugin.register :recurring_tasks do
   version '1.0.2'
   
   # Only if current user.admin?
-  menu :top_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks' if User.current.admin?
+  menu :top_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks' if Proc.new { User.current.admin? }
   
   # project-specific recurring tasks view (#11)
   menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Task', :after => :settings, :param => :project_id
