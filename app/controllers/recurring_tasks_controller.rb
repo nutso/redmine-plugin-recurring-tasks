@@ -67,9 +67,9 @@ private
     @project = nil
     if params[:project_id]
       begin
-        @project = Project.find(params[:id])
+        @project = Project.find(params[:project_id])
       rescue ActiveRecord::RecordNotFound
-        # TODO show_error "#{l(:error_recurring_task_not_found)} #{params[:project_id]}"
+        show_error "#{l(:error_project_not_found)} #{params[:project_id]}" # TODO localize
       end
     end
   end
