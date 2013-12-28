@@ -16,23 +16,20 @@ Redmine::Plugin.register :recurring_tasks do
   
   # Permissions map to issue permissions (#12)
   # Modeled after #{redmine root}/lib/redmine.rb permissions setup
-  project_module :recurring_tasks do |p|
-    p.permission :view_issues,   {:recurring_tasks => [:index, :show]}, :read => true
-    p.permission :add_issues,    {:recurring_tasks => [:new, :create]}
-    p.permission :edit_issues,   {:recurring_tasks => [:edit, :update]}
-    p.permission :delete_issues, {:recurring_tasks => [:destroy]}, :require => :member
+  project_module :issue_tracking do
+    permission :view_issue_recurrence,   {:recurring_tasks => [:index, :show]}, :read => true
+    permission :add_issue_recurrence,    {:recurring_tasks => [:new, :create]}
+    permission :edit_issue_recurrence,   {:recurring_tasks => [:edit, :update]}
+    permission :delete_issue_recurrence, {:recurring_tasks => [:destroy]}, :require => :member
   end
   
-  Redmine::MenuManager.map :project_menu do |menu|
+#  Redmine::MenuManager.map :project_menu do |menu|
     # project-specific recurring tasks view (#11)
-    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :activity, :param => :project_id
-  end
+#    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :activity, :param => :project_id
+#  end
   
-  #  project_module :recurring_tasks do
-  #    permission :recurring_tasks, {:recurring_tasks => [:index, :edit]}
-  #  end
-
-
+  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Tasks', :after => :settings, :param => :project_id
+  
   # Send patches to models and controllers
   Rails.configuration.to_prepare do
     Issue.send(:include, RecurringTasks::IssuePatch)
