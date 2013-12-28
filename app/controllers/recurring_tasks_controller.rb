@@ -3,6 +3,8 @@ class RecurringTasksController < ApplicationController
   unloadable
 
   before_filter :authorize, :except => :index # not sure why index is excluded, but this is true for issues ...
+  before_filter :set_recurrence_permissions
+  before_filter :find_project
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
 
@@ -66,6 +68,22 @@ class RecurringTasksController < ApplicationController
   end
   
 private
+  def set_recurrence_permissions
+    @edit_allowed = User.current.allowed_to?(:edit_issue_recurrence, @project)
+    @destroy_allowed = User.current.allowed_to?(:delete_issue_recurrence, @project)
+  end
+
+  def find_project
+    @project = nil
+    if params[:project_id]
+      begin
+        @project = Project.find(params[:id])
+      rescue ActiveRecord::RecordNotFound
+        # TODO show_error "#{l(:error_recurring_task_not_found)} #{params[:project_id]}"
+      end
+    end
+  end
+
   def find_recurring_task
     begin
       @recurring_task = RecurringTask.find(params[:id])

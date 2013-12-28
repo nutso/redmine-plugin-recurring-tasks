@@ -2,6 +2,7 @@ class RecurringTask < ActiveRecord::Base
   unloadable
 
   belongs_to :issue, :foreign_key => 'current_issue_id'
+  has_one :project, through: :issue
   
   # must come before validations otherwise unitialized
   INTERVAL_UNITS = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
@@ -33,7 +34,10 @@ class RecurringTask < ActiveRecord::Base
   # retrieve all recurring tasks given a project id
   def self.all_for_project project_id
     # TODO implement
-    all
+    # get all recurring tasks
+    # where current_issue_id = issue.issue_id
+    # and issue.project_id = project_id
+    find_by project_id: project_id
   end
   
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
