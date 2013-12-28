@@ -2,7 +2,7 @@ class RecurringTasksController < ApplicationController
   include RecurringTasksHelper
   unloadable
 
-  before_filter :authorize
+  before_filter :authorize, :except => :index # not sure why index is excluded, but this is true for issues
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
 
