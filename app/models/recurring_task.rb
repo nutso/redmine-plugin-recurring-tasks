@@ -30,6 +30,11 @@ class RecurringTask < ActiveRecord::Base
     end
   end
   
+  # retrieve all recurring tasks given a project id
+  def all_for_project project_id
+    # TODO implement
+  end
+  
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
   def next_scheduled_recurrence
     previous_date_for_recurrence + recurrence_pattern unless previous_date_for_recurrence.nil?

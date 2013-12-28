@@ -2,14 +2,18 @@ class RecurringTasksController < ApplicationController
   include RecurringTasksHelper
   unloadable
 
-  before_filter :authorize, :except => :index # not sure why index is excluded, but this is true for issues
+  before_filter :authorize, :except => :index # not sure why index is excluded, but this is true for issues ...
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
 
   def index
-    # TODO check for :project_id parameter and if so, limit the results
-  
-    @recurring_tasks = RecurringTask.all
+    # TODO authorize
+    
+    if params[:project_id]
+      @recurring_tasks = RecurringTask.all_for_project(params[:project_id])
+    else
+      @recurring_tasks = RecurringTask.all
+    end
   end
 
   def show
