@@ -4,7 +4,7 @@
 		<% if issue.recurs? %>		
 			<%= link_to(issue.subj_date, {:action => 'show', :id => issue.recurring_task.id}) %></td>
 		<% else %>
-			<%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:recurring_task => {:issue => issue}, :class => 'icon icon-add') %>
+			<%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:recurring_task => {:issue => issue}), :class => 'icon icon-add') %>
 		<% end %>
 	</td>
 </tr>
