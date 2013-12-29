@@ -1,11 +1,11 @@
 <hr />
 <tr>
-	<th class="recurrence">><%= l(:field_recurrence)%>:</th>
+	<th class="recurrence"><%= l(:field_recurrence)%></th>
 	<td class="recurrence">
 		<ul>
 		<% if issue.recurs? %>
-			<% issue.recurring_tasks.each do |rt| %>		
-				<li><%= link_to(rt.to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) %></li>
+			<% issue.recurring_tasks.each do |rt| %>
+				<li><%= if User.current.allowed_to?(:view_issue_recurrence, project) then link_to(rt.to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) else rt.to_s end %></li>
 			<% end %>
 		<% else %>
 			<li><%= l(:label_no_recurrence)%></li>
