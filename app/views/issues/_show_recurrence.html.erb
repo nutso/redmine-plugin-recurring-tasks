@@ -10,7 +10,7 @@
 			<%= l(:label_no_recurrence)%><br />
 		<% end %>
 		<% if User.current.allowed_to?(:add_issue_recurrence, project) %>		
-		    <%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %>
+		    <p><%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %></p>
 		<% end %>
 	</td>
 </tr>
