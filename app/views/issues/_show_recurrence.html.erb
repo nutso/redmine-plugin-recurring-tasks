@@ -4,7 +4,7 @@
 	<td class="recurrence">
 		<% if issue.recurs? %>
 			<% issue.recurring_tasks.each do |rt| %>		
-				<%= link_to(rt.to_s, {:controller => 'recurring_tasks', :action => 'show', :id => rt.id}) %><br /></td>
+				<%= link_to(rt.to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) %><br /></td>
 			<% end %>
 		<% elsif User.current.allowed_to?(:add_issue_recurrence, project) %>		
 		    <%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %>
