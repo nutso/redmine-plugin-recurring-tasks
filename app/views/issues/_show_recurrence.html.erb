@@ -6,7 +6,7 @@
 				<%= link_to(rt.to_s, {:action => 'show', :id => rt.id}) %><br /></td>
 			<% end %>
 		<% else %>
-		    <%= link_to(l(:label_add_recurring_task), {:controller => 'recurring_tasks', :action => 'new', :issue => issue.id}, :class => 'icon icon-add') %>
+		    <%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id), :class => 'icon icon-add') %>
 		<% end %>
 	</td>
 </tr>
