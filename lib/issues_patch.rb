@@ -9,7 +9,7 @@ module RecurringTasks
         
         # whether this issue recurs
         def recurs?
-          !recurring_task.nil?
+          !(recurring_tasks.nil? || recurring_tasks.length <= 0)
           # TODO determine if it was a historically recurring task
         end
         
