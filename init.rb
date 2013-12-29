@@ -1,4 +1,8 @@
+require 'redmine'
 require 'issues_patch'
+
+# view hooks
+require_dependency 'recurring_tasks/hooks'
 
 Redmine::Plugin.register :recurring_tasks do
   name 'Recurring Tasks (Issues)'

@@ -18,6 +18,10 @@ class RecurringTasksController < ApplicationController
 
   def new
     @recurring_task = RecurringTask.new
+    
+    if params[:issue]
+      @recurring_task.issue = params[:issue]
+    end
   end
 
   # creates a new recurring task
