@@ -6,10 +6,11 @@
 			<% issue.recurring_tasks.each do |rt| %>		
 				<%= link_to(rt.to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) %><br /></td>
 			<% end %>
-		<% elsif User.current.allowed_to?(:add_issue_recurrence, project) %>		
-		    <%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %>
 		<% else %>
-			<%= l(:label_no_recurrence)%>
+			<%= l(:label_no_recurrence)%><br />
+		<% end %>
+		<% if User.current.allowed_to?(:add_issue_recurrence, project) %>		
+		    <%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %>
 		<% end %>
 	</td>
 </tr>
