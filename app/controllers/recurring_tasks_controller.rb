@@ -20,7 +20,7 @@ class RecurringTasksController < ApplicationController
     @recurring_task = RecurringTask.new
     
     if params[:issue]
-      @recurring_task.issue = params[:issue]
+      @recurring_task.issue = Issue.find(params[:issue])
     end
   end
 
