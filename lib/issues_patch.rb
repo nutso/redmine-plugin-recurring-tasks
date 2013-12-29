@@ -14,7 +14,7 @@ module RecurringTasks
         end
         
         def recurring_task
-          RecurringTask.find_by_issue(self)
+          RecurringTask.where(issue_id: self.id).first
         end
       end # base.class_eval
     end # self.included
