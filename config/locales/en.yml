@@ -3,7 +3,7 @@ en:
   label_recurring_tasks:    "Recurring Tasks"
   label_current_issue:      "Current Issue for Recurrence"
   label_recurrence_pattern: "Recurs every"
-  label_add_recurring_task: "Add Recurring Task"
+  label_add_recurring_task: "Add Recurrence"
   label_no_recurring_tasks: "No recurring tasks found on the system."
   label_next_scheduled_run: "Next scheduled run"
   label_no_recurrence:      "No recurrence."
