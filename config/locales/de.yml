@@ -1,7 +1,7 @@
 # German strings go here for Rails i18n
 de:
   label_recurring_tasks:    "Wiederkehrende Themen"
-  label_current_issue:      "Current Issue for Recurrence"
+  label_current_issue:      "Wiederkehrendes Thema"
   label_recurrence_pattern: "Wiederholt sich alle"
   label_add_recurring_task: "Wiederholung hinzufügen"
   label_no_recurring_tasks: "Keine wiederkehrenden Themen gefunden."
