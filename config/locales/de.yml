@@ -2,8 +2,8 @@
 de:
   label_recurring_tasks:    "Wiederkehrende Themen"
   label_current_issue:      "Current Issue for Recurrence"
-  label_recurrence_pattern: "Wiederholt sich"
-  label_add_recurring_task: "Wiederholung anlegen"
+  label_recurrence_pattern: "Wiederholt sich alle"
+  label_add_recurring_task: "Wiederholung hinzufügen"
   label_no_recurring_tasks: "Keine wiederkehrenden Themen gefunden."
   label_next_scheduled_run: "Nächste Ausführung"
   label_no_recurrence:      "Keine Wiederholung."
