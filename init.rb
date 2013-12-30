@@ -1,4 +1,8 @@
+require 'redmine'
 require 'issues_patch'
+
+# view hooks
+require_dependency 'recurring_tasks/hooks'
 
 Redmine::Plugin.register :recurring_tasks do
   name 'Recurring Tasks (Issues)'
@@ -6,7 +10,7 @@ Redmine::Plugin.register :recurring_tasks do
   author_url 'https://github.com/nutso/'
   url 'https://github.com/nutso/redmine-plugin-recurring-tasks'
   description 'Allows you to set a task to recur on a regular schedule, or when marked complete, regenerate a new task due in the future. Plugin is based -- very loosely -- on the periodic tasks plugin published by Tanguy de Courson'
-  version '1.1.0'
+  version '1.2'
   
   Redmine::MenuManager.map :top_menu do |menu|
     menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => 'Recurring Issues', :if => Proc.new { User.current.admin? } # TODO localize string

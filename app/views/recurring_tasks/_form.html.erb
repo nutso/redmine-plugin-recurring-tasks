@@ -2,7 +2,7 @@
 <%= labelled_form_for rt, :url => { :action => next_step, :id=>rt } do |f| %>
     <p><%= error_messages_for 'recurring_task' %></p>
     <p><%= f.hidden_field :id %></p>
-    <p><%= label(:recurring_task, :current_issue_id, l(:field_issue)) %><%= collection_select('recurring_task', 'current_issue_id', Issue.all, :id, :subj_date) %></p>
+    <p><%= label(:recurring_task, :current_issue_id, l(:field_issue)) %><%= collection_select('recurring_task', 'current_issue_id', @recurrable_issues, :id, :subj_date) %></p>
     <p><%= f.number_field :interval_number %></p>
     <p><%= label(:recurring_task, :interval_unit, l(:field_interval_unit)) %><%= select 'recurring_task', 'interval_unit', @interval_units %></p>
     <p><%= f.check_box :fixed_schedule %> </p>

@@ -6,6 +6,16 @@ module RecurringTasks
         def subj_date
           "#{self.subject} (#{format_date self.due_date})"
         end #subj_date
+        
+        # whether this issue recurs
+        def recurs?
+          !(recurring_tasks.nil? || recurring_tasks.length <= 0)
+          # TODO determine if it was a historically recurring task
+        end
+        
+        def recurring_tasks
+          RecurringTask.find_by_issue(self)
+        end
       end # base.class_eval
     end # self.included
   end # issues patch
