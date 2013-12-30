@@ -8,20 +8,20 @@ de:
   label_next_scheduled_run: "Nächste Ausführung"
   label_no_recurrence:      "Keine Wiederholung."
   
-  label_recurs_fixed: "on a fixed schedule"
-  label_recurs_dependent: "after previous task completion"
+  label_recurs_fixed: "Fester Zeitplan"
+  label_recurs_dependent: "nach Abschluss des vorherigen Themas"
   
   label_recurring_task_issue_empty: "N/A"
   
   label_belongs_to_project: "Gehört zu Projekt"
   label_assigned_to: "Zugewiesen an"
 
-  error_invalid_interval:   "Angegebenes Interval ist ungültig."
+  error_invalid_interval:   "Angegebenes Intervall ist ungültig."
   error_recurring_task_not_found: "Keine wiederkehrenden Themen gefunden. "
   error_recurring_task_could_not_remove: "Wiederholung konnte nicht entfernt werden. "
   
-  field_interval_number: "Interval number"
-  field_interval_unit: "Interval Einheit(en)"
+  field_interval_number: "Intervallschritt"
+  field_interval_unit: "Einheit(en) des Intervalls"
   field_fixed_schedule: "Fester Zeitplan?"
   field_recurrence: "Wiederholung"
   
