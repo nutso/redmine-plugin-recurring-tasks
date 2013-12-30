@@ -8,7 +8,7 @@ de:
   label_next_scheduled_run: "Nächste Ausführung"
   label_no_recurrence:      "Keine Wiederholung."
   
-  label_recurs_fixed: "Fester Zeitplan"
+  label_recurs_fixed: "nach einem festen Zeitplan"
   label_recurs_dependent: "nach Abschluss der vorherigen Durchführung"
   
   label_recurring_task_issue_empty: "N/A"
