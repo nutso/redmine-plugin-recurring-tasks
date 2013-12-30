@@ -30,6 +30,6 @@ de:
   interval_month: "Monat"
   interval_year: "Jahr"
 
-  recurring_task_created: "Wiederkehrendes Thema wurde erstellt. "
-  recurring_task_saved: "Wiederkehrendes Thema wurde gespeichert. "
-  recurring_task_removed: "Wiederkehrendes Thema wurde entfernt. "
+  recurring_task_created: "Wiederholung wurde hinzugefügt. "
+  recurring_task_saved: "Wiederholung wurde gespeichert. "
+  recurring_task_removed: "Wiederholung wurde entfernt. "
