@@ -30,6 +30,6 @@ en:
   interval_month: "month"
   interval_year: "year"
 
-  recurring_task_created: "Created recurring task. "
-  recurring_task_saved: "Recurring task saved. "
-  recurring_task_removed: "Removed recurring task. "
+  recurring_task_created: "Recurrence created. "
+  recurring_task_saved: "Recurrence saved. "
+  recurring_task_removed: "Recurrence removed. "
