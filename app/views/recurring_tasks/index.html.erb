@@ -8,6 +8,7 @@
     <table class="list">
         <thead>
             <tr>
+            	<% if !@project %><th><%= l(:field_project)%></th><% end %>
                <th><%= l(:label_current_issue)%></th>
                <th><%= l(:label_recurrence_pattern)%></th>
                <th><%= l(:field_fixed_schedule)%></th>
@@ -18,6 +19,7 @@
         <tbody>
             <% @recurring_tasks.each do |rt| %>
                 <tr class="<%= cycle('odd', 'even') %>">
+                	<% if !@project %><th><%= project_path(rt.project) %></th><% end %>
                     <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id, :project_id => rt.project.id}) %></td>
                     <td><%= pluralize(rt.interval_number, rt.interval_unit) %></td>
                     <td><%= rt.fixed_schedule %></td>
