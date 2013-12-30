@@ -6,14 +6,14 @@
 		    <div class="contextual"><%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %></div>
 		<% end %>
 
-		<ul>
 		<% if issue.recurs? %>
-			<% issue.recurring_tasks.each do |rt| %>
-				<li><%= if User.current.allowed_to?(:view_issue_recurrence, project) then link_to(rt.to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) else rt.to_s end %></li>
-			<% end %>
+			<ul>
+				<% issue.recurring_tasks.each do |rt| %>
+					<li><%= if User.current.allowed_to?(:view_issue_recurrence, project) then link_to(rt.to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) else rt.to_s end %></li>
+				<% end %>
+			</ul>
 		<% else %>
-			<li><%= l(:label_no_recurrence)%></li>
+			<%= l(:label_no_recurrence)%>
 		<% end %>
-		</ul>		
 	</td>
 </tr>
