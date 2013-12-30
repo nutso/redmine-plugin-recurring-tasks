@@ -1,11 +1,10 @@
 <hr />
 <tr>
 	<td class="recurrence" colspan="2"></th>
-		<p><strong><%= l(:field_recurrence)%></strong></p>
 		<% if User.current.allowed_to?(:add_issue_recurrence, project) %>		
 		    <div class="contextual"><%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id), :class => 'icon icon-add') %></div>
 		<% end %>
-
+		<p><strong><%= l(:field_recurrence)%></strong></p>
 		<% if issue.recurs? %>
 			<ul>
 				<% issue.recurring_tasks.each do |rt| %>
