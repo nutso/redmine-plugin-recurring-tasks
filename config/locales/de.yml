@@ -9,7 +9,7 @@ de:
   label_no_recurrence:      "Keine Wiederholung."
   
   label_recurs_fixed: "Fester Zeitplan"
-  label_recurs_dependent: "nach Abschluss des vorherigen Themas"
+  label_recurs_dependent: "nach Abschluss der vorherigen Durchführung"
   
   label_recurring_task_issue_empty: "N/A"
   
