@@ -94,6 +94,6 @@ private
   # for a fixed schedule, this is the due date
   # for a relative schedule, this is the date closed
   def previous_date_for_recurrence
-    if fixed_schedule and !issue.due_date.nil? then issue.due_date else issue.closed_on end
+    if fixed_schedule and !issue.due_date.nil? then issue.due_date elsif issue.closed_on.nil? then issue.updated_on else issue.closed_on end
   end
 end
