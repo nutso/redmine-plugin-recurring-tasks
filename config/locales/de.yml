@@ -1,0 +1,35 @@
+# German strings go here for Rails i18n
+de:
+  label_recurring_tasks:    "Wiederkehrende Themen"
+  label_current_issue:      "Wiederkehrendes Thema"
+  label_recurrence_pattern: "Wiederholt sich alle"
+  label_add_recurring_task: "Wiederholung hinzufügen"
+  label_no_recurring_tasks: "Keine wiederkehrenden Themen gefunden."
+  label_next_scheduled_run: "Nächste Ausführung"
+  label_no_recurrence:      "Keine Wiederholung."
+  
+  label_recurs_fixed: "nach einem festen Zeitplan"
+  label_recurs_dependent: "nach Abschluss der vorherigen Durchführung"
+  
+  label_recurring_task_issue_empty: "N/A"
+  
+  label_belongs_to_project: "Gehört zu Projekt"
+  label_assigned_to: "Zugewiesen an"
+
+  error_invalid_interval:   "Angegebenes Intervall ist ungültig."
+  error_recurring_task_not_found: "Keine wiederkehrenden Themen gefunden. "
+  error_recurring_task_could_not_remove: "Wiederholung konnte nicht entfernt werden. "
+  
+  field_interval_number: "Intervallschritt"
+  field_interval_unit: "Einheit(en) des Intervalls"
+  field_fixed_schedule: "Fester Zeitplan?"
+  field_recurrence: "Wiederholung"
+  
+  interval_day:  "Tag"
+  interval_week: "Woche"
+  interval_month: "Monat"
+  interval_year: "Jahr"
+
+  recurring_task_created: "Wiederholung wurde hinzugefügt. "
+  recurring_task_saved: "Wiederholung wurde gespeichert. "
+  recurring_task_removed: "Wiederholung wurde entfernt. "
