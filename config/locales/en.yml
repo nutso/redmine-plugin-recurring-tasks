@@ -7,6 +7,7 @@ en:
   label_no_recurring_tasks: "No recurring tasks found on the system."
   label_next_scheduled_run: "Next scheduled run"
   label_no_recurrence:      "No recurrence."
+  label_no_project:         "No project."
   
   label_recurs_fixed: "on a fixed schedule"
   label_recurs_dependent: "after previous task completion"

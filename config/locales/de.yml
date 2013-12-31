@@ -7,6 +7,8 @@ de:
   label_no_recurring_tasks: "Keine wiederkehrenden Themen gefunden."
   label_next_scheduled_run: "Nächste Ausführung"
   label_no_recurrence:      "Keine Wiederholung."
+  label_no_project:         "Kein Projekt."
+
   
   label_recurs_fixed: "nach einem festen Zeitplan"
   label_recurs_dependent: "nach Abschluss der vorherigen Durchführung"
