@@ -10,8 +10,8 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
     RecurringTask.all.each do |rt|
       begin
         logger.info "Migrating task ##{rt.id} from #{rt.interval_unit}"
-        rt.interval_localized_name= rt.interval_unit
-        rt.save!
+        rt.interval_localized_name = rt.interval_unit
+        rt.save!(:validate => false)
       rescue => e
         logger.error "Migrating task ##{rt.id} from #{rt.interval_unit} FAILED. #{e}"
       end
@@ -24,6 +24,6 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
   # previously in the database.
   def down
     # raise ActiveRecord::IrreversibleMigration
-    # TODO bring this back
+    # TODO bring thi sback
   end
 end
