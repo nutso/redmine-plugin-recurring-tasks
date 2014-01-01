@@ -11,6 +11,7 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
       begin
         logger.info "Migrating task ##{rt.id} from #{rt.interval_unit}"
         rt.interval_localized_name = rt.interval_unit
+        rt.save!
       rescue => e
         logger.error "Migrating task ##{rt.id} from #{rt.interval_unit} FAILED. #{e}"
       end
