@@ -103,7 +103,12 @@ class RecurringTask < ActiveRecord::Base
   
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
   def next_scheduled_recurrence
-    previous_date_for_recurrence + recurrence_pattern unless previous_date_for_recurrence.nil?
+    if previous_date_for_recurrence.nil? 
+      logger.error "Previous date for recurrence was nil for recurrence #{id}" # TODO localize
+      Date.today
+    else 
+      previous_date_for_recurrence + recurrence_pattern
+    end
   end
   
   # whether a recurrence needs to be added
