@@ -16,7 +16,7 @@ class RecurringTask < ActiveRecord::Base
   # must come before validations otherwise unitialized
   INTERVAL_UNITS_LOCALIZED = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
 
-  validates :interval_localized_name, presence: true, inclusion: { in: RecurringTask::INTERVAL_UNITS_LOCALIZED, message: "#{l(:error_invalid_interval)} %{value}" }
+  validates :interval_localized_name, presence: true, inclusion: { in: RecurringTask::INTERVAL_UNITS_LOCALIZED, message: "#{l(:error_invalid_interval)} #{value}" }
   validates :interval_number, presence: true, numericality: {only_integer: true, greater_than: 0}
   # cannot validate presence of issue if want to use other features
   # validates :issue, presence: true
@@ -35,7 +35,7 @@ class RecurringTask < ActiveRecord::Base
     when INTERVAL_YEAR
       l(:interval_year)
     else
-      logger.error "#{l(:error_invalid_interval)} %{interval_unit}"
+      logger.error "#{l(:error_invalid_interval)} #{interval_unit}"
     end  
   end
   
@@ -85,7 +85,7 @@ class RecurringTask < ActiveRecord::Base
     when INTERVAL_YEAR
       interval_number.years
     else
-      logger.error "#{l(:error_invalid_interval)} %{interval_unit}"
+      logger.error "#{l(:error_invalid_interval)} #{interval_unit}"
     end
   end
   
