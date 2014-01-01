@@ -83,6 +83,6 @@ private
   end
   
   def set_interval_units
-    @interval_units = RecurringTask::INTERVAL_UNITS
+    @interval_units = RecurringTask::INTERVAL_UNITS_LOCALIZED
   end
 end

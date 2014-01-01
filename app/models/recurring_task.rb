@@ -4,10 +4,19 @@ class RecurringTask < ActiveRecord::Base
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, through: :issue
   
+  attr_accessible :interval_localized_name
+  
+  # these are the flags used in the database to denote the interval
+  # the actual text displayed to the user is controlled in the language file
+  INTERVAL_DAY = 'd'
+  INTERVAL_WEEK = 'w'
+  INTERVAL_MONTH = 'm'
+  INTERVAL_YEAR = 'y'
+  
   # must come before validations otherwise unitialized
-  INTERVAL_UNITS = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
+  INTERVAL_UNITS_LOCALIZED = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
 
-  validates :interval_unit, presence: true, inclusion: { in: RecurringTask::INTERVAL_UNITS, message: "#{l(:error_invalid_interval)} %{value}" }
+  validates :interval_localized_name, presence: true, inclusion: { in: RecurringTask::INTERVAL_UNITS_LOCALIZED, message: "#{l(:error_invalid_interval)} %{value}" }
   validates :interval_number, presence: true, numericality: {only_integer: true, greater_than: 0}
   # cannot validate presence of issue if want to use other features
   # validates :issue, presence: true
@@ -15,19 +24,68 @@ class RecurringTask < ActiveRecord::Base
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
   
+  def interval_localized_name
+    case interval_unit
+    when INTERVAL_DAY
+      l(:interval_day)
+    when INTERVAL_WEEK
+      l(:interval_week)
+    when INTERVAL_MONTH
+      l(:interval_month)
+    when INTERVAL_YEAR
+      l(:interval_year)
+    else
+      logger.error "#{l(:error_invalid_interval)} %{interval_unit}"
+    end  
+  end
+  
+  # text for the interval name
+  def interval_localized_name=(value)
+    interval_unit = case value
+      when l(:interval_day)
+        INTERVAL_DAY
+      when l(:interval_week)
+        INTERVAL_WEEK
+      when l(:interval_month)
+        INTERVAL_MONTH
+      when l(:interval_year)
+        INTERVAL_YEAR
+      else
+        logger.error "Could not find matching value for localized interval name #{interval}." # TODO localize
+        ""
+      end
+  end  
+  
+  # interval database name for the localized text
+  def self.interval_value interval
+    case interval
+    when l(:interval_day)
+      INTERVAL_DAY
+    when l(:interval_week)
+      INTERVAL_WEEK
+    when l(:interval_month)
+      INTERVAL_MONTH
+    when l(:interval_year)
+      INTERVAL_YEAR
+    else
+      logger.error "Could not find matching value for localized interval name #{interval}." # TODO localize
+      ""
+    end
+  end
+  
   # time interval value of the recurrence pattern
   def recurrence_pattern
     case interval_unit
-    when l(:interval_day)
+    when INTERVAL_DAY
       interval_number.days
-    when l(:interval_week)
+    when INTERVAL_WEEK
       interval_number.weeks
-    when l(:interval_month)
+    when INTERVAL_MONTH
       interval_number.months
-    when l(:interval_year)
+    when INTERVAL_YEAR
       interval_number.years
     else
-      logger.error "Unsupported interval unit: #{interval_unit}"
+      logger.error "#{l(:error_invalid_interval)} %{interval_unit}"
     end
   end
   
