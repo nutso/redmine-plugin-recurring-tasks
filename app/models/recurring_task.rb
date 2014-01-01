@@ -24,6 +24,7 @@ class RecurringTask < ActiveRecord::Base
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
   
+  # text for the interval name
   def interval_localized_name
     case interval_unit
     when INTERVAL_DAY
@@ -36,10 +37,11 @@ class RecurringTask < ActiveRecord::Base
       l(:interval_year)
     else
       logger.error "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
+      ""
     end  
   end
   
-  # text for the interval name
+  # interval database name for the localized text
   def interval_localized_name=(value)
     interval_unit = case value
       when l(:interval_day)
@@ -55,23 +57,6 @@ class RecurringTask < ActiveRecord::Base
         ""
       end
   end  
-  
-  # interval database name for the localized text
-  def self.interval_value interval
-    case interval
-    when l(:interval_day)
-      INTERVAL_DAY
-    when l(:interval_week)
-      INTERVAL_WEEK
-    when l(:interval_month)
-      INTERVAL_MONTH
-    when l(:interval_year)
-      INTERVAL_YEAR
-    else
-      logger.error "Could not find matching value for localized interval name #{interval}. (self.interval_value)" # TODO localize
-      ""
-    end
-  end
   
   # time interval value of the recurrence pattern
   def recurrence_pattern
