@@ -18,6 +18,7 @@
         </thead>
         <tbody>
             <% @recurring_tasks.each do |rt| %>
+            	<% logger.info rt.interval_number %>
                 <tr class="<%= cycle('odd', 'even') %>">
                 	<% if @project.nil? %><td><%= rt.project.nil? ? l(:label_recurring_task_project_empty) : link_to(rt.project, project_path(rt.project)) %></td><% end %>
                     <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id, :project_id => rt.project.id}) %></td>
