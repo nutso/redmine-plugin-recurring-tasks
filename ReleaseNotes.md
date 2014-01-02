@@ -1,16 +1,18 @@
 # Recurring Tasks Redmine Plugin -- Release Notes
 
-## Known Issues (Master)
+## Known Issues
+
+### Master (Stable)
 
 * (Confirmed) Deleting an issue neither generates a warning nor deletes the recurrence
 * (Reported) Incompatibility with Redmine Stable 2.4 (#20)
 * (Confirmed) No ability to view historic recurrences
 
-## Known Issues (Develop)
+### Develop
 
 * Update recurrence does not save properly
 
-## Resolved for Next Version
+## Resolved in Develop (Next Version)
 
 * After deleting an issue that still has a recurrence, recurrence views generate errors
 * Menu captions not localized (#21)
