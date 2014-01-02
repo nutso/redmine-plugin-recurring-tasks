@@ -88,6 +88,7 @@ class RecurringTask < ActiveRecord::Base
       interval_number.years
     else
       logger.error "#{l(:error_invalid_interval)} #{interval_unit} (recurrence_pattern)"
+      1.years
     end
   end
   

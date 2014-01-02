@@ -28,7 +28,7 @@
 	                    <td><%= format_date(rt.next_scheduled_recurrence) %></td>
 	                    <td><%= edit_button rt %></td>
 	             <% rescue => e %>
-	             		<td colspan="5"><%= e %></td>
+	             		<td><%= "ERROR: #{e}" %></td>
 	             <% end %>
 	             </tr>
             <% end %>
