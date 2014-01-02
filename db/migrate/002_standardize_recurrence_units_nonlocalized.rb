@@ -5,15 +5,15 @@
 # Here we are switching to just flags to denote the type of unit instead of text.
 class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
   def up
-    # TODO confirm with user until it's reversible
-    
     RecurringTask.all.each do |rt|
       begin
         logger.info "Migrating task ##{rt.id} from #{rt.interval_unit}"
         rt.interval_unit = RecurringTask.get_interval_localized_name(rt.interval_unit)
         rt.save!(:validate => false)
       rescue => e
-        logger.error "Migrating task ##{rt.id} from #{rt.interval_unit} FAILED. #{e}"
+        msg = "Migration for recurrence FAILED. ##{rt.id} from #{rt.interval_unit} FAILED. You will need to update this manually. #{e}" # TODO localize
+        logger.error msg
+        say msg # also display to user
       end
     end
   end
@@ -23,7 +23,6 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
   # There is no guarantee that the current localized translation was the value
   # previously in the database.
   def down
-    # raise ActiveRecord::IrreversibleMigration
-    # TODO bring thi sback
+    raise ActiveRecord::IrreversibleMigration
   end
 end
