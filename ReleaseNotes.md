@@ -2,13 +2,15 @@
 
 ## Known Issues
 
-* (Confirmed) Changing the interval_day, interval_week, interval_month, or interval_year strings in the locale file, or changing locales, after adding recurrences generates an error
-* (Confirmed) Deleting an issue does not delete the recurrence
+* (Confirmed) Deleting an issue neither generates a warning nor deletes the recurrence
 * (Reported) Incompatibility with Redmine Stable 2.4 (#20)
+* (Confirmed) No ability to view historic recurrences
 
 ## Resolved for Next Version
 
 * After deleting an issue that still has a recurrence, recurrence views generate errors
+* Menu captions not localized (#21)
+* Changing the interval_day, interval_week, interval_month, or interval_year strings in the locale file, or changing locales, after adding recurrences generates an error
 
 ## Version 1.2.5
 
