@@ -53,7 +53,7 @@ class RecurringTask < ActiveRecord::Base
       when l(:interval_year)
         INTERVAL_YEAR
       else
-        logger.error "Could not find matching value for localized interval name #{interval}. (interval_localized_name=)" # TODO localize
+        logger.error "#{l(:error_invalid_interval)} #{interval} (interval_localized_name=)"
         ""
       end
   end  
@@ -70,7 +70,7 @@ class RecurringTask < ActiveRecord::Base
       when l(:interval_year)
         INTERVAL_YEAR
       else
-        logger.error "Could not find matching value for localized interval name #{interval}. (interval_localized_name=)" # TODO localize
+        logger.error "#{l(:error_invalid_interval)} #{interval} (interval_localized_name=)"
         ""
       end
   end
@@ -104,7 +104,7 @@ class RecurringTask < ActiveRecord::Base
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
   def next_scheduled_recurrence
     if previous_date_for_recurrence.nil? 
-      logger.error "Previous date for recurrence was nil for recurrence #{id}" # TODO localize
+      logger.error "Previous date for recurrence was nil for recurrence #{id}"
       Date.today
     else 
       previous_date_for_recurrence + recurrence_pattern
