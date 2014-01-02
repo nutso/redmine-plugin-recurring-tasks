@@ -23,7 +23,7 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
   # There is no guarantee that the current localized translation was the value
   # previously in the database.
   def down
-    say "ActiveRecord::IrreversibleMigration"
-    # raise ActiveRecord::IrreversibleMigration
+    # say "ActiveRecord::IrreversibleMigration"
+    raise ActiveRecord::IrreversibleMigration
   end
 end
