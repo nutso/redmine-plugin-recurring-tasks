@@ -13,7 +13,7 @@ Redmine::Plugin.register :recurring_tasks do
   version '1.2.5'
   
   Redmine::MenuManager.map :top_menu do |menu|
-    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => Redmine::I18n.l(:label_recurring_tasks), :if => Proc.new { User.current.admin? }
+    menu.push :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => :label_recurring_tasks, :if => Proc.new { User.current.admin? }
   end
   
   # Permissions map to issue permissions (#12)
@@ -26,7 +26,7 @@ Redmine::Plugin.register :recurring_tasks do
   end
   
   # project-specific recurring tasks view (#11)
-  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => Redmine::I18n.l(:label_recurring_tasks), :after => :new_issue, :param => :project_id
+  menu :project_menu, :recurring_tasks, { :controller => 'recurring_tasks', :action => 'index' }, :caption => :label_recurring_tasks, :after => :new_issue, :param => :project_id
   
   # Send patches to models and controllers
   Rails.configuration.to_prepare do
