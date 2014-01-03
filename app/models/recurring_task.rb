@@ -42,19 +42,7 @@ class RecurringTask < ActiveRecord::Base
   
   # interval database name for the localized text
   def interval_localized_name=(value)
-    interval_unit = case value
-      when l(:interval_day)
-        INTERVAL_DAY
-      when l(:interval_week)
-        INTERVAL_WEEK
-      when l(:interval_month)
-        INTERVAL_MONTH
-      when l(:interval_year)
-        INTERVAL_YEAR
-      else
-        logger.error "#{l(:error_invalid_interval)} #{value} (interval_localized_name=)"
-        ""
-      end
+    interval_unit = RecurringTask.get_interval_localized_name(value)
   end  
   
   # used for migration #2
