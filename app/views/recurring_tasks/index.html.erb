@@ -20,15 +20,14 @@
             <% @recurring_tasks.each do |rt| %>
 	            <tr class="<%= cycle('odd', 'even') %>">
             	<% begin %>
-	            	<% logger.info rt.id %>
-	                	<% if @project.nil? %><td><%= rt.project.nil? ? l(:label_recurring_task_project_empty) : link_to(rt.project, project_path(rt.project)) %></td><% end %>
-	                    <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id, :project_id => rt.project.id}) %></td>
-	                    <td><%= pluralize(rt.interval_number, rt.interval_localized_name) %></td>
-	                    <td><%= rt.fixed_schedule %></td>
-	                    <td><%= format_date(rt.next_scheduled_recurrence) %></td>
-	                    <td><%= edit_button rt %></td>
+                	<% if @project.nil? %><td><%= rt.project.nil? ? l(:label_recurring_task_project_empty) : link_to(rt.project, project_path(rt.project)) %></td><% end %>
+                    <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id, :project_id => rt.project.id}) %></td>
+                    <td><%= pluralize(rt.interval_number, rt.interval_localized_name) %></td>
+                    <td><%= rt.fixed_schedule %></td>
+                    <td><%= format_date(rt.next_scheduled_recurrence) %></td>
+                    <td><%= edit_button rt %></td>
 	             <% rescue => e %>
-	             		<td><%= "ERROR: #{e}" %></td>
+	             	<td><%= "ERROR: #{e}" %></td>
 	             <% end %>
 	             </tr>
             <% end %>
