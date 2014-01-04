@@ -14,6 +14,7 @@
 ## Resolved in Develop (Next Version)
 
 * Using validates_presence_of instead of validates :x, presence: true for backward Rails compatibility (#20)
+* Using validates_inclusion_of and validates_numericality_of instead of stand-alone validates for backward Rails compatibility (#20)
 
 ## Version 1.2.7 (04 Jan 2014)
 
