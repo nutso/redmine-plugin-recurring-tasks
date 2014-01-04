@@ -32,8 +32,7 @@ class RecurringTask < ActiveRecord::Base
     when INTERVAL_YEAR
       l(:interval_year)
     else
-      logger.error "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
-      ""
+      raise "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
     end  
   end
   
@@ -55,8 +54,7 @@ class RecurringTask < ActiveRecord::Base
       when l(:interval_year)
         INTERVAL_YEAR
       else
-        logger.error "#{l(:error_invalid_interval)} #{value} (interval_localized_name=)"
-        ""
+        raise "#{l(:error_invalid_interval)} #{value} (interval_localized_name=)"
       end
   end
   
@@ -72,8 +70,7 @@ class RecurringTask < ActiveRecord::Base
     when INTERVAL_YEAR
       interval_number.years
     else
-      logger.error "#{l(:error_invalid_interval)} #{interval_unit} (recurrence_pattern)"
-      1.years
+      raise "#{l(:error_invalid_interval)} #{interval_unit} (recurrence_pattern)"
     end
   end
   
