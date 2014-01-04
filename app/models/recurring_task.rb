@@ -4,6 +4,8 @@ class RecurringTask < ActiveRecord::Base
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, through: :issue
   
+  before_save :set_interval
+  
   attr_accessible :interval_localized_name
   
   # these are the flags used in the database to denote the interval
@@ -42,6 +44,7 @@ class RecurringTask < ActiveRecord::Base
   
   # interval database name for the localized text
   def interval_localized_name=(value)
+    @interval_localized_name = value
     interval_unit = RecurringTask.get_interval_localized_name(value)
   end  
   
@@ -143,6 +146,12 @@ class RecurringTask < ActiveRecord::Base
   end # end add_recurrences
   
 private
+  def set_interval
+    if !@interval_localized_name.nil?  
+      interval_unit = RecurringTask.get_interval_localized_name(@interval_localized_name)
+    end
+  end
+
   # the date from which to recur
   # for a fixed schedule, this is the due date
   # for a relative schedule, this is the date closed
