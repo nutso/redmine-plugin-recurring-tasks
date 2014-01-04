@@ -4,7 +4,7 @@ class RecurringTask < ActiveRecord::Base
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, through: :issue
   
-  before_save :set_interval
+  before_validation :set_interval
   
   attr_accessible :interval_localized_name
   
@@ -151,7 +151,7 @@ private
   def set_interval
     logger.info "setting interval called"
     if !@interval_localized_name.nil?  
-      interval_unit = RecurringTask.get_interval_from_localized_name(@interval_localized_name)
+      interval_unit= RecurringTask.get_interval_from_localized_name(@interval_localized_name)
       logger.info "interval set to #{interval_unit}"
     end
   end
