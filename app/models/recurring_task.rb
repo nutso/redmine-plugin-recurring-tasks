@@ -37,7 +37,9 @@ class RecurringTask < ActiveRecord::Base
     when INTERVAL_YEAR
       l(:interval_year)
     else
-      raise "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
+      # if we raise an exception here, then the blank 'new' form will fail
+      logger.error "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
+      ""
     end  
   end
   
