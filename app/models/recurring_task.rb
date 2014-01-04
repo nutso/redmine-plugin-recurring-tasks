@@ -151,8 +151,8 @@ private
   def set_interval
     logger.info "setting interval called"
     if !@interval_localized_name.nil?  
-      logger.info "setting interval"
       interval_unit = RecurringTask.get_interval_from_localized_name(@interval_localized_name)
+      logger.info "interval set to #{interval_unit}"
     end
   end
 
