@@ -28,7 +28,7 @@ class RecurringTask < ActiveRecord::Base
   # text for the interval name
   def interval_localized_name
     if new_record?
-      nil
+      @interval_localized_name
     else
       case interval_unit
       when INTERVAL_DAY
