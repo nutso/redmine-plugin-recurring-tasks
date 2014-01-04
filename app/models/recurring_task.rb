@@ -44,12 +44,13 @@ class RecurringTask < ActiveRecord::Base
   
   # interval database name for the localized text
   def interval_localized_name=(value)
+    logger.info "setting localized name to #{value}"
     @interval_localized_name = value
-    interval_unit = RecurringTask.get_interval_localized_name(value)
+    interval_unit = RecurringTask.get_interval_from_localized_name(value)
   end  
   
   # used for migration #2
-  def self.get_interval_localized_name(value)
+  def self.get_interval_from_localized_name(value)
     case value
       when l(:interval_day)
         INTERVAL_DAY
@@ -146,8 +147,11 @@ class RecurringTask < ActiveRecord::Base
   end # end add_recurrences
   
 private
+  # called before save
   def set_interval
+    logger.info "setting interval called"
     if !@interval_localized_name.nil?  
+      logger.info "setting interval"
       interval_unit = RecurringTask.get_interval_localized_name(@interval_localized_name)
     end
   end

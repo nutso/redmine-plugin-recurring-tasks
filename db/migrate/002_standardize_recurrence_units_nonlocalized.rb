@@ -8,7 +8,7 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
     RecurringTask.all.each do |rt|
       begin
         logger.info "Migrating task ##{rt.id} from #{rt.interval_unit}"
-        rt.interval_unit = RecurringTask.get_interval_localized_name(rt.interval_unit)
+        rt.interval_unit = RecurringTask.get_interval_from_localized_name(rt.interval_unit)
         rt.save!(:validate => false)
       rescue => e
         msg = "Migration for recurrence FAILED. ##{rt.id} from #{rt.interval_unit} FAILED. You will need to update this manually. Error: #{e}" # TODO localize
