@@ -27,20 +27,22 @@ class RecurringTask < ActiveRecord::Base
   
   # text for the interval name
   def interval_localized_name
-    case interval_unit
-    when INTERVAL_DAY
-      l(:interval_day)
-    when INTERVAL_WEEK
-      l(:interval_week)
-    when INTERVAL_MONTH
-      l(:interval_month)
-    when INTERVAL_YEAR
-      l(:interval_year)
+    if new_record?
+      nil
     else
-      # if we raise an exception here, then the blank 'new' form will fail
-      logger.error "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
-      ""
-    end  
+      case interval_unit
+      when INTERVAL_DAY
+        l(:interval_day)
+      when INTERVAL_WEEK
+        l(:interval_week)
+      when INTERVAL_MONTH
+        l(:interval_month)
+      when INTERVAL_YEAR
+        l(:interval_year)
+      else
+        raise "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
+      end
+    end
   end
   
   # interval database name for the localized text
