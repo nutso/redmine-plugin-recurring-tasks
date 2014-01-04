@@ -4,30 +4,77 @@ class RecurringTask < ActiveRecord::Base
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, through: :issue
   
+  # these are the flags used in the database to denote the interval
+  # the actual text displayed to the user is controlled in the language file
+  INTERVAL_DAY = 'd'
+  INTERVAL_WEEK = 'w'
+  INTERVAL_MONTH = 'm'
+  INTERVAL_YEAR = 'y'
+  
   # must come before validations otherwise unitialized
-  INTERVAL_UNITS = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
+  INTERVAL_UNITS_LOCALIZED = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)]
 
-  validates :interval_unit, presence: true, inclusion: { in: RecurringTask::INTERVAL_UNITS, message: "#{l(:error_invalid_interval)} %{value}" }
+  validates :interval_localized_name, presence: true, inclusion: { in: RecurringTask::INTERVAL_UNITS_LOCALIZED, message: "#{l(:error_invalid_interval)} '%{value}' (Validation)" }
   validates :interval_number, presence: true, numericality: {only_integer: true, greater_than: 0}
-  # cannot validate presence of issue if want to use other features
-  # validates :issue, presence: true
+  # validates :issue, presence: true # cannot validate presence of issue if want to use other features
   # validates :fixed_schedule # requiring presence requires true
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
   
+  # text for the interval name
+  def interval_localized_name
+    case interval_unit
+    when INTERVAL_DAY
+      l(:interval_day)
+    when INTERVAL_WEEK
+      l(:interval_week)
+    when INTERVAL_MONTH
+      l(:interval_month)
+    when INTERVAL_YEAR
+      l(:interval_year)
+    else
+      logger.error "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
+      ""
+    end  
+  end
+  
+  # interval database name for the localized text
+  def interval_localized_name=(value)
+    @interval_localized_name = value
+    interval_unit= RecurringTask.get_interval_from_localized_name(value)
+  end  
+  
+  # used for migration #2
+  def self.get_interval_from_localized_name(value)
+    case value
+      when l(:interval_day)
+        INTERVAL_DAY
+      when l(:interval_week)
+        INTERVAL_WEEK
+      when l(:interval_month)
+        INTERVAL_MONTH
+      when l(:interval_year)
+        INTERVAL_YEAR
+      else
+        logger.error "#{l(:error_invalid_interval)} #{value} (interval_localized_name=)"
+        ""
+      end
+  end
+  
   # time interval value of the recurrence pattern
   def recurrence_pattern
     case interval_unit
-    when l(:interval_day)
+    when INTERVAL_DAY
       interval_number.days
-    when l(:interval_week)
+    when INTERVAL_WEEK
       interval_number.weeks
-    when l(:interval_month)
+    when INTERVAL_MONTH
       interval_number.months
-    when l(:interval_year)
+    when INTERVAL_YEAR
       interval_number.years
     else
-      logger.error "Unsupported interval unit: #{interval_unit}"
+      logger.error "#{l(:error_invalid_interval)} #{interval_unit} (recurrence_pattern)"
+      1.years
     end
   end
   
@@ -43,7 +90,12 @@ class RecurringTask < ActiveRecord::Base
   
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
   def next_scheduled_recurrence
-    previous_date_for_recurrence + recurrence_pattern unless previous_date_for_recurrence.nil?
+    if previous_date_for_recurrence.nil? 
+      logger.error "Previous date for recurrence was nil for recurrence #{id}"
+      Date.today
+    else 
+      previous_date_for_recurrence + recurrence_pattern
+    end
   end
   
   # whether a recurrence needs to be added
@@ -94,6 +146,15 @@ private
   # for a fixed schedule, this is the due date
   # for a relative schedule, this is the date closed
   def previous_date_for_recurrence
-    if fixed_schedule and !issue.due_date.nil? then issue.due_date elsif issue.closed_on.nil? then issue.updated_on else issue.closed_on end
+    if issue.nil? 
+      logger.error "Issue is nil for recurrence #{id}."
+      Date.today
+    elsif fixed_schedule and !issue.due_date.nil? 
+      issue.due_date 
+    elsif issue.closed_on.nil? 
+      issue.updated_on
+    else 
+      issue.closed_on 
+    end
   end
 end

@@ -44,6 +44,7 @@ class RecurringTasksController < ApplicationController
   def update
     logger.info "Updating recurring task #{params[:id]}"
   
+    params[:recurring_task][:interval_unit] = RecurringTask.get_interval_from_localized_name(params[:recurring_task][:interval_localized_name])
     if @recurring_task.update_attributes(params[:recurring_task])
       flash[:notice] = l(:recurring_task_saved)
       redirect_to :action => :show
@@ -83,6 +84,6 @@ private
   end
   
   def set_interval_units
-    @interval_units = RecurringTask::INTERVAL_UNITS
+    @interval_units = RecurringTask::INTERVAL_UNITS_LOCALIZED
   end
 end

@@ -4,7 +4,7 @@
 
 <h2><%= @recurring_task.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(@recurring_task.issue.subj_date, {:controller => 'issues', :action => 'show', :id => @recurring_task.issue.id}) %></h2>
  
-<p><%= l(:label_recurrence_pattern) %> <%= pluralize(@recurring_task.interval_number, @recurring_task.interval_unit) %></p>
+<p><%= l(:label_recurrence_pattern) %> <%= pluralize(@recurring_task.interval_number, @recurring_task.interval_localized_name) %></p>
 <p><%= @recurring_task.fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent) %></p>
 
 <p><%= l(:label_next_scheduled_run) %>: <%= format_date(@recurring_task.next_scheduled_recurrence) %></p>
