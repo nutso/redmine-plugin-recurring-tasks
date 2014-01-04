@@ -13,11 +13,11 @@
 
 ## Resolved in Develop (Next Version)
 
-* 
+* Using validates_presence_of instead of validates :x, presence: true for backward Rails compatibility (#20)
 
 ## Version 1.2.7
 
-* Changed to more traditional :through => :issue instead of through: :issue to resolve incompatibility with Redmine Stable 2.4 (#20)
+* Changed to more traditional :through => :issue instead of through: :issue for backward Rails compatibility (#20)
 
 ## Version 1.2.6
 
