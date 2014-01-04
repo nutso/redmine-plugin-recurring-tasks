@@ -21,6 +21,7 @@ en:
   error_invalid_interval:   "Interval provided is invalid."
   error_recurring_task_not_found: "Could not find recurring issue. "
   error_recurring_task_could_not_remove: "Could not remove recurrence from issue. "
+  error_migration_002_failed: "Migration for recurrence FAILED. You will need to update this manually. " 
   
   field_interval_number: "Interval number"
   field_interval_unit: "Interval Unit(s)"

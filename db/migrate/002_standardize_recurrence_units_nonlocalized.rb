@@ -11,7 +11,7 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
         rt.interval_unit = RecurringTask.get_interval_from_localized_name(rt.interval_unit)
         rt.save!(:validate => false)
       rescue => e
-        msg = "Migration for recurrence FAILED. ##{rt.id} from #{rt.interval_unit} FAILED. You will need to update this manually. Error: #{e}" # TODO localize
+        msg = "#{l(:error_migration_002_failed)} ##{rt.id} / #{rt.interval_unit}. #{e}"
         logger.error msg
         say msg # also display to user
       end
