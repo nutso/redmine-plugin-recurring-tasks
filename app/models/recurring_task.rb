@@ -2,7 +2,7 @@ class RecurringTask < ActiveRecord::Base
   unloadable
 
   belongs_to :issue, :foreign_key => 'current_issue_id'
-  has_one :project, through: :issue
+  has_one :project, :through => :issue
   
   # these are the flags used in the database to denote the interval
   # the actual text displayed to the user is controlled in the language file
