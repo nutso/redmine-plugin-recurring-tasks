@@ -5,7 +5,6 @@
 ### Master (Stable)
 
 * (Confirmed) Deleting an issue neither generates a warning nor deletes the recurrence
-* (Reported) Incompatibility with Redmine Stable 2.4 (#20) -- possibly line feed issue
 * (Confirmed) No ability to view historic recurrences
 
 ### Develop
@@ -15,6 +14,10 @@
 ## Resolved in Develop (Next Version)
 
 * 
+
+## Version 1.2.7
+
+* Changed to more traditional :through => :issue instead of through: :issue to resolve incompatibility with Redmine Stable 2.4 (#20)
 
 ## Version 1.2.6
 
