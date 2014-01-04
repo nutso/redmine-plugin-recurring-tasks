@@ -26,6 +26,7 @@ class RecurringTasksController < ApplicationController
 
   # creates a new recurring task
   def create
+    params[:recurring_task][:interval_unit] = RecurringTask.get_interval_from_localized_name(params[:recurring_task][:interval_localized_name])
     @recurring_task = RecurringTask.new(params[:recurring_task])
     if @recurring_task.save
       flash[:notice] = l(:recurring_task_created)

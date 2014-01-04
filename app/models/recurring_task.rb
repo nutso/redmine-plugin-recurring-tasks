@@ -19,26 +19,30 @@ class RecurringTask < ActiveRecord::Base
   validates_presence_of :interval_localized_name
   validates_presence_of :interval_number
   
-  validates :interval_localized_name, inclusion: { in: RecurringTask::INTERVAL_UNITS_LOCALIZED, message: "#{l(:error_invalid_interval)} '%{value}' (Validation)" }
-  validates :interval_number, numericality: {only_integer: true, greater_than: 0}
+  validates_inclusion_of :interval_localized_name, :in => RecurringTask::INTERVAL_UNITS_LOCALIZED, :message => "#{l(:error_invalid_interval)} '%{value}' (Validation)"
+  validates_numericality_of :interval_number, :only_integer => true, :greater_than => 0
   # cannot validate presence of issue if want to use other features; requiring presence of fixed_schedule requires it to be true
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
   
   # text for the interval name
   def interval_localized_name
-    case interval_unit
-    when INTERVAL_DAY
-      l(:interval_day)
-    when INTERVAL_WEEK
-      l(:interval_week)
-    when INTERVAL_MONTH
-      l(:interval_month)
-    when INTERVAL_YEAR
-      l(:interval_year)
+    if new_record?
+      @interval_localized_name
     else
-      raise "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
-    end  
+      case interval_unit
+      when INTERVAL_DAY
+        l(:interval_day)
+      when INTERVAL_WEEK
+        l(:interval_week)
+      when INTERVAL_MONTH
+        l(:interval_month)
+      when INTERVAL_YEAR
+        l(:interval_year)
+      else
+        raise "#{l(:error_invalid_interval)} #{interval_unit} (interval_localized_name)"
+      end
+    end
   end
   
   # interval database name for the localized text
