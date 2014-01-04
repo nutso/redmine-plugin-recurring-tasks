@@ -25,6 +25,13 @@ class RecurringTask < ActiveRecord::Base
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
   
+  # workaround to set inverval
+  def update_from_form params
+    attributes=params[:recurring_task]
+    set_interval
+    save
+  end
+  
   # text for the interval name
   def interval_localized_name
     case interval_unit

@@ -44,7 +44,7 @@ class RecurringTasksController < ApplicationController
   def update
     logger.info "Updating recurring task #{params[:id]}"
   
-    if @recurring_task.update_attributes(params[:recurring_task])
+    if @recurring_task.update_from_form(params[:recurring_task])
       flash[:notice] = l(:recurring_task_saved)
       redirect_to :action => :show
     else
