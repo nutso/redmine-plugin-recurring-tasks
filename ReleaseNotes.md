@@ -13,7 +13,7 @@
 
 ## Resolved in Develop (Next Version)
 
-* Localized error message for migration 002 (from localized words to flags for interval_unit)
+* 
 
 ## Version 1.2.7
 
