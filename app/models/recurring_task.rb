@@ -4,10 +4,6 @@ class RecurringTask < ActiveRecord::Base
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, through: :issue
   
-  before_validation :set_interval
-  
-  attr_accessible :interval_localized_name
-  
   # these are the flags used in the database to denote the interval
   # the actual text displayed to the user is controlled in the language file
   INTERVAL_DAY = 'd'
@@ -24,13 +20,6 @@ class RecurringTask < ActiveRecord::Base
   # validates :fixed_schedule # requiring presence requires true
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
-  
-  # workaround to set inverval
-  def update_from_form params
-    attributes=params[:recurring_task]
-    set_interval
-    save
-  end
   
   # text for the interval name
   def interval_localized_name
@@ -51,9 +40,8 @@ class RecurringTask < ActiveRecord::Base
   
   # interval database name for the localized text
   def interval_localized_name=(value)
-    logger.info "setting localized name to #{value}"
     @interval_localized_name = value
-    interval_unit = RecurringTask.get_interval_from_localized_name(value)
+    interval_unit= RecurringTask.get_interval_from_localized_name(value)
   end  
   
   # used for migration #2
@@ -154,15 +142,6 @@ class RecurringTask < ActiveRecord::Base
   end # end add_recurrences
   
 private
-  # called before save
-  def set_interval
-    logger.info "setting interval called"
-    if !@interval_localized_name.nil?  
-      interval_unit= RecurringTask.get_interval_from_localized_name(@interval_localized_name)
-      logger.info "interval set to #{interval_unit}"
-    end
-  end
-
   # the date from which to recur
   # for a fixed schedule, this is the due date
   # for a relative schedule, this is the date closed
