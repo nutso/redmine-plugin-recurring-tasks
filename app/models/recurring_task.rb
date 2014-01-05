@@ -85,7 +85,7 @@ class RecurringTask < ActiveRecord::Base
   
   def self.find_by_issue issue
     # it's possible there is more than one recurrence associated with an issue
-    RecurringTask.where(current_issue_id: issue.id)
+    RecurringTask.where(:current_issue_id => issue.id)
   end
   
   # retrieve all recurring tasks given a project
