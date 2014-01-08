@@ -118,6 +118,7 @@ class RecurringTask < ActiveRecord::Base
       new_issue = issue.copy
       new_issue.due_date = previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
+      new_issue.done_ratio = 0
       new_issue.status = IssueStatus.default # issue status is NOT automatically new, default is whatever the default status for new issues is
       new_issue.save!
       puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
