@@ -1,15 +1,21 @@
 # Recurring Tasks Redmine Plugin -- Release Notes
 
+## Features Requested
+
+* Recur on day x of every n months (#26)
+* Recur on last day of every n months (#26)
+
 ## Known Issues
 
-### Master (Stable)
-
-* (Confirmed) Deleting an issue neither generates a warning nor deletes the recurrence
-* (Confirmed) No ability to view historic recurrences
-
-### Develop
+* Deleting an issue neither generates a warning nor deletes the recurrence
+* No ability to view historic recurrences
 
 ## Next Version (Develop Branch)
+
+## Version 1.2.9 (07 Jan 2014)
+
+* Set done_ratio to zero for recurred issues (#26)
+* Updated German translation file from @skolarianer (#27)
 
 ## Version 1.2.8 (05 Jan 2014)
 
