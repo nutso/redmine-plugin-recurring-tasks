@@ -5,11 +5,15 @@ ru:
   label_recurrence_pattern: "Повтор каждые"
   label_add_recurring_task: "Добавить повторение задачи"
   label_no_recurring_tasks: "В системе не найдено повторяющихся задач."
+  label_next_scheduled_run: "Следующий плановый запуск"
+  label_no_recurrence:      "Нет повторения."
+  label_no_project:         "Нет проекта."  
   
   label_recurs_fixed: "по фиксированному графику"
   label_recurs_dependent: "после завершения предыдущей задачи"
   
   label_recurring_task_issue_empty: "(пусто)"
+  label_recurring_task_project_empty: "(пусто)"
   
   label_belongs_to_project: "Принадлежит проекту"
   label_assigned_to: "Назначена"
@@ -21,6 +25,7 @@ ru:
   field_interval_number: "Интервал (число)"
   field_interval_unit: "Интервал (элемент)"
   field_fixed_schedule: "Фиксированный график?"
+  field_recurrence: "Повторение"
   
   interval_day:  "день"
   interval_week: "неделя"
