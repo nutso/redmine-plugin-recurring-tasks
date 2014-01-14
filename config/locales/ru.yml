@@ -1,0 +1,37 @@
+# Russian strings go here for Rails i18n
+ru:
+  label_recurring_tasks:    "Повтор задач"
+  label_current_issue:      "Текущая задача для повторения"
+  label_recurrence_pattern: "Повтор каждые"
+  label_add_recurring_task: "Добавить повторение задачи"
+  label_no_recurring_tasks: "В системе не найдено повторяющихся задач."
+  label_next_scheduled_run: "Следующий плановый запуск"
+  label_no_recurrence:      "Нет повторения."
+  label_no_project:         "Нет проекта."  
+  
+  label_recurs_fixed: "по фиксированному графику"
+  label_recurs_dependent: "после завершения предыдущей задачи"
+  
+  label_recurring_task_issue_empty: "(пусто)"
+  label_recurring_task_project_empty: "(пусто)"
+  
+  label_belongs_to_project: "Принадлежит проекту"
+  label_assigned_to: "Назначена"
+
+  error_invalid_interval:   "Указанный интервал неверен. "
+  error_recurring_task_not_found: "Невозможно найти повторяющуюся задачу. "
+  error_recurring_task_could_not_remove: "Невозможно удалить повторение задачи. "
+  
+  field_interval_number: "Интервал (число)"
+  field_interval_unit: "Интервал (элемент)"
+  field_fixed_schedule: "Фиксированный график?"
+  field_recurrence: "Повторение"
+  
+  interval_day:  "день"
+  interval_week: "неделя"
+  interval_month: "месяц"
+  interval_year: "год"
+
+  recurring_task_created: "Повторяющаяся задача создана. "
+  recurring_task_saved: "Повторяющаяся задача сохранена. "
+  recurring_task_removed: "Повторяющаяся задача удалена. "
