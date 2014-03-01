@@ -12,6 +12,10 @@
 
 ## Next Version (Develop Branch)
 
+* Russian translation contributed by @box789 ([#30](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/30))
+* French translation contributed by @jbeauvois ([#35](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/35))
+* Backward Rails syntax compatibility ([#29](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/29), [#34](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/34))
+
 ## Version 1.2.9 (07 Jan 2014)
 
 * Set done_ratio to zero for recurred issues ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
