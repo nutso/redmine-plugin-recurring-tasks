@@ -110,11 +110,16 @@ class RecurringTask < ActiveRecord::Base
   
   # check whether a recurrence is needed, and add one if not
   def recur_issue_if_needed!
+    if issue.nil?
+      puts "Recurring a deleted issue is not supported."
+      return false
+    end    
+    
     return true unless need_to_recur?
     
     # Add more than one recurrence to 'catch up' if warranted (issue #10)
     
-    while need_to_recur?
+    while need_to_recur?      
       new_issue = issue.copy
       new_issue.due_date = previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
