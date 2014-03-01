@@ -2,7 +2,7 @@ module RecurringTasks
   module IssuePatch
     def self.included(base)
       base.class_eval do
-        has_many :recurring_tasks, :dependent => :delete_all # cascading delete
+        has_many :recurring_tasks, :foreign_key => 'current_issue_id', :dependent => :delete_all # cascading delete
         
         # adding a property to issues that shows subject (date) that can be used in selecting issues
         def subj_date
