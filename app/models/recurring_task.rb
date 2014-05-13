@@ -149,33 +149,33 @@ class RecurringTask < ActiveRecord::Base
     else 
       case interval_unit
       when INTERVAL_DAY
-        prev_date + interval_number.days
+        (prev_date + interval_number.days).to_date
       when INTERVAL_WEEK
-        prev_date + interval_number.weeks
+        (prev_date + interval_number.weeks).to_date
       when INTERVAL_MONTH
         case interval_modifier
         when MONTH_MODIFIER_DAY_FROM_FIRST
-          prev_date + interval_number.months
+          (prev_date + interval_number.months).to_date
         when MONTH_MODIFIER_DAY_TO_LAST
           days_to_last = prev_date.end_of_month - prev_date
-          (prev_date + interval_number.months).end_of_month - days_to_last
+          ((prev_date + interval_number.months).end_of_month - days_to_last).to_date
         when MONTH_MODIFIER_DOW_FROM_FIRST
           source_dow = prev_date.days_to_week_start
           target_bom = (prev_date + interval_number.months).beginning_of_month
           target_bom_dow = target_bom.days_to_week_start
           week = ((prev_date.mday - 1) / 7) + ((source_dow >= target_bom_dow) ? 0 : 1)
-          target_bom + week.weeks + source_dow - target_bom_dow
+          (target_bom + week.weeks + source_dow - target_bom_dow).to_date
         when MONTH_MODIFIER_DOW_TO_LAST
           source_dow = prev_date.days_to_week_start
           target_eom = (prev_date + interval_number.months).end_of_month
           target_eom_dow = target_eom.days_to_week_start
           week = ((prev_date.end_of_month - prev_date).to_i / 7) + ((source_dow > target_eom_dow) ? 1 : 0)
-          target_eom - week.weeks + source_dow - target_eom_dow
+          (target_eom - week.weeks + source_dow - target_eom_dow).to_date
         else
           raise "#{l(:error_invalid_modifier)} #{interval_modifier} (next_scheduled_recurrence)"
         end
       when INTERVAL_YEAR
-        prev_date + interval_number.years
+        (prev_date + interval_number.years).to_date
       else
         raise "#{l(:error_invalid_interval)} #{interval_unit} (next_scheduled_recurrence)"
       end
@@ -216,7 +216,7 @@ class RecurringTask < ActiveRecord::Base
     frequency = (interval_number == 1) ? "" : interval_number.ordinalize
     modifier = (interval_unit == INTERVAL_MONTH) ? " #{interval_localized_modifier}" : ""
     schedule = fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)
-    "#{l(:label_recurrence_pattern)} #{frequency} #{interval_localized_name}#{modifier}, #{schedule}"
+    "#{l(:label_recurrence_pattern)} #{frequency} #{interval_localized_name}#{modifier}, #{schedule} (#{l(:label_next_scheduled_run).downcase}: #{next_scheduled_recurrence})"
   end
 
   def to_s
