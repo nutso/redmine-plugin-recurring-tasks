@@ -4,10 +4,10 @@
     <p><%= f.hidden_field :id %></p>
     <p><%= label(:recurring_task, :current_issue_id, l(:field_issue)) %><%= collection_select('recurring_task', 'current_issue_id', @recurrable_issues, :id, :subj_date) %></p>
     <p><%= f.number_field :interval_number %></p>
-    <p><%= label(:recurring_task, :interval_unit, l(:field_interval_unit)) %><%= select 'recurring_task', 'interval_unit', @interval_units, {}, :onChange =>"document.getElementById('interval_modifier_block').style.display=(this.value=='"+ RecurringTask::INTERVAL_MONTH + "' ? '' : 'none')" %></p>
+    <p><%= label(:recurring_task, :interval_unit, l(:field_interval_unit)) %><%= select 'recurring_task', 'interval_unit', @interval_units, {}, :onChange =>"document.getElementById('interval_modifier_block').style.display=(this.value=='"+ RecurringTask::INTERVAL_MONTH + "' ? 'block' : 'none')" %></p>
     <% modifier_display = (rt.interval_unit == RecurringTask::INTERVAL_MONTH) ? "display:block" : "display:none" %>
     <%= content_tag :div, :id => "interval_modifier_block", :style => modifier_display do -%>
-      <p><%= label(:recurring_task, :interval_modifier, l(:field_interval_modifier)) %><%= select 'recurring_task', 'interval_modifier', @interval_modifiers %></p>
+      <p><%= label(:recurring_task, :interval_modifier, l(:field_interval_modifier)) %><%= select 'recurring_task', 'interval_modifier', rt.get_modifiers_descriptions.collect{|k,v| [v, k]} %></p>
     <% end -%>
     <p><%= f.check_box :fixed_schedule %> </p>
     <p><%= f.submit %></p>

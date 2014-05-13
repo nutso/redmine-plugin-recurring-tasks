@@ -50,6 +50,15 @@ class RecurringTask < ActiveRecord::Base
   # cannot validate presence of issue if want to use other features; requiring presence of fixed_schedule requires it to be true
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
+
+  after_initialize :set_defaults
+
+  def set_defaults
+    if new_record?
+      self.fixed_schedule = true if self.fixed_schedule.nil?
+      self.interval_number ||= 1
+    end
+  end
   
   # text for the interval name
   def interval_localized_name
@@ -108,13 +117,14 @@ class RecurringTask < ActiveRecord::Base
   
   def get_modifiers_descriptions
     prev_date = previous_date_for_recurrence
-    days_to_eom = (prev_date.end_of_month - prev_date + 1).to_i
+    days_to_eom = (prev_date.end_of_month.mday - prev_date.mday + 1).to_i
+    #print days_to_eom, " ", prev_date.end_of_month
     values = {
       :days_from_bom => prev_date.mday.ordinalize,
       :days_to_eom => days_to_eom.ordinalize,
       :day_of_week => prev_date.strftime("%A"),
       :dows_from_bom => ((prev_date.mday - 1) / 7 + 1).ordinalize,
-      :dows_to_eom => (((prev_date.end_of_month - prev_date).to_i / 7) + 1).ordinalize,
+      :dows_to_eom => (((prev_date.end_of_month.mday - prev_date.mday).to_i / 7) + 1).ordinalize,
     }
     Hash[MONTH_MODIFIERS_LOCALIZED.map{|k,v| [k, v % values]}]
   end

@@ -6,7 +6,6 @@ class RecurringTasksController < ApplicationController
   before_filter :find_optional_project # this also checks permissions
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
-  before_filter :set_interval_modifiers, :except => [:index, :show]
   before_filter :set_recurrable_issues, :except => [:index, :show]
 
   def index
@@ -88,9 +87,5 @@ private
       RecurringTask::INTERVAL_UNITS_LOCALIZED.collect{|k,v| [v, k]}
   end
 
-  def set_interval_modifiers
-    @interval_modifiers = 
-      @recurring_task.get_modifiers_descriptions.collect{|k,v| [v, k]}
-  end
 end
 
