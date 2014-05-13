@@ -78,8 +78,9 @@ class RecurringTask < ActiveRecord::Base
     if new_record?
       @interval_localized_modifier
     else
-      if MONTH_MODIFIERS_LOCALIZED.has_key?(interval_modifier)
-        MONTH_MODIFIERS_LOCALIZED[interval_modifier]
+      modifiers_names = get_modifiers_descriptions
+      if modifiers_names.has_key?(interval_modifier)
+        modifiers_names[interval_modifier]
       else
         raise "#{l(:error_invalid_modifier)} #{interval_modifier} (interval_localized_modifier)"
       end
@@ -211,12 +212,19 @@ class RecurringTask < ActiveRecord::Base
     end
   end
   
+  def recurrence_to_s
+    frequency = (interval_number == 1) ? "" : interval_number.ordinalize
+    modifier = (interval_unit == INTERVAL_MONTH) ? " #{interval_localized_modifier}" : ""
+    schedule = fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)
+    "#{l(:label_recurrence_pattern)} #{frequency} #{interval_localized_name}#{modifier}, #{schedule}"
+  end
+
   def to_s
     i = "No issue associated "
     if !(issue.nil?)
       i = issue.subj_date
     end
-    "#{i} (#{l(:label_recurrence_pattern)} #{interval_number} #{interval_unit}s " + (:fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)) + ")"
+    "#{i} (#{recurrence_to_s})"
   end
   
   def to_s_long
