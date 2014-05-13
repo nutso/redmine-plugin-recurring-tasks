@@ -19,11 +19,13 @@ en:
   label_assigned_to: "Assigned to"
 
   error_invalid_interval:   "Interval provided is invalid."
+  error_invalid_modifier:   "Interval modifier provided is invalid."
   error_recurring_task_not_found: "Could not find recurring issue. "
   error_recurring_task_could_not_remove: "Could not remove recurrence from issue. "
   
   field_interval_number: "Interval number"
   field_interval_unit: "Interval Unit(s)"
+  field_interval_modifier: "Interval modifier"
   field_fixed_schedule: "Fixed Schedule?"
   field_recurrence: "Recurrence"
   
@@ -31,6 +33,11 @@ en:
   interval_week: "week"
   interval_month: "month"
   interval_year: "year"
+
+  month_modifier_day_from_first: "on %{days_from_bom} day"
+  month_modifier_day_to_last: "on %{days_to_eom} to last day"
+  month_modifier_dow_from_first: "on %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "on %{dows_to_eom} to last %{day_of_week}"
 
   recurring_task_created: "Recurrence created. "
   recurring_task_saved: "Recurrence saved. "

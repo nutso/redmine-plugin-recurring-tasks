@@ -6,6 +6,7 @@ class RecurringTasksController < ApplicationController
   before_filter :find_optional_project # this also checks permissions
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
+  before_filter :set_interval_modifiers, :except => [:index, :show]
   before_filter :set_recurrable_issues, :except => [:index, :show]
 
   def index
@@ -26,7 +27,6 @@ class RecurringTasksController < ApplicationController
 
   # creates a new recurring task
   def create
-    params[:recurring_task][:interval_unit] = RecurringTask.get_interval_from_localized_name(params[:recurring_task][:interval_localized_name])
     @recurring_task = RecurringTask.new(params[:recurring_task])
     if @recurring_task.save
       flash[:notice] = l(:recurring_task_created)
@@ -45,7 +45,6 @@ class RecurringTasksController < ApplicationController
   def update
     logger.info "Updating recurring task #{params[:id]}"
   
-    params[:recurring_task][:interval_unit] = RecurringTask.get_interval_from_localized_name(params[:recurring_task][:interval_localized_name])
     if @recurring_task.update_attributes(params[:recurring_task])
       flash[:notice] = l(:recurring_task_saved)
       redirect_to :action => :show
@@ -85,6 +84,13 @@ private
   end
   
   def set_interval_units
-    @interval_units = RecurringTask::INTERVAL_UNITS_LOCALIZED
+    @interval_units = 
+      RecurringTask::INTERVAL_UNITS_LOCALIZED.collect{|k,v| [v, k]}
+  end
+
+  def set_interval_modifiers
+    @interval_modifiers = 
+      @recurring_task.get_modifiers_descriptions.collect{|k,v| [v, k]}
   end
 end
+
