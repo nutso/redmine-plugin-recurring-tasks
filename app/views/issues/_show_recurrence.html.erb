@@ -8,7 +8,7 @@
 		<% if issue.recurs? %>
 			<ul>
 				<% issue.recurring_tasks.each do |rt| %>
-					<li><%= if User.current.allowed_to?(:view_issue_recurrence, project) then link_to(rt.recurrence_to_s, recurring_task_path(:id => rt.id, :project_id => project.id)) else rt.recurrence_to_s end %></li>
+					<li><%= if User.current.allowed_to?(:view_issue_recurrence, project) then link_to(rt.recurrence_to_s, edit_recurring_task_path(:id => rt.id, :project_id => project.id)) else rt.recurrence_to_s end %></li>
 				<% end %>
 			</ul>
 		<% else %>
