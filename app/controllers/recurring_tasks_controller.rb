@@ -12,10 +12,6 @@ class RecurringTasksController < ApplicationController
     @recurring_tasks = RecurringTask.all_for_project(@project)
   end
 
-  def show
-    # default behavior is fine
-  end
-
   def new
     @recurring_task = RecurringTask.new
     
@@ -29,7 +25,7 @@ class RecurringTasksController < ApplicationController
     @recurring_task = RecurringTask.new(params[:recurring_task])
     if @recurring_task.save
       flash[:notice] = l(:recurring_task_created)
-      redirect_to :action => :show, :id => @recurring_task.id
+      redirect_to :controller => :issues, :action => :show, :id => @recurring_task.issue.id
     else
       logger.debug "Could not create recurring task from #{params[:post]}"
       render :new # errors are displayed to user on form
@@ -40,13 +36,13 @@ class RecurringTasksController < ApplicationController
     # default behavior is fine
   end
 
-  # saves the task and redirects to show
+  # saves the task and redirects to issue view
   def update
     logger.info "Updating recurring task #{params[:id]}"
   
     if @recurring_task.update_attributes(params[:recurring_task])
       flash[:notice] = l(:recurring_task_saved)
-      redirect_to :action => :show
+      redirect_to :controller => :issues, :action => :show, :id => @recurring_task.issue.id
     else
       logger.debug "Could not save recurring task #{@recurring_task}"
       render :edit # errors are displayed to user on form
@@ -61,7 +57,7 @@ class RecurringTasksController < ApplicationController
       redirect_to :action => :index
     else
       flash[:notice] = l(:error_recurring_task_could_not_remove)
-      redirect_to :action => :show, :id => @recurring_task
+      render :edit
     end
   end
   
