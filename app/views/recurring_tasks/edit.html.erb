@@ -2,5 +2,3 @@
 
 <%= render :partial => "form", :locals => {:next_step => 'update', :rt => @recurring_task} %>
 
-<p><%= link_to l(:button_cancel), "#", :onclick => 'Element.hide("add-task")' %></p>
-<p><%= delete_button @recurring_task %></p>

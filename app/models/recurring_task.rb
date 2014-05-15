@@ -216,7 +216,7 @@ class RecurringTask < ActiveRecord::Base
     frequency = (interval_number == 1) ? "" : interval_number.ordinalize
     modifier = (interval_unit == INTERVAL_MONTH) ? " #{interval_localized_modifier}" : ""
     schedule = fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)
-    "#{l(:label_recurrence_pattern)} #{frequency} #{interval_localized_name}#{modifier}, #{schedule} (#{l(:label_next_scheduled_run).downcase}: #{next_scheduled_recurrence})"
+    "#{l(:label_recurrence_pattern)} #{frequency} #{interval_localized_name}#{modifier}, #{schedule}"
   end
 
   def to_s

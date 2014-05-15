@@ -7,6 +7,7 @@ class RecurringTasksController < ApplicationController
   before_filter :find_recurring_task, :except => [:index, :new, :create]
   before_filter :set_interval_units, :except => [:index, :show]
   before_filter :set_recurrable_issues, :except => [:index, :show]
+  before_filter :cancel_edit, :only => [:new, :create, :edit, :update]
 
   def index
     @recurring_tasks = RecurringTask.all_for_project(@project)
@@ -36,6 +37,14 @@ class RecurringTasksController < ApplicationController
     # default behavior is fine
   end
 
+  def cancel_edit
+    if params[:commit] == l(:button_cancel)
+      redirect_to :back
+    end
+  rescue ActionController::RedirectBackError
+    redirect_to default
+  end
+
   # saves the task and redirects to issue view
   def update
     logger.info "Updating recurring task #{params[:id]}"
@@ -54,10 +63,10 @@ class RecurringTasksController < ApplicationController
   
     if @recurring_task.destroy
       flash[:notice] = l(:recurring_task_removed)
-      redirect_to :action => :index
+      redirect_to :back
     else
       flash[:notice] = l(:error_recurring_task_could_not_remove)
-      render :edit
+      render :back
     end
   end
   

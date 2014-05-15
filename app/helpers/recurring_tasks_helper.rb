@@ -6,7 +6,7 @@ module RecurringTasksHelper
   
   def delete_button recurring_task
     if User.current.allowed_to?(:delete_issue_recurrence, recurring_task.project)
-      button_to(l(:button_delete), {:action => 'destroy', :id => recurring_task, :project_id => recurring_task.project.id}, :method => :delete, :class => 'icon icon-del', :confirm => l(:text_are_you_sure))
+      link_to(l(:button_delete), {:action => 'destroy', :id => recurring_task, :project_id => recurring_task.project.id}, :method => :delete, :class => 'icon icon-del', :confirm => l(:text_are_you_sure))
     end
   end
   
