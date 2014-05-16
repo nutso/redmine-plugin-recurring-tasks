@@ -12,6 +12,7 @@
         <thead>
             <tr>
             	<% if @project.nil? %><th><%= l(:field_project)%></th><% end %>
+               <th>#</th>
                <th><%= l(:label_current_issue)%></th>
                <th><%= l(:label_recurrence_pattern)%></th>
                <th><%= l(:field_fixed_schedule)%></th>
@@ -24,11 +25,12 @@
 	            <tr class="<%= cycle('odd', 'even') %>">
             	<% begin %>
                 	<% if @project.nil? %><td><%= rt.project.nil? ? l(:label_recurring_task_project_empty) : link_to(rt.project, project_path(rt.project)) %></td><% end %>
-                  <td><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:controller => 'issues', :action => 'show', :id => rt.issue.id}) %></td>
-                    <td><%= pluralize(rt.interval_number, rt.interval_localized_name) %></td>
-                    <td><%= rt.fixed_schedule %></td>
-                    <td><%= format_date(rt.next_scheduled_recurrence) %></td>
-                    <td class="buttons"><%= delete_button rt %></td>
+                  <td class="id"><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.id, {:controller => 'issues', :action => 'show', :id => rt.issue.id}) %></td>
+                  <td class="subject"><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:controller => 'issues', :action => 'show', :id => rt.issue.id}) %></td>
+                  <td><%= pluralize(rt.interval_number, rt.interval_localized_name) %></td>
+                  <td><%= rt.fixed_schedule %></td>
+                  <td><%= format_date(rt.next_scheduled_recurrence) %></td>
+                  <td class="buttons"><%= delete_button rt %></td>
 	             <% rescue => e %>
 	             	<td><%= "ERROR: #{e}" %></td>
 	             <% end %>

@@ -1,8 +1,8 @@
 # English strings go here for Rails i18n
 en:
-  label_recurring_tasks:    "Recurring Issues"
+  label_recurring_tasks:    "Recurring issues"
   label_recurring_task:     "Recurring task"
-  label_current_issue:      "Current Issue for Recurrence"
+  label_current_issue:      "Current issue for recurrence"
   label_recurrence_pattern: "Recurs every"
   label_add_recurring_task: "Add"
   label_no_recurring_tasks: "No recurring issues found on the system."
