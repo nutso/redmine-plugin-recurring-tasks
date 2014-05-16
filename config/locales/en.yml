@@ -1,6 +1,7 @@
 # English strings go here for Rails i18n
 en:
   label_recurring_tasks:    "Recurring Issues"
+  label_recurring_task:     "Recurring task"
   label_current_issue:      "Current Issue for Recurrence"
   label_recurrence_pattern: "Recurs every"
   label_add_recurring_task: "Add"
@@ -24,12 +25,13 @@ en:
   error_recurring_task_could_not_remove: "Could not remove recurrence from issue. "
   
   field_interval_number: "Interval number"
-  field_interval_unit: "Interval Unit(s)"
+  field_interval_unit: "Interval unit(s)"
   field_interval_modifier: "Interval modifier"
-  field_fixed_schedule: "Fixed Schedule?"
+  field_fixed_schedule: "Fixed schedule?"
   field_recurrence: "Recurrence"
+  field_please_select: "--- Please select ---"
   
-  interval_day:  "day"
+  interval_day: "day"
   interval_week: "week"
   interval_month: "month"
   interval_year: "year"

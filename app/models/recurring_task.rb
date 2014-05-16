@@ -51,15 +51,6 @@ class RecurringTask < ActiveRecord::Base
 
   validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
 
-  after_initialize :set_defaults
-
-  def set_defaults
-    if new_record?
-      self.fixed_schedule = true if self.fixed_schedule.nil?
-      self.interval_number ||= 1
-    end
-  end
-  
   # text for the interval name
   def interval_localized_name
     if new_record?
@@ -87,18 +78,6 @@ class RecurringTask < ActiveRecord::Base
     end
   end
   
-#  # interval database name for the localized text
-#  def interval_localized_name=(value)
-#    @interval_localized_name = value
-#    interval_unit = RecurringTask.get_interval_from_localized_name(value)
-#  end  
-
-#  # modifier database name for the localized text
-#  def interval_localized_modifier=(value)
-#    @interval_localized_modifier = value
-#    interval_modifier = RecurringTask.get_modifier_from_localized_name(value)
-#  end  
-  
   # used for migration #002
   def self.get_interval_from_localized_name(value)
     retval = INTERVAL_UNITS_LOCALIZED.key(value)
@@ -108,14 +87,6 @@ class RecurringTask < ActiveRecord::Base
     retval
   end
 
-#  def self.get_modifier_from_localized_name(value)
-#   retval = MONTH_MODIFIERS_LOCALIZED.key(value)
-#   if retval.nil? 
-#     raise "#{l(:error_invalid_modifier)} #{value} (modifier_localized_name=)"
-#   end
-#   retval
-#  end
-  
   def get_modifiers_descriptions
     prev_date = previous_date_for_recurrence
     days_to_eom = (prev_date.end_of_month.mday - prev_date.mday + 1).to_i
@@ -213,10 +184,9 @@ class RecurringTask < ActiveRecord::Base
   end
   
   def recurrence_to_s
-    frequency = (interval_number == 1) ? "" : interval_number.ordinalize
     modifier = (interval_unit == INTERVAL_MONTH) ? " #{interval_localized_modifier}" : ""
     schedule = fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)
-    "#{l(:label_recurrence_pattern)} #{frequency} #{interval_localized_name}#{modifier}, #{schedule}"
+    "#{l(:label_recurrence_pattern)} #{interval_number} #{interval_localized_name.pluralize(interval_number)}#{modifier}, #{schedule}"
   end
 
   def to_s

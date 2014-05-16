@@ -3,13 +3,13 @@
     <%= error_messages_for 'recurring_task' %>
     <%= f.hidden_field :id %>
     <p><%= label(:recurring_task, :current_issue_id, l(:field_issue)) %><%= collection_select('recurring_task', 'current_issue_id', @recurrable_issues, :id, :subj_date) %></p>
-    <p><%= f.number_field :interval_number, :size => 4, :maxlength => 4 %></p>
-    <p><%= f.select :interval_unit, @interval_units, {}, :onChange =>"document.getElementById('interval_modifier_block').style.display=(this.value=='"+ RecurringTask::INTERVAL_MONTH + "' ? 'block' : 'none')" %></p>
+    <p><%= f.number_field :interval_number, :required => true, :size => 4, :maxlength => 4 %></p>
+    <p><%= f.select :interval_unit, @interval_units, {:prompt => l(:field_please_select), :required => true}, :onChange =>"document.getElementById('interval_modifier_block').style.display=(this.value=='"+ RecurringTask::INTERVAL_MONTH + "' ? 'block' : 'none')" %></p>
     <% modifier_display = (rt.interval_unit == RecurringTask::INTERVAL_MONTH) ? "display:inline" : "display:none" %>
     <%= content_tag :div, :id => "interval_modifier_block", :style => modifier_display do -%>
       <p><%= f.select 'interval_modifier', rt.get_modifiers_descriptions.collect{|k,v| [v, k]} %></p>
     <% end -%>
-    <p><%= f.check_box :fixed_schedule %></p>
+    <p><%= f.check_box :fixed_schedule, :checked => true %></p>
   </div>
   <%= f.submit %>
   <%= link_to l(:button_cancel), :back %>
