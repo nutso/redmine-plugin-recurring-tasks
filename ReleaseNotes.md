@@ -2,8 +2,9 @@
 
 ## Features Requested
 
-* Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
 * Recur on last day of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
+* Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
+* Option to re-open recurring issue instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45))
 
 ## Known Issues
 
@@ -13,6 +14,11 @@
 ## Next Version (Develop Branch)
 
 
+
+## Version 1.4.0 (07 Sep 2014)
+
+* French translation updated by @fidergo-stephane-gourichon ([#46](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/46))
+* Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26)) -- contributed by @cryptogopher ([#41](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/41))
 
 ## Version 1.3.0 (01 Mar 2014)
 

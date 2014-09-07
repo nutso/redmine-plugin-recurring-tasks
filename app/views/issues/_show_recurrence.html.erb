@@ -1,4 +1,35 @@
 <hr />
+<div class="recurrence">
+  <% if User.current.allowed_to?(:add_issue_recurrence, project) %>
+      <div class="contextual"><%= link_to(l(:label_add_recurring_task), new_recurring_task_path(:issue_id => issue.id, :project_id => project.id)) %></div>
+  <% end %>
+  <p><strong><%= l(:field_recurrence).pluralize(2) %></strong></p>
+  <% if issue.recurs? %>
+    <table class="list">
+    <tbody>
+      <% issue.recurring_tasks.each do |rt| %>
+        <tr>
+          <% if User.current.allowed_to?(:view_issue_recurrence, project) %>
+            <td class="subject">
+              <%= link_to(rt.recurrence_to_s, edit_recurring_task_path(:id => rt.id, :project_id => project.id)) %>
+            </td>
+            <td>
+              <%= "#{l(:label_next_scheduled_run)}: #{rt.next_scheduled_recurrence}" %>
+            </td>
+            <td class="buttons">
+              <%= link_to(l(:button_edit), edit_recurring_task_path(:id => rt.id, :project_id => project.id), :class => 'icon icon-edit') %>
+              <%= link_to(l(:button_delete), destroy_recurring_task_path(:id => rt.id, :project_id => project.id), :method => :delete, :class => 'icon icon-del') %></td>
+          <% else %>
+            <td colspan=3><%= rt.recurrence_to_s %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+    </table>
+  <% end %>
+</div>
+
+<!-- 
 <tr>
 	<td class="recurrence" colspan="2"></th>
 		<% if User.current.allowed_to?(:add_issue_recurrence, project) %>		
@@ -16,3 +47,4 @@
 		<% end %>
 	</td>
 </tr>
+-->
