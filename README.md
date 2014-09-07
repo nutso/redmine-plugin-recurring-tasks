@@ -5,13 +5,17 @@ Plugin for Redmine project management software to configure recurring tasks. The
 ## Features
 
 * Any Redmine issue can have one or more associated recurrence schedules.
+
 * Supported recurrence schedules are:
+
 ** Every x days/weeks/months/years, e.g. every 1 day or every 3 months
 ** The nth day of every x months, e.g. the 3rd of every month
 ** The nth-to-last day of every x months, e.g. the 5th-to-last day of every 4 months
 ** The nth week day of every x months, e.g. the 3rd Thursday of every 2 months
 ** The nth-to-last week day of every x months, e.g. the 2nd-to-last Saturday of every 1 month
+
 * All recurrence schedules can be set to recur on a fixed or flexible schedule.
+
 ** Fixed: recurs whether the previous task completed or not
 ** Flexible: recurs only if the previous task was complete
 
