@@ -40,7 +40,7 @@ Please check the Release Notes (ReleaseNotes.md) for substantive or breaking cha
 
 2. Run database migrations (make a db backup before)
 
-   rake redmine:plugins:migrate RAILS_ENV=production
+   bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
 3. Restart Redmine (or web server)
 
