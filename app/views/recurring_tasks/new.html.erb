@@ -1,3 +1,4 @@
-<h2><%= l(:label_add_recurring_task) %></h2>
+<h2><%= l(:label_recurring_task) %></h2>
+
 <%= render :partial => "form", :locals => { :next_step => 'create', :rt => @recurring_task } %>
-<p><%= link_to l(:button_cancel), "#", :onclick => 'Element.hide("add-task")' %></p>
+
