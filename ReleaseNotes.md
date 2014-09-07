@@ -4,6 +4,7 @@
 
 * Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
 * Recur on last day of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
+* Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
 
 ## Known Issues
 
