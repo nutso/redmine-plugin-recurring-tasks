@@ -4,34 +4,34 @@ fr:
   label_current_issue:      "Planifier la tâche"
   label_recurrence_pattern: "Lancer la tâche tous les"
   label_add_recurring_task: "Planifier la tâche"
-  label_no_recurring_tasks: "Aucune tâche planifée n'a été trouvé dans le système."
-  label_next_scheduled_run: "Prochaine éxécution le"
+  label_no_recurring_tasks: "Aucune tâche planifiée n'a été trouvée dans le système."
+  label_next_scheduled_run: "Prochaine exécution le"
   label_no_recurrence:      "Pas de planification."
   label_no_project:         "Pas de projet."
-  
-  label_recurs_fixed: "a une date fixe"
-  label_recurs_dependent: "Lorsque la demande précédente est terminée"
-  
+
+  label_recurs_fixed: "à un rythme fixe"
+  label_recurs_dependent: "après la dernière fermeture de la demande"
+
   label_recurring_task_issue_empty: "N/A"
   label_recurring_task_project_empty: "N/A"
-  
-  label_belongs_to_project: "Rattacher au projet"
+
+  label_belongs_to_project: "Rattachée au projet"
   label_assigned_to: "Assigné à"
 
-  error_invalid_interval:   "Interval provided is invalid."
-  error_recurring_task_not_found: "Could not find recurring issue. "
-  error_recurring_task_could_not_remove: "Could not remove recurrence from issue. "
-  
-  field_interval_number: "Interval number"
-  field_interval_unit: "Unité d'intervalle"
-  field_fixed_schedule: "Planification fixe?"
-  field_recurrence: "Planifié"
-  
-  interval_day:  "Jour"
-  interval_week: "Semaine"
-  interval_month: "mois"
-  interval_year: "Année"
+  error_invalid_interval:   "Intervalle incorrect."
+  error_recurring_task_not_found: "Pas de tâche planifiée trouvée. "
+  error_recurring_task_could_not_remove: "Échec lors de la suppression de planification. "
 
-  recurring_task_created: "Tâche planifié creer. "
-  recurring_task_saved: "Tâche planifié sauvegardé. "
-  recurring_task_removed: "Tâche planifié supprimée. "
+  field_interval_number: "Nombre d'intervalles"
+  field_interval_unit: "Unité d'intervalle"
+  field_fixed_schedule: "Planification fixe ?"
+  field_recurrence: "Planifié"
+
+  interval_day:  "jour"
+  interval_week: "semaine"
+  interval_month: "mois"
+  interval_year: "année"
+
+  recurring_task_created: "Planification créée. "
+  recurring_task_saved: "Planification sauvegardé. "
+  recurring_task_removed: "Planification supprimée. "

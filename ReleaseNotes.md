@@ -8,14 +8,20 @@
 
 ## Known Issues
 
-* Deleting an issue neither generates a warning nor deletes the recurrence
 * No ability to view historic recurrences
+* Deleting an issue does not provide a warning about deleting associated recurrences
 
 ## Next Version (Develop Branch)
+
+
+
+## Version 1.3.0 (01 Mar 2014)
 
 * Russian translation contributed by @box789 ([#30](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/30))
 * French translation contributed by @jbeauvois ([#35](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/35))
 * Backward Rails syntax compatibility ([#29](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/29), [#34](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/34))
+* Deleting the source issue for a recurrence deletes the recurrence ([#33](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/33))
+* Recurrence checks for nil issue before attempting to recur ([#33](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/33))
 
 ## Version 1.2.9 (07 Jan 2014)
 
