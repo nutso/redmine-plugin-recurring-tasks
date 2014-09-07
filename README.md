@@ -2,6 +2,8 @@
 
 Plugin for Redmine project management software to configure recurring tasks. The plugin creates a new issue in Redmine for each recurrence, linking the duplicated issue as a related issue.
 
+Released under GPLv2 in accordance with Redmine licensing.
+
 ## Features
 
 * Any Redmine issue can have one or more associated recurrence schedules.
@@ -14,8 +16,6 @@ Plugin for Redmine project management software to configure recurring tasks. The
 * All recurrence schedules can be set to recur on a fixed or flexible schedule.
   * Fixed: recurs whether the previous task completed or not
   * Flexible: recurs only if the previous task was complete
-
-Released under GPLv2 in accordance with Redmine licensing.
 
 ## Installation
 
