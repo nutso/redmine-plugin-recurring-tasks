@@ -26,7 +26,7 @@ You should now be able to see the plugin list in Administration -> Plugins.
 
    Crontab example (running the check for recurrence every 6 hours):
    ```bash
-   * */4 * * * /bin/sh "cd {path_to_redmine} && rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
+   * */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
    ```
    
 ## Upgrade or Migrate Plugin
