@@ -1,6 +1,7 @@
 # redmine-plugin-recurring-tasks
 
-Plugin for Redmine project management software to configure recurring tasks. Any task can be set to recur on a fixed (e.g. every Monday) or flexible (e.g. 2 days after task was last completed) schedule.
+Plugin for Redmine project management software to configure recurring tasks. Any task can be set to recur on a fixed (e.g. every Monday) or flexible (e.g. 2 days after task was last completed) schedule. 
+The plugin creates a new issue in Redmine for each recurrence, linking the duplicated issue as a related issue.
 
 Released under GPLv2 in accordance with Redmine licensing.
 
