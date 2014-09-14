@@ -14,11 +14,12 @@
 ## Next Version (Develop Branch)
 
 * Backwards-compatibility to Redmine 2.2 by testing if issue.closed_on? method exists ([#49](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
+* Better documentation of plugin permissions
 
 ## Version 1.4.0 (07 Sep 2014)
 
 * French translation updated by @fidergo-stephane-gourichon ([#46](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/46))
-* Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26)) -- contributed by @cryptogopher ([#41](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/41)); resolves ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
+* Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26)) -- contributed by @cryptogopher ([#41](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/41))
 
 ## Version 1.3.0 (01 Mar 2014)
 
