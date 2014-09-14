@@ -292,7 +292,9 @@ private
       logger.error "Issue is nil for recurrence #{id}."
       Date.today
     elsif fixed_schedule and !issue.due_date.nil? 
-      issue.due_date 
+      issue.due_date
+    elsif !issue.respond_to?('closed_on') # closed_on introduced in Redmine 2.3, ref http://www.redmine.org/issues/824
+      issue.updated_on
     elsif issue.closed_on.nil? 
       issue.updated_on
     else 
