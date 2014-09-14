@@ -28,7 +28,7 @@ Follow standard Redmine plugin installation -- (barely) modified from http://www
 
 2. Rake the database migration (make a db backup before)
 
-   e.g. rake redmine:plugins:migrate RAILS_ENV=production
+   e.g. bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
 3. Restart Redmine (or web server)
 
