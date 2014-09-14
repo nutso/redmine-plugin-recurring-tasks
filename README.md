@@ -73,7 +73,7 @@ Follow standard Redmine plugin un-installation -- (barely) modified from http://
 
 1. Downgrade the database (make a db backup before)
 
-   rake redmine:plugins:migrate NAME=recurring_tasks VERSION=0 RAILS_ENV=production
+   bundle exec rake redmine:plugins:migrate NAME=recurring_tasks VERSION=0 RAILS_ENV=production
 
 2. Remove the plugin from the plugins folder (#{RAILS_ROOT}/plugins)
 
