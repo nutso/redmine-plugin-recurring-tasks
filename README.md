@@ -22,7 +22,7 @@ Released under GPLv2 in accordance with Redmine licensing.
 
 Follow standard Redmine plugin installation -- (barely) modified from http://www.redmine.org/projects/redmine/wiki/Plugins
 
-1. Copy or clone the plugin directory into #{RAILS_ROOT}/plugins/recurring_tasks
+1. Copy or clone the plugin directory into #{RAILS_ROOT}/plugins/recurring_tasks -- note the folder name 'recurring_tasks' must be verbatim.
    
    e.g. git clone https://github.com/nutso/redmine-plugin-recurring-tasks.git recurring_tasks
 
