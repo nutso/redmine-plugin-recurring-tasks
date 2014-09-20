@@ -15,6 +15,7 @@
 
 * Backwards-compatibility to Redmine 2.2 by testing if issue.closed_on? method exists ([#49](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
 * Better documentation of plugin permissions
+* Reversible migrations so can uninstall fully ([#53](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/53))
 
 ## Version 1.4.0 (07 Sep 2014)
 
