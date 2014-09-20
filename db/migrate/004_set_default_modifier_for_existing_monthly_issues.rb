@@ -18,6 +18,7 @@ class SetDefaultModifierForExistingMonthlyIssues < ActiveRecord::Migration
   # There is no rolling back - this is a change to the DATA in the database, 
   # not to the structure itself.
   def down
-    raise ActiveRecord::IrreversibleMigration
+    logger.error ActiveRecord::IrreversibleMigration
+    say "Cannot roll back SetDefaultModifierForExistingMonthlyIssues database migration as it modified the data, not the structure."     
   end
 end
