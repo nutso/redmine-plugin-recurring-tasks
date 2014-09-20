@@ -24,7 +24,7 @@ class StandardizeRecurrenceUnitsNonlocalized < ActiveRecord::Migration
   # There is no guarantee that the current localized translation was the value
   # previously in the database.
   def down
-    # say "ActiveRecord::IrreversibleMigration"
-    raise ActiveRecord::IrreversibleMigration
+    logger.error ActiveRecord::IrreversibleMigration
+    say "Cannot roll back StandardizeRecurrenceUnitsNonlocalized database migration as it modified the data, not the structure."     
   end
 end
