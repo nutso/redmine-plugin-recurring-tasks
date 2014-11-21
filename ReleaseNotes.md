@@ -20,6 +20,7 @@
 
 ## Version 1.4.0 (07 Sep 2014)
 
+* NOTE: Version number in 1.4.0 is incorrectly labelled as 1.3.0. ([#58](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/58))
 * French translation updated by @fidergo-stephane-gourichon ([#46](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/46))
 * Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26)) -- contributed by @cryptogopher ([#41](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/41))
 
