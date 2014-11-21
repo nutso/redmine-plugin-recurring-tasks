@@ -18,6 +18,9 @@ Released under GPLv2 in accordance with Redmine licensing.
   * Flexible: recurs only if the previous task was complete
 * View/Add/Edit/Delete issue recurrence permissions controlled via Redmine's native Roles and Permissions menu
 
+Note: recurrences depend on the date of the issue that is recurring (e.g. if you want it 
+to recur every 2nd Thursday of the month, the issue's first date should be a Thursday)
+
 ## Installation
 
 Follow standard Redmine plugin installation -- (barely) modified from http://www.redmine.org/projects/redmine/wiki/Plugins
