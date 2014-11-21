@@ -38,7 +38,7 @@ You should now be able to see the plugin list in Administration -> Plugins.
      
 1. Set the check for recurrence via Crontab.
 
-   Crontab example (running the check for recurrence every 6 hours) -- replace {path_to_redmine} with your actual path, e.g. /var/www/redmine:
+   Crontab example (running the check for recurrence every 6 hours on the 15s) -- replace {path_to_redmine} with your actual path, e.g. /var/www/redmine:
    ```bash
    15 */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
    ```
