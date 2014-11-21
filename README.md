@@ -40,7 +40,7 @@ You should now be able to see the plugin list in Administration -> Plugins.
 
    Crontab example (running the check for recurrence every 6 hours) -- replace {path_to_redmine} with your actual path, e.g. /var/www/redmine:
    ```bash
-   */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
+   15 */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
    ```
    
 2. Decide which role(s) should have the ability to view/add/edit/delete issue recurrence and configure accordingly in Redmine's permission manager (Administration > Roles and Permissions) 
