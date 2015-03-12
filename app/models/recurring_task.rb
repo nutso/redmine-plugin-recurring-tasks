@@ -3,6 +3,8 @@ class RecurringTask < ActiveRecord::Base
 
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, :through => :issue
+
+  attr_accessible :id, :current_issue_id, :interval_number, :interval_modifier, :interval_unit, :fixed_schedule # list all fields that you want to be accessible here
   
   # these are the flags used in the database to denote the interval
   # the actual text displayed to the user is controlled in the language file
@@ -41,7 +43,7 @@ class RecurringTask < ActiveRecord::Base
   # for older Rails compatibility
   # validates_presence_of :interval_localized_name #41
   validates_presence_of :interval_unit
-  validates_presence_of :interval_modifier, :if => "interval_unit == INTERVAL_MONTH"
+  validates_presence_of :interval_modifier, :if => "interval_unit == RecurringTask::INTERVAL_MONTH"
 
   validates_presence_of :interval_number
   
@@ -53,7 +55,7 @@ class RecurringTask < ActiveRecord::Base
   validates_inclusion_of :interval_modifier,
     :in => RecurringTask::MONTH_MODIFIERS_LOCALIZED.keys,
     :message => "#{l(:error_invalid_modifier)} '%{value}' (Validation)",
-    :if => "interval_unit == INTERVAL_MONTH"
+    :if => "interval_unit == RecurringTask::INTERVAL_MONTH"
   
   validates_numericality_of :interval_number, :only_integer => true, :greater_than => 0
   # cannot validate presence of issue if want to use other features; requiring presence of fixed_schedule requires it to be true
@@ -247,7 +249,6 @@ class RecurringTask < ActiveRecord::Base
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
       new_issue.done_ratio = 0
-      new_issue.status = IssueStatus.default # issue status is NOT automatically new, default is whatever the default status for new issues is
       new_issue.save!
       puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
     
