@@ -5,7 +5,7 @@
   <% end %>
   <p><strong><%= l(:field_recurrence).pluralize(2) %></strong></p>
   <% if issue.recurs? %>
-    <table class="list">
+    <table class="list" style="border-width: 0;">
     <tbody>
       <% issue.recurring_tasks.each do |rt| %>
         <tr>
