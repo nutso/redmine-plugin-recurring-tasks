@@ -14,6 +14,8 @@
 ## Next Version (Develop Branch)
 
 * Backwards-compatibility to Redmine 2.2 by testing if issue.closed_on? method exists ([#49](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
+* Redmine 3.0 support contributed by @lammel ([#65](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/65))
+* French translation updated by @jbeauvois ([#66](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/66)
 
 ## Version 1.4.0 (07 Sep 2014)
 
