@@ -1,0 +1,47 @@
+# Spanish strings go here for Rails i18n
+es:
+  label_recurring_tasks:    "Peticiones recurrentes"
+  label_recurring_task:     "Petición recurrente"
+  label_current_issue:      "Petición actual recurrente"
+  label_recurrence_pattern: "Repetida cada"
+  label_add_recurring_task: "Añadir reaparición"
+  label_no_recurring_tasks: "No se han encontrado temas recurrentes en el sistema."
+  label_next_scheduled_run: "Siguiente ejecución programada"
+  label_no_recurrence:      "No se repite." # TODO is this used?
+  label_no_project:         "Ningún proyecto."
+  
+  label_recurs_fixed: "un horario fijo"
+  label_recurs_dependent: "tras finalizar la edición anterior"
+  
+  label_recurring_task_issue_empty: "N/A"
+  label_recurring_task_project_empty: "N/A"
+  
+  label_belongs_to_project: "Pertenece a proyecto"
+  label_assigned_to: "Asignado a "
+
+  error_invalid_interval:   "El intervalo proporcionado no es valido. "
+  error_invalid_modifier:   "El intervalo modificado no es valido. "
+  error_recurring_task_not_found: "No se pudo encontrar la petición recurrente. "
+  error_recurring_task_could_not_remove: "No se pudo eliminar la petición recurrente. "
+  
+  field_interval_number: "Numero de intervalo"
+  field_interval_unit: "Intervalo unidad(es)"
+  field_interval_modifier: "Intervalo modificado"
+  field_fixed_schedule: "¿Fijar horario?"
+  field_recurrence: "Recurrencia"
+  field_please_select: "--- Por favor selecione ---"
+  
+  interval_day:   "día"
+  interval_week:  "semana"
+  interval_month: "mes"
+  interval_year:  "año"
+
+  month_modifier_day_from_first: "en %{days_from_bom} dia"
+  month_modifier_day_to_last: "en %{days_to_eom} hasta el último dia"
+  month_modifier_dow_from_first: "en %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "en %{dows_to_eom} hasta %{day_of_week}"
+
+
+  recurring_task_created: "Recurrencia creada. "
+  recurring_task_saved: "Recurrencia guardada. "
+  recurring_task_removed: "Recurrencia borrada. "
