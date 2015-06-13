@@ -16,11 +16,15 @@
 * Backwards-compatibility to Redmine 2.2 by testing if issue.closed_on? method exists ([#49](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
 * Redmine 3.0 support contributed by @lammel ([#65](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/65))
 * French translation updated by @jbeauvois ([#66](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/66)
+* Better documentation of plugin permissions
+* Reversible migrations so can uninstall fully ([#53](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/53))
+* Highlighting to user that adding recurrence via issues page is the best way ([#52](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/52))
 
 ## Version 1.4.0 (07 Sep 2014)
 
+* NOTE: Version number in 1.4.0 is incorrectly labelled as 1.3.0. ([#58](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/58))
 * French translation updated by @fidergo-stephane-gourichon ([#46](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/46))
-* Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26)) -- contributed by @cryptogopher ([#41](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/41)); resolves ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26))
+* Recur on day x of every n months ([#26](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/26)) -- contributed by @cryptogopher ([#41](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/41))
 
 ## Version 1.3.0 (01 Mar 2014)
 

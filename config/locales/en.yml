@@ -45,3 +45,5 @@ en:
   recurring_task_created: "Recurrence created. "
   recurring_task_saved: "Recurrence saved. "
   recurring_task_removed: "Recurrence removed. "
+  
+  help_add_general_recurring_task: "You may find it easier to add recurrence via the specific issue's page."

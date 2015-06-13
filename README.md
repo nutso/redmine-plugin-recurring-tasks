@@ -18,17 +18,20 @@ Released under GPLv2 in accordance with Redmine licensing.
   * Flexible: recurs only if the previous task was complete
 * View/Add/Edit/Delete issue recurrence permissions controlled via Redmine's native Roles and Permissions menu
 
+Note: recurrences depend on the date of the issue that is recurring (e.g. if you want it 
+to recur every 2nd Thursday of the month, the issue's first date should be a Thursday)
+
 ## Installation
 
 Follow standard Redmine plugin installation -- (barely) modified from http://www.redmine.org/projects/redmine/wiki/Plugins
 
-1. Copy or clone the plugin directory into #{RAILS_ROOT}/plugins/recurring_tasks
+1. Copy or clone the plugin directory into #{RAILS_ROOT}/plugins/recurring_tasks -- note the folder name 'recurring_tasks' must be verbatim.
    
    e.g. git clone https://github.com/nutso/redmine-plugin-recurring-tasks.git recurring_tasks
 
 2. Rake the database migration (make a db backup before)
 
-   e.g. rake redmine:plugins:migrate RAILS_ENV=production
+   e.g. bundle exec rake redmine:plugins:migrate RAILS_ENV=production
 
 3. Restart Redmine (or web server)
 
@@ -38,9 +41,9 @@ You should now be able to see the plugin list in Administration -> Plugins.
      
 1. Set the check for recurrence via Crontab.
 
-   Crontab example (running the check for recurrence every 6 hours):
+   Crontab example (running the check for recurrence every 6 hours on the 15s) -- replace {path_to_redmine} with your actual path, e.g. /var/www/redmine:
    ```bash
-   * */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
+   15 */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
    ```
    
 2. Decide which role(s) should have the ability to view/add/edit/delete issue recurrence and configure accordingly in Redmine's permission manager (Administration > Roles and Permissions) 
@@ -73,7 +76,7 @@ Follow standard Redmine plugin un-installation -- (barely) modified from http://
 
 1. Downgrade the database (make a db backup before)
 
-   rake redmine:plugins:migrate NAME=recurring_tasks VERSION=0 RAILS_ENV=production
+   bundle exec rake redmine:plugins:migrate NAME=recurring_tasks VERSION=0 RAILS_ENV=production
 
 2. Remove the plugin from the plugins folder (#{RAILS_ROOT}/plugins)
 
