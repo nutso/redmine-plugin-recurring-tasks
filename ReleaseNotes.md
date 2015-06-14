@@ -5,6 +5,7 @@
 * Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
 * Option to re-open recurring issue instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74))
 * Option to enable recurrence on a per-project basis ([#36](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
+* Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
 
 ## Known Issues
 
@@ -17,6 +18,7 @@
 * Better documentation of plugin permissions
 * Reversible migrations so can uninstall fully ([#53](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/53))
 * Highlighting to user that adding recurrence via issues page is the best way ([#52](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/52))
+* Support for Redmine 3  
 
 ## Version 1.4.0 (07 Sep 2014)
 
