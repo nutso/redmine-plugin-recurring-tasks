@@ -2,7 +2,12 @@
 	<tbody>
 		<tr>
 			<th><%=l(:label_recurring_tasks_setting_show_top_menu)%></th>
-			<td><%= check_box 'settings', 'show_top_menu' %></td>
+			<td>
+				<select name="settings[show_top_menu]">
+					<option value="true" <%= if settings['show_top_menu'] ? "selected" : "" %>><%= l(:general_text_Yes) %></option>
+					<option value="false" <%= if !settings['show_top_menu'] ? "selected" : "" %>><%= l(:general_text_No) %></option>
+				</select>
+			</td>
 		</tr>
 	</tbody>	
 </table>
