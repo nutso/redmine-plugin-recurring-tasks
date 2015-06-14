@@ -249,7 +249,13 @@ class RecurringTask < ActiveRecord::Base
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
       new_issue.done_ratio = 0
-      new_issue.status = issue.tracker.default_status # issue status is NOT automatically new, default is whatever the default status for new issues is
+      if issue.tracker.respond_to?(:default_status)
+        # Redmine 3
+        new_issue.status = issue.tracker.default_status # issue status is NOT automatically new, default is whatever the default status for new issues is
+      else
+        # Redmine 2
+        new_issue.status = IssueStatus.default
+      end
       new_issue.save!
       puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
     
