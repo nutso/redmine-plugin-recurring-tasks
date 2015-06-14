@@ -12,7 +12,10 @@
 
 ## Next Version (Develop Branch)
 
-Done
+
+
+## Version 1.6.0 (14 June 2015)
+
 * Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
 * Option to re-open recurring issues instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); 
   ([#74](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74)). 
