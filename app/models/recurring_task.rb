@@ -257,7 +257,7 @@ class RecurringTask < ActiveRecord::Base
       
       # if a journal user has been defined, create a journal
       unless Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
-        issue.init_journal(User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user']))
+        issue.init_journal(User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user']), l(:label_recurring_task))
       end
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
