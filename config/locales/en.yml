@@ -41,9 +41,11 @@ en:
   month_modifier_dow_from_first: "on %{dows_from_bom} %{day_of_week}"
   month_modifier_dow_to_last: "on %{dows_to_eom} to last %{day_of_week}"
 
-
   recurring_task_created: "Recurrence created. "
   recurring_task_saved: "Recurrence saved. "
   recurring_task_removed: "Recurrence removed. "
   
   help_add_general_recurring_task: "You may find it easier to add recurrence via the specific issue's page."
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Display top menu?"

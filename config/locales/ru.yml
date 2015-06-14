@@ -35,3 +35,6 @@ ru:
   recurring_task_created: "Повторяющаяся задача создана. "
   recurring_task_saved: "Повторяющаяся задача сохранена. "
   recurring_task_removed: "Повторяющаяся задача удалена. "
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "отобразить главное меню?"
