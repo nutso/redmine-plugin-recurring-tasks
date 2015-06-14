@@ -50,7 +50,7 @@ You should now be able to see the plugin list in Administration -> Plugins.
    
    You can also use e.g. cron.daily or cron.hourly to avoid having to figure out the precise cron syntax for the schedule; Ruby gems Rufus Scheduler and Whenever can also be used; the key point is that something needs to call recur_tasks on a regular basis.
 
-   More information on Rufus Scheduler config at ([#72](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/72))
+   More information on Rufus Scheduler config at [#72](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/72)
    
 2. Decide which role(s) should have the ability to view/add/edit/delete issue recurrence and configure accordingly in Redmine's permission manager (Administration > Roles and Permissions) 
    * View issue recurrence
