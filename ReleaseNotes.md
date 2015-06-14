@@ -11,6 +11,10 @@
 
 * No ability to view historic recurrences
 * Deleting an issue does not provide a warning about deleting associated recurrences
+* v1.4 is the stable version to use for Redmine 2.x for now; master will continue to support Redmine 2.x and 3.x but Redmine 2 in master is broken
+
+## Semi-Stable (Master Branch)
+* Support for Redmine 3 and rails 4 ([#67](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/67)) and ([#69](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/69))
 
 ## Next Version (Develop Branch)
 
@@ -18,7 +22,7 @@
 * Better documentation of plugin permissions
 * Reversible migrations so can uninstall fully ([#53](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/53))
 * Highlighting to user that adding recurrence via issues page is the best way ([#52](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/52))
-* Support for Redmine 3  
+* 
 
 ## Version 1.4.0 (07 Sep 2014)
 
