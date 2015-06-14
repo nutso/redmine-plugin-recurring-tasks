@@ -35,3 +35,6 @@ de:
   recurring_task_created: "Wiederholung wurde hinzugefügt. "
   recurring_task_saved: "Wiederholung wurde gespeichert. "
   recurring_task_removed: "Wiederholung wurde entfernt. "
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Hauptmenü anzeigen?"

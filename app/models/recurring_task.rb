@@ -223,6 +223,10 @@ class RecurringTask < ActiveRecord::Base
   
   # whether a recurrence needs to be added
   def need_to_recur?
+    # ensuring we don't have an infinite loop
+    # if the setting is to reopen issues on recurrence, then if the issue is open, no recurrence is needed 
+    return false if(Setting.plugin_recurring_tasks['reopen_issue'] == "1" && !issue.closed?)
+
     # 41
     # if(fixed_schedule and (previous_date_for_recurrence + recurrence_pattern) <= (Time.now.to_date + 1.day)) then true else issue.closed? end
     if fixed_schedule
@@ -244,24 +248,36 @@ class RecurringTask < ActiveRecord::Base
     
     # Add more than one recurrence to 'catch up' if warranted (issue #10)
     
-    while need_to_recur?      
-      new_issue = issue.copy
+    while need_to_recur?
+      new_issue = issue # default to existing issue
+      if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
+        # duplicate issue 
+        new_issue = issue.copy
+      end
+      
+      # if a journal user has been defined, create a journal
+      unless Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
+        issue.init_journal(User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user']), l(:label_recurring_task))
+      end
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
       new_issue.done_ratio = 0
-      if issue.tracker.respond_to?(:default_status)
-        # Redmine 3
-        new_issue.status = issue.tracker.default_status # issue status is NOT automatically new, default is whatever the default status for new issues is
-      else
-        # Redmine 2
-        new_issue.status = IssueStatus.default
-      end
+      new_issue.status = recurring_issue_default_status
       new_issue.save!
-      puts "Recurring #{issue.id}: #{issue.subj_date}, created #{new_issue.id}: #{new_issue.subj_date}"
+      puts "Recurring #{issue.id}: #{issue.subj_date}, created or reopened #{new_issue.id}: #{new_issue.subj_date}"
     
       self.issue = new_issue
       save!
     end
+  end
+  
+  def recurring_issue_default_status
+    # issue status is NOT automatically new, default is whatever the default status for new issues is
+     
+    # Redmine 3
+    return issue.tracker.default_status if issue.tracker.respond_to?(:default_status)
+    # Redmine 2
+    IssueStatus.default
   end
   
   #41

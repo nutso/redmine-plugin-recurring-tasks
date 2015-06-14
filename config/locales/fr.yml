@@ -45,3 +45,6 @@ fr:
   recurring_task_created: "Planification créée. "
   recurring_task_saved: "Planification sauvegardé. "
   recurring_task_removed: "Planification supprimée. "
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Afficher menu principal?"

@@ -1,0 +1,26 @@
+<table>
+	<tbody>
+		<tr>
+			<th><%=l(:label_recurring_tasks_setting_journal_user)%></th>
+			<td><input type="text" id="journal_attributed_to_user" value="<%= settings['journal_attributed_to_user'] %>" name="settings[journal_attributed_to_user]"></td>
+		</tr>
+		<tr>
+			<th><%=l(:label_recurring_tasks_setting_show_top_menu)%></th>
+			<td>
+				<select name="settings[show_top_menu]">
+					<option value="1" <%= settings['show_top_menu'] == "1" ? "selected" : "" %>><%= l(:general_text_Yes) %></option>
+					<option value="0" <%= settings['show_top_menu'] != "1" ? "selected" : "" %>><%= l(:general_text_No) %></option>
+				</select>
+			</td>
+		</tr>
+		<tr>
+			<th><%=l(:label_recurring_tasks_setting_reopen_issue)%></th>
+			<td>
+				<select name="settings[reopen_issue]">
+					<option value="1" <%= settings['reopen_issue'] == "1" ? "selected" : "" %>><%= l(:general_text_Yes) %></option>
+					<option value="0" <%= settings['reopen_issue'] != "1" ? "selected" : "" %>><%= l(:general_text_No) %></option>
+				</select>
+			</td>
+		</tr>
+	</tbody>	
+</table>

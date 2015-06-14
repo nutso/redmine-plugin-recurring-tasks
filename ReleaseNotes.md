@@ -3,16 +3,19 @@
 ## Features Requested
 
 * Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
-* Option to re-open recurring issue instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74))
 * Option to enable recurrence on a per-project basis ([#36](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
-* Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
 
 ## Known Issues
 
-* No ability to view historic recurrences
+* No ability to view all historic recurrences
 * Deleting an issue does not provide a warning about deleting associated recurrences
 
 ## Next Version (Develop Branch)
+
+Done
+* Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
+* Option to re-open recurring issues instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); 
+  ([#74](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74)). 
 
 ## Version 1.5.0 (13 June 2015)
 
@@ -34,7 +37,7 @@
 
 * Russian translation contributed by @box789 ([#30](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/30))
 * French translation contributed by @jbeauvois ([#35](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/35))
-* Backward Rails syntax compatibility ([#29](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/29), [#34](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/34))
+* Backward Rails syntax compatibility ([#29](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/29)), [#34](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/34))
 * Deleting the source issue for a recurrence deletes the recurrence ([#33](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/33))
 * Recurrence checks for nil issue before attempting to recur ([#33](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/33))
 

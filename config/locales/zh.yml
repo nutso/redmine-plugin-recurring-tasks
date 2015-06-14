@@ -35,3 +35,6 @@ zh:
   recurring_task_created: "Recurrence created. "
   recurring_task_saved: "Recurrence saved. "
   recurring_task_removed: "Recurrence removed. "
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "显示顶部菜单?"
