@@ -7,16 +7,15 @@
 
 ## Known Issues
 
-* No ability to view historic recurrences
+* No ability to view all historic recurrences
 * Deleting an issue does not provide a warning about deleting associated recurrences
 
 ## Next Version (Develop Branch)
 
-In Work
-* Option to re-open recurring issue instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); ([#74](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74))
-
 Done
 * Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
+* Option to re-open recurring issues instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); 
+  ([#74](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74)). 
 
 ## Version 1.5.0 (13 June 2015)
 
