@@ -11,10 +11,10 @@
 
 * No ability to view historic recurrences
 * Deleting an issue does not provide a warning about deleting associated recurrences
-* v1.4 is the stable version to use for Redmine 2.x for now; master will continue to support Redmine 2.x and 3.x but Redmine 2 in master is broken
-
 
 ## Next Version (Develop Branch)
+
+## Version 1.5.0 (13 June 2015)
 
 * Backwards-compatibility to Redmine 2.2 by testing if issue.closed_on? method exists ([#49](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
 * Better documentation of plugin permissions
