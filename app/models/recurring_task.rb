@@ -254,6 +254,7 @@ class RecurringTask < ActiveRecord::Base
         # duplicate issue 
         new_issue = issue.copy
       end
+      issue.init_journal(nil) # system
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date
       new_issue.done_ratio = 0
