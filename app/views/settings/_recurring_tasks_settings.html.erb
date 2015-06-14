@@ -1,6 +1,10 @@
 <table>
 	<tbody>
 		<tr>
+			<th><%=l(:label_recurring_tasks_setting_journal_user)%></th>
+			<td><input type="text" id="journal_attributed_to_user" value="<%= settings['journal_attributed_to_user'] %>" name=="settings[journal_attributed_to_user]"></td>
+		</tr>
+		<tr>
 			<th><%=l(:label_recurring_tasks_setting_show_top_menu)%></th>
 			<td>
 				<select name="settings[show_top_menu]">

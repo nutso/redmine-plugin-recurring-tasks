@@ -50,3 +50,4 @@ en:
   # settings (admins)
   label_recurring_tasks_setting_show_top_menu: "Display top menu?"
   label_recurring_tasks_setting_reopen_issue: "Reopen issue on recurrence?"
+  label_recurring_tasks_setting_journal_user: "Attribute issue journals to user id:"

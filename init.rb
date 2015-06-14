@@ -15,7 +15,8 @@ Redmine::Plugin.register :recurring_tasks do
   # user-accessible global configuration
   settings :default => {
     'show_top_menu' => "1",
-    'reopen_issue' => "0"
+    'reopen_issue' => "0",
+    'journal_attributed_to_user' => 1
   }, :partial => 'settings/recurring_tasks_settings'
 
   
