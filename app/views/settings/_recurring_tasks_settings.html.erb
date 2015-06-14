@@ -9,5 +9,14 @@
 				</select>
 			</td>
 		</tr>
+		<tr>
+			<th><%=l(:label_recurring_tasks_setting_reopen_issue)%></th>
+			<td>
+				<select name="settings[reopen_issue]">
+					<option value="1" <%= settings['reopen_issue'] == "1" ? "selected" : "" %>><%= l(:general_text_Yes) %></option>
+					<option value="0" <%= settings['reopen_issue'] != "1" ? "selected" : "" %>><%= l(:general_text_No) %></option>
+				</select>
+			</td>
+		</tr>
 	</tbody>	
 </table>

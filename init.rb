@@ -14,7 +14,8 @@ Redmine::Plugin.register :recurring_tasks do
   
   # user-accessible global configuration
   settings :default => {
-    'show_top_menu' => "1"
+    'show_top_menu' => "1",
+    'reopen_issue' => "0"
   }, :partial => 'settings/recurring_tasks_settings'
 
   
