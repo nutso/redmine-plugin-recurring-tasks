@@ -5,7 +5,6 @@
 * Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
 * Option to re-open recurring issue instead of creating a new issue, so all comments/information are stored in a single place ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/45)); ([#45](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/74))
 * Option to enable recurrence on a per-project basis ([#36](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
-* Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
 
 ## Known Issues
 
@@ -13,6 +12,8 @@
 * Deleting an issue does not provide a warning about deleting associated recurrences
 
 ## Next Version (Develop Branch)
+
+* Configurable option to hide the "Recurring issues" link in the admin menu ([#54](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/54))
 
 ## Version 1.5.0 (13 June 2015)
 
