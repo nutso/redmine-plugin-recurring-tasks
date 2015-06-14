@@ -2,7 +2,9 @@
 # default modifier for existing issues. Otherwise validation error will occur.
 class SetDefaultModifierForExistingMonthlyIssues < ActiveRecord::Migration
   def up
-    RecurringTask.find_all_by_interval_unit(RecurringTask::INTERVAL_MONTH).each do |rt|
+    # find_all_by... deprecated for Rails 4/Redmine 3
+    # RecurringTask.find_all_by_interval_unit(RecurringTask::INTERVAL_MONTH).each do |rt|
+    RecurringTask.where(:interval_unit => RecurringTask::INTERVAL_MONTH).each do |rt|
       begin
         logger.info "Migrating task ##{rt.id}, interval unit #{rt.interval_unit}"
         rt.interval_modifier = RecurringTask::MONTH_MODIFIER_DAY_FROM_FIRST

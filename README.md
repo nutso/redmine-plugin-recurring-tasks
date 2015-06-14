@@ -28,6 +28,8 @@ Follow standard Redmine plugin installation -- (barely) modified from http://www
 1. Copy or clone the plugin directory into #{RAILS_ROOT}/plugins/recurring_tasks -- note the folder name 'recurring_tasks' must be verbatim.
    
    e.g. git clone https://github.com/nutso/redmine-plugin-recurring-tasks.git recurring_tasks
+   
+   NOTE! This particular clone will tie you to the master branch, which is not recommended for production systems (faster updates and features but less well-tested). Recommend using a specific version of the plugin which will provide a more stable baseline. 
 
 2. Rake the database migration (make a db backup before)
 
@@ -39,12 +41,16 @@ You should now be able to see the plugin list in Administration -> Plugins.
      
 ## Configuration
      
-1. Set the check for recurrence via Crontab.
+1. Set the check for recurrence via Crontab or similar.
 
-   Crontab example (running the check for recurrence every 6 hours on the 15s) -- replace {path_to_redmine} with your actual path, e.g. /var/www/redmine:
+   "Pure" crontab example (running the check for recurrence every 6 hours on the 15s) -- replace {path_to_redmine} with your actual path, e.g. /var/www/redmine:
    ```bash
    15 */4 * * * /bin/sh "cd {path_to_redmine} && bundle exec rake RAILS_ENV=production redmine:recur_tasks" >> log/cron_rake.log 2>&1
    ```
+   
+   You can also use e.g. cron.daily or cron.hourly to avoid having to figure out the precise cron syntax for the schedule; Ruby gems Rufus Scheduler and Whenever can also be used; the key point is that something needs to call recur_tasks on a regular basis.
+
+   More information on Rufus Scheduler config at [#72](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/72)
    
 2. Decide which role(s) should have the ability to view/add/edit/delete issue recurrence and configure accordingly in Redmine's permission manager (Administration > Roles and Permissions) 
    * View issue recurrence
