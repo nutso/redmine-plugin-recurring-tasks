@@ -10,13 +10,12 @@
 * No ability to view all historic recurrences
 * Deleting an issue does not provide a warning about deleting associated recurrences
 
-## Next Version (Develop Branch)
+## Next Version (Version 2.0.0)
 
 In work
 * Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61))
 
-## Version 2.0.0 (TBD)
-
+Done
 * Recurred issue start date is set to original offset as original issue, i.e. if the original issue was set to take one month to complete, the recurred issue will have the same timespan 
   ([#76](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/76))
 * Display localized date in partial contributed by @guite ([#81](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/81))
