@@ -12,10 +12,14 @@
 
 ## Next Version (Develop Branch)
 
-## Version 2.0.0
+In work
+* Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61))
+
+## Version 2.0.0 (TBD)
 
 * Recurred issue start date is set to original offset as original issue, i.e. if the original issue was set to take one month to complete, the recurred issue will have the same timespan 
   ([#76](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/76))
+* Display localized date in partial ([#81](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/81))
 
 ## Version 1.6.0 (14 June 2015)
 
