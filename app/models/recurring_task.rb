@@ -258,9 +258,14 @@ class RecurringTask < ActiveRecord::Base
         new_issue = issue.copy
       end
       
-      # if a journal user has been defined, create a journal
-      unless Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
-        issue.init_journal(User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user']), l(:label_recurring_task))
+      old_current_user = User.current
+      if Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
+        User.current = issue.author
+      else
+        defined_user = User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user'])
+        # if a journal user has been defined, create a journal
+        issue.init_journal(defined_user, l(:label_recurring_task))
+        User.current = define_user
       end
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date - timespan
@@ -271,6 +276,8 @@ class RecurringTask < ActiveRecord::Base
     
       self.issue = new_issue
       save!
+      
+      User.current = old_current_user
     end
   end
   
