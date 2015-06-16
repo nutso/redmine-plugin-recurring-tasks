@@ -14,7 +14,7 @@
               <%= link_to(rt.recurrence_to_s, edit_recurring_task_path(:id => rt.id, :project_id => project.id)) %>
             </td>
             <td>
-              <%= "#{l(:label_next_scheduled_run)}: #{rt.next_scheduled_recurrence}" %>
+              <%= "#{l(:label_next_scheduled_run)}: " %><%= format_date(rt.next_scheduled_recurrence) %>
             </td>
             <td class="buttons">
               <%= link_to(l(:button_edit), edit_recurring_task_path(:id => rt.id, :project_id => project.id), :class => 'icon icon-edit') %>
