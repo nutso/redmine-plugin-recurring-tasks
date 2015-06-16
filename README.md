@@ -59,12 +59,12 @@ You should now be able to see the plugin list in Administration -> Plugins.
    * Delete issue recurrence (additionally requires the user to be a project member or administrator) 
 
 3. Within the Administration/Plugins/Recurring Tasks configuration page in Redmine, you have the following global configuration options:
-   * _Attribute issue journals to user id (optional)_
+   * _Attribute issue journals to user id (optional)_<br />
      If blank, no journal notes will be added on recurrence; otherwise, this should be the numeric Redmine user id to which all recurring
      journal entries will be tied to. This can be helpful if you want to create a placeholder user account and see all recurrence history within Redmine.
-   * _Display top menu?_
+   * _Display top menu?_<br />
      Defaults to yes for historical purposes; whether (for Redmine administrators) and Recurring tasks menu option should be displayed on the top menu.
-   * _Reopen issue on recurrence?_
+   * _Reopen issue on recurrence?_<br />
      Defaults to no for historical purposes; whether to re-open an issue (yes) or clone to a new issue (no) when the issue is due to recur
 
 ## Upgrade or Migrate Plugin
