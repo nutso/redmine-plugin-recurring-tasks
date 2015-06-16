@@ -1,14 +1,8 @@
 # Recurring Tasks Redmine Plugin -- Release Notes
 
-## Features Requested
+## Features Requested and Known Issues
 
-* Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
-* Option to enable recurrence on a per-project basis ([#36](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
-
-## Known Issues
-
-* No ability to view all historic recurrences
-* Deleting an issue does not provide a warning about deleting associated recurrences
+Reference open issues in GitHub: https://github.com/nutso/redmine-plugin-recurring-tasks/issues
 
 ## Next Version (Version 2.0.0)
 
