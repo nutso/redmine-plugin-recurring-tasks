@@ -7,7 +7,7 @@ Reference open issues in GitHub: https://github.com/nutso/redmine-plugin-recurri
 ## Next Version (Version 2.0.0)
 
 In work
-* Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61))
+* Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues conflict with Luxury Buttons plugin ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61))
 
 Done
 * Recurred issue start date is set to original offset as original issue, i.e. if the original issue was set to take one month to complete, the recurred issue will have the same timespan 
