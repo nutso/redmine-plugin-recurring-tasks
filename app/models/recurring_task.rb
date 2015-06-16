@@ -248,6 +248,9 @@ class RecurringTask < ActiveRecord::Base
     
     # Add more than one recurrence to 'catch up' if warranted (issue #10)
     
+    # calculate the original number of days between start and due date
+    timespan = issue.due_date - issue.start_date
+    
     while need_to_recur?
       new_issue = issue # default to existing issue
       if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
@@ -255,12 +258,17 @@ class RecurringTask < ActiveRecord::Base
         new_issue = issue.copy
       end
       
-      # if a journal user has been defined, create a journal
-      unless Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
-        issue.init_journal(User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user']), l(:label_recurring_task))
+      old_current_user = User.current
+      if Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
+        User.current = issue.author
+      else
+        defined_user = User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user'])
+        # if a journal user has been defined, create a journal
+        issue.init_journal(defined_user, l(:label_recurring_task))
+        User.current = define_user
       end
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
-      new_issue.start_date = new_issue.due_date
+      new_issue.start_date = new_issue.due_date - timespan
       new_issue.done_ratio = 0
       new_issue.status = recurring_issue_default_status
       new_issue.save!
@@ -268,6 +276,8 @@ class RecurringTask < ActiveRecord::Base
     
       self.issue = new_issue
       save!
+      
+      User.current = old_current_user
     end
   end
   
