@@ -10,7 +10,7 @@ Redmine::Plugin.register :recurring_tasks do
   author_url 'https://github.com/nutso/'
   url 'https://github.com/nutso/redmine-plugin-recurring-tasks'
   description 'Allows you to set a task to recur on a regular schedule, or when marked complete, regenerate a new task due in the future. Supports Redmine 2.x and 3.x'
-  version '1.6.0'
+  version '2.0.0'
   
   # user-accessible global configuration
   settings :default => {
