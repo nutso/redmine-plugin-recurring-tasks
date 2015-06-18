@@ -272,7 +272,7 @@ class RecurringTask < ActiveRecord::Base
       new_issue.done_ratio = 0
       new_issue.status = recurring_issue_default_status
       new_issue.save!
-      puts "Recurring #{issue.id}: #{issue.subj_date}, created or reopened #{new_issue.id}: #{new_issue.subj_date}"
+      puts "#{l(:recurring_task_created)} #{issue.id}: #{issue.subj_date} => #{new_issue.id}: #{new_issue.subj_date}"
     
       self.issue = new_issue
       save!
