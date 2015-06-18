@@ -251,6 +251,8 @@ class RecurringTask < ActiveRecord::Base
     # calculate the original number of days between start and due date
     timespan = issue.due_date - issue.start_date
     
+    old_current_user = User.current
+    
     while need_to_recur?
       new_issue = issue # default to existing issue
       if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
@@ -258,7 +260,6 @@ class RecurringTask < ActiveRecord::Base
         new_issue = issue.copy
       end
       
-      old_current_user = User.current
       if Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
         User.current = issue.author
       else
@@ -275,10 +276,10 @@ class RecurringTask < ActiveRecord::Base
       puts "#{l(:recurring_task_created)} #{issue.id}: #{issue.subj_date} => #{new_issue.id}: #{new_issue.subj_date}"
     
       self.issue = new_issue
-      save!
-      
-      User.current = old_current_user
+      save!  
     end
+    
+    User.current = old_current_user
   end
   
   def recurring_issue_default_status
