@@ -1,25 +1,18 @@
 # Recurring Tasks Redmine Plugin -- Release Notes
 
-## Features Requested
+## Features Requested and Known Issues
 
-* Option to 'predict' recurrences on calendar -- perhaps ghost the projected recurrences in ([#38](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/38))
-* Option to enable recurrence on a per-project basis ([#36](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/36))
+Reference open issues in GitHub: https://github.com/nutso/redmine-plugin-recurring-tasks/issues
 
-## Known Issues
-
-* No ability to view all historic recurrences
-* Deleting an issue does not provide a warning about deleting associated recurrences
-
-## Next Version (Develop Branch)
+## Next Version (Version 2.0.0)
 
 In work
-* Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61))
+* Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues conflict with Luxury Buttons plugin ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61))
 
-## Version 2.0.0 (TBD)
-
+Done
 * Recurred issue start date is set to original offset as original issue, i.e. if the original issue was set to take one month to complete, the recurred issue will have the same timespan 
   ([#76](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/76))
-* Display localized date in partial ([#81](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/81))
+* Display localized date in partial contributed by @guite ([#81](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/81))
 
 ## Version 1.6.0 (14 June 2015)
 
