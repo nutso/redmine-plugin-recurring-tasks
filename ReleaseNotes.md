@@ -7,6 +7,7 @@ Reference open issues in GitHub: https://github.com/nutso/redmine-plugin-recurri
 ## Next Version (Version 2.0.0)
 
 In work
+* Clarify how recurrences are calculated for non-fixed ([#64](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/64))
 
 Done
 * Recurred issue start date is set to original offset as original issue, i.e. if the original issue was set to take one month to complete, the recurred issue will have the same timespan 
