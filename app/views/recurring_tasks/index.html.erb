@@ -19,11 +19,11 @@
         <thead>
             <tr>
             	<th>#</th>
-            	<% if @project.nil? %><th><%= l(:field_project)%></th><% end %>
-               <th><%= l(:label_current_issue)%></th>
-               <th><%= l(:label_recurrence_pattern)%></th>
-               <th><%= l(:field_fixed_schedule)%></th>
-               <th><%= l(:label_next_scheduled_run) %></th>
+            	<% if @project.nil? %><th><a><%= l(:field_project)%></a></th><% end %>
+               <th><a><%= l(:label_current_issue)%></a></th>
+               <th><a><%= l(:label_recurrence_pattern)%></a></th>
+               <th><a><%= l(:field_fixed_schedule)%></a></th>
+               <th><a><%= l(:label_next_scheduled_run) %></a></th>
                <th>&nbsp;</th>
             </tr>
         </thead>
@@ -57,9 +57,9 @@
 		$("#recurring_tasks_list").tablesorter(
 			{
 				// Redmine sort look-and-feel
-				cssAsc: "a.sort.asc", 
-				cssDesc: "a.sort.desc", 
-				cssHeader: "a.sort"
+				cssAsc: "sort asc", 
+				cssDesc: "sort desc", 
+				cssHeader: "sort"
 			}
 		)
 	});
