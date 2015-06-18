@@ -1,5 +1,6 @@
 class RecurringTasksController < ApplicationController
   include RecurringTasksHelper
+  include SortHelper
   unloadable
 
   # before_filter :authorize, :except => :index # not sure why index is excluded, but this is true for issues ...
