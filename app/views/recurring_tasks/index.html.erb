@@ -1,9 +1,12 @@
+<% content_for :header_tags do %>
+	<%= javascript_include_tag 'jquery.tableshorter.2.0.5.min', :plugin => 'recurring_tasks'%>
+<% end %>
+
 <% if !@project.nil? %>
   <div class="contextual">
     <%= link_to(l(:label_add_recurring_task), {:action => 'new'}, :class => 'icon icon-add', :title => l(:help_add_general_recurring_task)) %>
   </div>
 <% end %>
-
 
 
 <h2><%= l(:label_recurring_tasks) %></h2>
@@ -12,7 +15,7 @@
     <p><%= l(:label_no_recurring_tasks)%></p>
 <% else %>
     <!-- at least one recurring task exists -->
-    <table class="list">
+    <table id="recurring_tasks_list" class="list">
         <thead>
             <tr>
             	<th>#</th>
@@ -47,3 +50,10 @@
         </tbody>
     </table>
 <% end %>
+
+<script>
+	// Sortable
+	$(document).ready(function() {
+		$("#recurring_tasks_list").tablesorter()
+	});
+</script>
