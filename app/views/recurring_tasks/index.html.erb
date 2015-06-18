@@ -19,7 +19,7 @@
     <table id="recurring_tasks_list" class="list issues sort">
         <thead>
             <tr>
-            	<th>#</th>
+            	<th><a>#</a></th>
             	<% if @project.nil? %><th><a><%= l(:field_project)%></a></th><% end %>
                <th><a><%= l(:label_current_issue)%></a></th>
                <th><a><%= l(:label_recurrence_pattern)%></a></th>
