@@ -54,6 +54,13 @@
 <script>
 	// Sortable
 	$(document).ready(function() {
-		$("#recurring_tasks_list").tablesorter()
+		$("#recurring_tasks_list").tablesorter(
+			{
+				// Redmine sort look-and-feel
+				cssAsc: "a.sort.asc", 
+				cssDesc: "a.sort.desc", 
+				cssHeader: "a.sort"
+			}
+		)
 	});
 </script>
