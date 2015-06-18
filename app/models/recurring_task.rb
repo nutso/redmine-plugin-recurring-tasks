@@ -265,7 +265,7 @@ class RecurringTask < ActiveRecord::Base
         defined_user = User.find(Setting.plugin_recurring_tasks['journal_attributed_to_user'])
         # if a journal user has been defined, create a journal
         issue.init_journal(defined_user, l(:label_recurring_task))
-        User.current = define_user
+        User.current = defined_user
       end
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date - timespan
