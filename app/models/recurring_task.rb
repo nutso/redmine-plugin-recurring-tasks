@@ -249,7 +249,11 @@ class RecurringTask < ActiveRecord::Base
     # Add more than one recurrence to 'catch up' if warranted (issue #10)
     
     # calculate the original number of days between start and due date
-    timespan = issue.due_date - issue.start_date
+    timespan = 0 # default to same day if either a start or due date is not provided  
+    begin
+      timespan = issue.due_date - issue.start_date
+    rescue => ex
+    end
     
     old_current_user = User.current
     
