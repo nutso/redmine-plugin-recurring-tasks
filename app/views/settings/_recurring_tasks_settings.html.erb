@@ -7,7 +7,7 @@
 			<td>
 			
 			  <%= select_tag('settings[journal_attributed_to_user]',
-			  	   content_tag('option', l(:label_nobody), :value => '', :selected => (settings['journal_attributed_to_user'].blank?) +
+			  	   content_tag('option', l(:label_nobody), :value => '', :selected => (settings['journal_attributed_to_user'].blank?)) +
                    principals_options_for_select(users, settings['journal_attributed_to_user'])) %>
 
 			</td>
