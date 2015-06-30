@@ -1,0 +1,4 @@
+/* Mimicking the a.sort in Redmine's CSS for <th /> in support of jquery.tablesorter */
+th.sort a { padding-right: 16px; background-position: 100% 50%; background-repeat: no-repeat; }
+th.sort.asc a { background-image: url(../../../images/sort_asc.png); }
+th.sort.desc a { background-image: url(../../../images/sort_desc.png); }

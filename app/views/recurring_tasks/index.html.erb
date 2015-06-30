@@ -1,9 +1,13 @@
+<% content_for :header_tags do %>
+	<%= stylesheet_link_tag 'tablesorter_compatibility.css', :plugin => 'recurring_tasks'%>
+	<%= javascript_include_tag 'jquery.tablesorter.2.0.5.min.js', :plugin => 'recurring_tasks'%>
+<% end %>
+
 <% if !@project.nil? %>
   <div class="contextual">
     <%= link_to(l(:label_add_recurring_task), {:action => 'new'}, :class => 'icon icon-add', :title => l(:help_add_general_recurring_task)) %>
   </div>
 <% end %>
-
 
 
 <h2><%= l(:label_recurring_tasks) %></h2>
@@ -12,15 +16,15 @@
     <p><%= l(:label_no_recurring_tasks)%></p>
 <% else %>
     <!-- at least one recurring task exists -->
-    <table class="list">
+    <table id="recurring_tasks_list" class="list issues sort">
         <thead>
             <tr>
-            	<th>#</th>
-            	<% if @project.nil? %><th><%= l(:field_project)%></th><% end %>
-               <th><%= l(:label_current_issue)%></th>
-               <th><%= l(:label_recurrence_pattern)%></th>
-               <th><%= l(:field_fixed_schedule)%></th>
-               <th><%= l(:label_next_scheduled_run) %></th>
+            	<th><a>#</a></th>
+            	<% if @project.nil? %><th><a><%= l(:field_project)%></a></th><% end %>
+               <th><a><%= l(:label_current_issue)%></a></th>
+               <th><a><%= l(:label_recurrence_pattern)%></a></th>
+               <th><a><%= l(:field_fixed_schedule)%></a></th>
+               <th><a><%= l(:label_next_scheduled_run) %></a></th>
                <th>&nbsp;</th>
             </tr>
         </thead>
@@ -47,3 +51,17 @@
         </tbody>
     </table>
 <% end %>
+
+<script>
+	// Sortable
+	$(document).ready(function() {
+		$("#recurring_tasks_list").tablesorter(
+			{
+				// Redmine sort look-and-feel
+				cssAsc: "sort asc", 
+				cssDesc: "sort desc", 
+				cssHeader: "sort"
+			}
+		)
+	});
+</script>
