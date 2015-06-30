@@ -16,6 +16,7 @@ Done
 * Assign the issue author based on a) configured recurring user, or b) previous issue author to avoid permissions issues conflict with Luxury Buttons plugin 
   ([#61](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/61)) and ([#86](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/86)
 * Table view of all recurring tasks for project or system is now sortable ([#77](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/77))
+* Handle when a recurring issue does not have a start date, due date, or either ([#90](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/90))
 
 ## Version 1.6.0 (14 June 2015)
 
