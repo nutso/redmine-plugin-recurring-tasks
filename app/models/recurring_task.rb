@@ -259,10 +259,6 @@ class RecurringTask < ActiveRecord::Base
     
     while need_to_recur?
       new_issue = issue # default to existing issue
-      if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
-        # duplicate issue 
-        new_issue = issue.copy
-      end
       
       if Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
         User.current = issue.author
@@ -272,6 +268,12 @@ class RecurringTask < ActiveRecord::Base
         issue.init_journal(defined_user, l(:label_recurring_task))
         User.current = defined_user
       end
+
+      if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
+        # duplicate issue; cloning comes after setting the user so the author is set correctly (#89)
+        new_issue = issue.copy
+      end
+
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
       new_issue.start_date = new_issue.due_date - timespan
       new_issue.done_ratio = 0
