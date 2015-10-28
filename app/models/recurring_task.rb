@@ -313,10 +313,6 @@ class RecurringTask < ActiveRecord::Base
     "#{i} (#{l(:label_recurrence_pattern)} #{interval_number} #{interval_unit}s " + (:fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)) + ")"
   end
   
-  def to_s_long
-    "#{to_s}. #{l(:label_belongs_to_project)} #{:issue.project}. #{l(:label_assigned_to)} #{:issue.assigned_to_id}"
-  end
-  
   # for each recurring task, check whether to create a new one
   def self.add_recurrences!
     RecurringTask.all.each do |task|
