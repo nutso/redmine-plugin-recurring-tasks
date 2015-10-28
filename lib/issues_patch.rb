@@ -14,10 +14,6 @@ module RecurringTasks
           !(recurring_tasks.nil? || recurring_tasks.length <= 0)
           # TODO determine if it was a historically recurring task
         end
-        
-        #def recurring_tasks
-        #  RecurringTask.find_by_issue(self)
-        #end
       end # base.class_eval
     end # self.included
   end # issues patch

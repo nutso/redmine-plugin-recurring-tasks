@@ -165,13 +165,6 @@ class RecurringTask < ActiveRecord::Base
     Hash[MONTH_MODIFIERS_LOCALIZED.map{|k,v| [k, v % values]}]
   end
   
-  
-  
-  def self.find_by_issue issue
-    # it's possible there is more than one recurrence associated with an issue
-    RecurringTask.where(:current_issue_id => issue.id)
-  end
-  
   # retrieve all recurring tasks given a project
   def self.all_for_project project
     if project.nil? then all else RecurringTask.includes(:issue).where("issues.project_id" => project.id) end
@@ -311,10 +304,6 @@ class RecurringTask < ActiveRecord::Base
       i = issue.subj_date
     end
     "#{i} (#{l(:label_recurrence_pattern)} #{interval_number} #{interval_unit}s " + (:fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)) + ")"
-  end
-  
-  def to_s_long
-    "#{to_s}. #{l(:label_belongs_to_project)} #{:issue.project}. #{l(:label_assigned_to)} #{:issue.assigned_to_id}"
   end
   
   # for each recurring task, check whether to create a new one
