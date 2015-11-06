@@ -271,7 +271,7 @@ class RecurringTask < ActiveRecord::Base
 
       if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
         # duplicate issue; cloning comes after setting the user so the author is set correctly (#89)
-        new_issue = issue.copy nil, subtasks: recur_descendants?
+        new_issue = issue.copy nil, :subtasks => recur_descendants?
       end
 
 
