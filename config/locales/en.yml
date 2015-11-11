@@ -28,7 +28,7 @@ en:
   field_interval_unit: "Interval unit(s)"
   field_interval_modifier: "Interval modifier"
   field_fixed_schedule: "Fixed schedule?"
-  field_recur_descendants: "Recur subtasks?"
+  field_recur_subtasks: "Recur subtasks?"
   field_recurrence: "Recurrence"
   field_please_select: "--- Please select ---"
   
