@@ -96,3 +96,24 @@ Follow standard Redmine plugin un-installation -- (barely) modified from http://
 2. Remove the plugin from the plugins folder (#{RAILS_ROOT}/plugins)
 
 3. Restart Redmine (or web server)
+
+## Running the tests
+
+1. Copy Redmine to `redmine/`:
+   - `curl -O http://www.redmine.org/releases/redmine-3.1.1.tar.gz`
+   - `tar -xf redmine-3.1.1.tar.gz`
+   - `rm redmine-3.1.1.tar.gz`
+   - `mv redmine-3.1.1 redmine`
+2. Symlink the plugin into the plugins folder:
+   - `ln -s ../.. redmine/plugins/recurring_tasks`
+3. Setup a default database
+   - `ln -s ../../test/database.yml redmine/config/database.yml`
+   - `cd redmine`
+   - `rake db:create`
+   - `rake db:migrate RAILS_ENV=test`
+4. Install required gems by Redmine
+   - `bundle`
+5. Go back to the plugin folder
+   - `cd ..`
+6. And run the tests
+   - `rake`
