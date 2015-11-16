@@ -360,11 +360,11 @@ private
     elsif fixed_schedule and !issue.due_date.nil? 
       issue.due_date
     elsif !issue.respond_to?('closed_on') # closed_on introduced in Redmine 2.3, ref http://www.redmine.org/issues/824
-      issue.updated_on
+      issue.updated_on.to_date
     elsif issue.closed_on.nil? 
-      issue.updated_on
+      issue.updated_on.to_date
     else 
-      issue.closed_on 
+      issue.closed_on.to_date
     end
   end
 end
