@@ -1,3 +1,8 @@
+<% content_for :header_tags do %>
+  <%= javascript_include_tag 'recurring_tasks.js', :plugin => 'recurring_tasks' %>
+  <%= stylesheet_link_tag 'recurring_tasks.css', :plugin => 'recurring_tasks'%>
+<% end %>
+
 <%= labelled_form_for rt, :url => { :action => next_step, :id=>rt } do |f| %>
 <div class="box tabular"> 
     <%= error_messages_for 'recurring_task' %>
@@ -6,11 +11,9 @@
     
     
     <p><%= f.number_field :interval_number, :required => true, :size => 4, :maxlength => 4 %></p>
-    <p><%= f.select :interval_unit, @interval_units, {:prompt => l(:field_please_select), :required => true}, :onChange =>"document.getElementById('interval_modifier_block').style.display=(this.value=='"+ RecurringTask::INTERVAL_MONTH + "' ? 'block' : 'none')" %></p>
-    <% modifier_display = (rt.interval_unit == RecurringTask::INTERVAL_MONTH) ? "display:inline" : "display:none" %>
-    <%= content_tag :div, :id => "interval_modifier_block", :style => modifier_display do -%>
-      <p><%= f.select 'interval_modifier', rt.get_modifiers_descriptions.collect{|k,v| [v, k]} %></p>
-    <% end -%>
+    <p><%= f.select :interval_unit, @interval_units, {:prompt => l(:field_please_select), :required => true} %></p>
+    <p class='day_interval_modifier'><%= f.select 'interval_modifier', rt.day_modifiers_descriptions.collect{|k,v| [v, k]}, {}, :disabled => true %></p>
+    <p class='month_interval_modifier'><%= f.select 'interval_modifier', rt.month_modifiers_descriptions.collect{|k,v| [v, k]}, {}, :disabled => true %></p>
     <p><%= f.check_box :fixed_schedule %></p>
   </div>
   <%= f.submit %>
