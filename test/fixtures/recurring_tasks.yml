@@ -1,0 +1,6 @@
+fixed_daily_recurrence:
+  issue: fixed_daily_recurrence
+  fixed_schedule: true
+  interval_modifier: mdff
+  interval_number: 1
+  interval_unit: d
