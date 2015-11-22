@@ -4,7 +4,7 @@ class RecurringTask < ActiveRecord::Base
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, :through => :issue
 
-  attr_accessible :id, :current_issue_id, :interval_number, :interval_modifier, :interval_unit, :fixed_schedule # list all fields that you want to be accessible here
+  attr_accessible :id, :current_issue_id, :interval_number, :interval_modifier, :interval_unit, :fixed_schedule, :recur_subtasks# list all fields that you want to be accessible here
   
   # these are the flags used in the database to denote the interval
   # the actual text displayed to the user is controlled in the language file
@@ -264,7 +264,22 @@ class RecurringTask < ActiveRecord::Base
 
       if Setting.plugin_recurring_tasks['reopen_issue'] != "1"
         # duplicate issue; cloning comes after setting the user so the author is set correctly (#89)
-        new_issue = issue.copy
+        new_issue = issue.copy nil, :subtasks => recur_subtasks?
+        new_issue.save!
+      end
+
+      if recur_subtasks?
+        new_issue.reload.children.each do |subtask|
+          subtask_offset = (next_scheduled_recurrence - timespan) - issue.start_date
+          subtask_timespan = subtask.due_date - subtask.start_date rescue 0
+          subtask.start_date = subtask.start_date + subtask_offset
+          subtask.due_date = subtask.start_date + subtask_timespan
+          subtask.done_ratio = 0
+          subtask.status = recurring_issue_default_status
+          subtask.save!
+        end
+
+        new_issue.reload
       end
 
       new_issue.due_date = next_scheduled_recurrence #41 previous_date_for_recurrence + recurrence_pattern
@@ -272,6 +287,7 @@ class RecurringTask < ActiveRecord::Base
       new_issue.done_ratio = 0
       new_issue.status = recurring_issue_default_status
       new_issue.save!
+
       puts "#{l(:recurring_task_created)} #{issue.id}: #{issue.subj_date} => #{new_issue.id}: #{new_issue.subj_date}"
     
       self.issue = new_issue

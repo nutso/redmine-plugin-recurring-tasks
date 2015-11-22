@@ -12,6 +12,7 @@
       <p><%= f.select 'interval_modifier', rt.get_modifiers_descriptions.collect{|k,v| [v, k]} %></p>
     <% end -%>
     <p><%= f.check_box :fixed_schedule %></p>
+    <p><%= f.check_box :recur_subtasks %></p>
   </div>
   <%= f.submit %>
   <%= link_to l(:button_cancel), :back %>

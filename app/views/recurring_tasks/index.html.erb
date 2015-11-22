@@ -24,6 +24,7 @@
                <th><a><%= l(:label_current_issue)%></a></th>
                <th><a><%= l(:label_recurrence_pattern)%></a></th>
                <th><a><%= l(:field_fixed_schedule)%></a></th>
+               <th><a><%= l(:field_recur_subtasks)%></a></th>
                <th><a><%= l(:label_next_scheduled_run) %></a></th>
                <th>&nbsp;</th>
             </tr>
@@ -40,6 +41,7 @@
 	                <td class="subject"><%= rt.issue.nil? ? l(:label_recurring_task_issue_empty) : link_to(rt.issue.subj_date, {:controller => 'issues', :action => 'show', :id => rt.issue.id}) %></td> <!-- link_to(rt.issue.subj_date, {:action => 'show', :id => rt.id, :project_id => rt.project.id}) -->
 	                <td><%= pluralize(rt.interval_number, rt.interval_localized_name) %></td>
 	                <td class="tick"><%= checked_image rt.fixed_schedule %></td>
+	                <td class="tick"><%= checked_image rt.recur_subtasks %></td>
 	                <td><%= format_date(rt.next_scheduled_recurrence) %></td>
 	                <td class="buttons"><%= delete_button rt %></td>
                     <!-- <td><%= edit_button rt %></td> -->
