@@ -18,6 +18,7 @@ Done
 * Table view of all recurring tasks for project or system is now sortable ([#77](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/77))
 * Handle when a recurring issue does not have a start date, due date, or either ([#90](https://github.com/nutso/redmine-plugin-recurring-tasks/issues/90))
 * Set issue author to configured user if specified in plugin
+* Option to recur subtasks on a per-recurrence basis ([#96](https://github.com/nutso/redmine-plugin-recurring-tasks/pull/96)) -- contributed by @bartj3
 
 ## Version 1.6.0 (14 June 2015)
 
