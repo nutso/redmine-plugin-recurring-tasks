@@ -1,5 +1,5 @@
-fixed_daily_recurrence:
-  subject: daily fixed recurrence
+basic_issue:
+  subject: basic issue
   tracker_id: 1
   project_id: 1
   status_id: 1

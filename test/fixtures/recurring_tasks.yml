@@ -1,6 +1,13 @@
 fixed_daily_recurrence:
-  issue: fixed_daily_recurrence
+  issue: basic_issue
   fixed_schedule: true
-  interval_modifier: mdff
   interval_number: 1
   interval_unit: d
+  interval_modifier: da
+
+fixed_working_day_recurrence:
+  issue: basic_issue
+  fixed_schedule: true
+  interval_number: 1
+  interval_unit: d
+  interval_modifier: dwd

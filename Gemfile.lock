@@ -1,0 +1,12 @@
+GEM
+  specs:
+    timecop (0.7.4)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  timecop
+
+BUNDLED WITH
+   1.10.6

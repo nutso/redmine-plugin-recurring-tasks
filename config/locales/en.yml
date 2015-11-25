@@ -37,6 +37,9 @@ en:
   interval_month: "month"
   interval_year:  "year"
 
+  day_modifier_all: "every day"
+  day_modifier_working_days: "working days"
+
   month_modifier_day_from_first: "on %{days_from_bom} day"
   month_modifier_day_to_last: "on %{days_to_eom} to last day"
   month_modifier_dow_from_first: "on %{dows_from_bom} %{day_of_week}"

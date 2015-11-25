@@ -1,5 +1,6 @@
 class RecurringTask < ActiveRecord::Base
   unloadable
+  include Redmine::Utils::DateCalculation
 
   belongs_to :issue, :foreign_key => 'current_issue_id'
   has_one :project, :through => :issue
@@ -17,6 +18,9 @@ class RecurringTask < ActiveRecord::Base
   # similar flags for denoting more complex recurrence schemes
   # they are modyfing how due dates are scheduled when INTERVAL_MONTH is in
   # effect
+  DAY_MODIFIER_ALL = 'da'
+  DAY_MODIFIER_WORKING_DAYS = 'dwd'
+
   MONTH_MODIFIER_DAY_FROM_FIRST = 'mdff'
   MONTH_MODIFIER_DAY_TO_LAST = 'mdtl'
   MONTH_MODIFIER_DOW_FROM_FIRST = 'mdowff'
@@ -31,6 +35,12 @@ class RecurringTask < ActiveRecord::Base
     INTERVAL_MONTH => l(:interval_month),
     INTERVAL_YEAR => l(:interval_year)
   }
+
+  DAY_MODIFIERS_LOCALIZED = {
+    DAY_MODIFIER_ALL => l(:day_modifier_all),
+    DAY_MODIFIER_WORKING_DAYS => l(:day_modifier_working_days)
+  }
+
   MONTH_MODIFIERS_LOCALIZED = {
     MONTH_MODIFIER_DAY_FROM_FIRST => l(:month_modifier_day_from_first),
     MONTH_MODIFIER_DAY_TO_LAST => l(:month_modifier_day_to_last),
@@ -43,7 +53,7 @@ class RecurringTask < ActiveRecord::Base
   # for older Rails compatibility
   # validates_presence_of :interval_localized_name #41
   validates_presence_of :interval_unit
-  validates_presence_of :interval_modifier, :if => "interval_unit == RecurringTask::INTERVAL_MONTH"
+  validates_presence_of :interval_modifier, :if => "interval_unit == RecurringTask::INTERVAL_MONTH || interval_unit == RecurringTask::INTERVAL_DAY"
 
   validates_presence_of :interval_number
   
@@ -56,6 +66,10 @@ class RecurringTask < ActiveRecord::Base
     :in => RecurringTask::MONTH_MODIFIERS_LOCALIZED.keys,
     :message => "#{l(:error_invalid_modifier)} '%{value}' (Validation)",
     :if => "interval_unit == RecurringTask::INTERVAL_MONTH"
+  validates_inclusion_of :interval_modifier,
+    :in => RecurringTask::DAY_MODIFIERS_LOCALIZED.keys,
+    :message => "#{l(:error_invalid_modifier)} '%{value}' (Validation)",
+    :if => "interval_unit == RecurringTask::INTERVAL_DAY"
   
   validates_numericality_of :interval_number, :only_integer => true, :greater_than => 0
   # cannot validate presence of issue if want to use other features; requiring presence of fixed_schedule requires it to be true
@@ -123,7 +137,7 @@ class RecurringTask < ActiveRecord::Base
     if new_record?
       @interval_localized_modifier
     else
-      modifiers_names = get_modifiers_descriptions
+      modifiers_names = month_modifiers_descriptions
       if modifiers_names.has_key?(interval_modifier)
         modifiers_names[interval_modifier]
        else
@@ -151,7 +165,7 @@ class RecurringTask < ActiveRecord::Base
  # end
   
   #41
-  def get_modifiers_descriptions
+  def month_modifiers_descriptions
     prev_date = previous_date_for_recurrence
     days_to_eom = (prev_date.end_of_month.mday - prev_date.mday + 1).to_i
     #print days_to_eom, " ", prev_date.end_of_month
@@ -163,6 +177,10 @@ class RecurringTask < ActiveRecord::Base
       :dows_to_eom => (((prev_date.end_of_month.mday - prev_date.mday).to_i / 7) + 1).ordinalize,
     }
     Hash[MONTH_MODIFIERS_LOCALIZED.map{|k,v| [k, v % values]}]
+  end
+
+  def day_modifiers_descriptions
+    DAY_MODIFIERS_LOCALIZED
   end
   
   # retrieve all recurring tasks given a project
@@ -180,7 +198,14 @@ class RecurringTask < ActiveRecord::Base
       # previous_date_for_recurrence + recurrence_pattern #41
       case interval_unit
       when INTERVAL_DAY
-        (prev_date + interval_number.days).to_date
+        case interval_modifier
+        when DAY_MODIFIER_ALL
+          (prev_date + interval_number.days).to_date
+        when DAY_MODIFIER_WORKING_DAYS
+          add_working_days prev_date, interval_number
+        else
+          raise "#{l(:error_invalid_interval)} #{interval_unit} (next_scheduled_recurrence)"
+        end
       when INTERVAL_WEEK
         (prev_date + interval_number.weeks).to_date
       when INTERVAL_MONTH
@@ -340,11 +365,11 @@ private
     elsif fixed_schedule and !issue.due_date.nil? 
       issue.due_date
     elsif !issue.respond_to?('closed_on') # closed_on introduced in Redmine 2.3, ref http://www.redmine.org/issues/824
-      issue.updated_on
+      issue.updated_on.to_date
     elsif issue.closed_on.nil? 
-      issue.updated_on
+      issue.updated_on.to_date
     else 
-      issue.closed_on 
+      issue.closed_on.to_date
     end
   end
 end

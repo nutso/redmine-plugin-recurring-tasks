@@ -16,4 +16,17 @@ class RecurringTaskTest < ActiveSupport::TestCase
       task.recur_issue_if_needed!
     end
   end
+
+  def test_working_day_recurrence
+    task = RecurringTask.find fixture(:fixed_working_day_recurrence)
+    issue = Issue.find fixture(:basic_issue)
+    issue.update start_date: Date.today.beginning_of_week-3.weeks,
+                 due_date: Date.today.beginning_of_week-3.weeks+1.day
+
+    Timecop.freeze(Date.today.beginning_of_week) do
+      assert_difference -> { Issue.count }, 15 do
+        task.recur_issue_if_needed!
+      end
+    end
+  end
 end
