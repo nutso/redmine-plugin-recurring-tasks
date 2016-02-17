@@ -16,4 +16,14 @@ class RecurringTaskTest < ActiveSupport::TestCase
       task.recur_issue_if_needed!
     end
   end
+
+  def test_removes_closed_on
+    task = RecurringTask.find fixture(:fixed_daily_recurrence)
+    task.issue.status = IssueStatus.find_by(name: "Closed")
+    task.issue.save
+
+    assert_not_nil task.issue.closed_on
+    task.recur_issue_if_needed!
+    assert_nil task.issue.closed_on
+  end
 end
