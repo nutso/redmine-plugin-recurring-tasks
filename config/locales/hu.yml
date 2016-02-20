@@ -1,0 +1,54 @@
+# English strings go here for Rails i18n
+en:
+  label_recurring_tasks:    "Ismétlődő feladatok"
+  label_recurring_task:     "Ismétlődő feladat"
+  label_current_issue:      "Ismétlendő feladat"
+  label_recurrence_pattern: "Ismétlődik minden"
+  label_add_recurring_task: "Új ismétlődés"
+  label_no_recurring_tasks: "Nincsenek ismétlődő feladatok."
+  label_next_scheduled_run: "Következő ismétlődés"
+  label_no_recurrence:      "Nincs ismétlődés."
+  label_no_project:         "Nincs projekt."
+  
+  label_recurs_fixed: "fix ismétlődés"
+  label_recurs_dependent: "az előző feladat lezárása után"
+  
+  label_recurring_task_issue_empty: "N/A"
+  label_recurring_task_project_empty: "N/A"
+  
+  label_belongs_to_project: "Projekthez tartozik"
+  label_assigned_to: "Felelős"
+
+  error_invalid_interval:   "A megadott ciklus helytelen."
+  error_invalid_modifier:   "Ciklus módosító helytelen."
+  error_recurring_task_not_found: "Nem található ismétlődő feladat. "
+  error_recurring_task_could_not_remove: "Nem lehet az ismétlődést eltávolítani. "
+  
+  field_interval_number: "Ciklus szám"
+  field_interval_unit: "Ciklus egység"
+  field_interval_modifier: "Ciklus módosító"
+  field_fixed_schedule: "Fix ismétlődés?"
+  field_recur_subtasks: "Alfeladatok ismétlődése?"
+  field_recurrence: "Ismétlődés"
+  field_please_select: "--- Válasszon ---"
+  
+  interval_day:   "nap"
+  interval_week:  "hét"
+  interval_month: "hónap"
+  interval_year:  "év"
+
+  month_modifier_day_from_first: "az %{days_from_bom}. napon"
+  month_modifier_day_to_last: "%{days_to_eom} nappal az utolsó nap előtt"
+  month_modifier_dow_from_first: "a %{dows_from_bom}. %{day_of_week}-n"
+  month_modifier_dow_to_last: "a %{dows_to_eom}. %{day_of_week} az utolsó előtt"
+
+  recurring_task_created: "Ismétlődés létrehozva. "
+  recurring_task_saved: "Ismétlődés mentve. "
+  recurring_task_removed: "Ismétlődés törölve. "
+  
+  help_add_general_recurring_task: "Feladatot ismételni az adott feladat oldalán is lehet."
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Felső menüsor megjelenítése?"
+  label_recurring_tasks_setting_reopen_issue: "Újranyissa a feladatot ismétlődéskor?"
+  label_recurring_tasks_setting_journal_user: "Feladat eseményeket hozzárendeli ehhez a user ID-hoz:"
