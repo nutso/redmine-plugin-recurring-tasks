@@ -1,10 +1,11 @@
 # German strings go here for Rails i18n
 de:
-  label_recurring_tasks:    "Wiederkehrende Themen"
-  label_current_issue:      "Wiederkehrendes Thema"
+  label_recurring_tasks:    "Wiederkehrende Tickets"
+  label_recurring_task:     "Wiederkehrendes Ticket"
+  label_current_issue:      "Aktuelles Ticket für Wiederholung"
   label_recurrence_pattern: "Wiederholt sich alle"
   label_add_recurring_task: "Wiederholung hinzufügen"
-  label_no_recurring_tasks: "Keine wiederkehrenden Themen gefunden."
+  label_no_recurring_tasks: "Keine wiederkehrenden Tickets gefunden."
   label_next_scheduled_run: "Nächste Ausführung"
   label_no_recurrence:      "Keine Wiederholung."
   label_no_project:         "Kein Projekt."
@@ -19,18 +20,32 @@ de:
   label_assigned_to: "Zugewiesen an"
 
   error_invalid_interval:   "Angegebenes Intervall ist ungültig."
+  error_invalid_modifier:   "Der angelegebene Intervallmodifikator ist ungültig."
   error_recurring_task_not_found: "Keine wiederkehrenden Themen gefunden. "
   error_recurring_task_could_not_remove: "Wiederholung konnte nicht entfernt werden. "
   
   field_interval_number: "Intervallschritt"
   field_interval_unit: "Einheit(en) des Intervalls"
+  field_interval_modifier: "Intervallmodifikator"
   field_fixed_schedule: "Fester Zeitplan?"
   field_recurrence: "Wiederholung"
-  
+  label_recurrences: "Wiederholungen"
+  field_please_select: "-- Bitte auswählen --"
+
   interval_day:  "Tag"
   interval_week: "Woche"
   interval_month: "Monat"
   interval_year: "Jahr"
+
+  interval_days:   "Tage"
+  interval_weeks:  "Wochen"
+  interval_months: "Monate"
+  interval_years:  "Jahre"
+
+  month_modifier_day_from_first: "am %{days_from_bom}"
+  month_modifier_day_to_last: "am %{days_to_eom} zum letzten Tag"
+  month_modifier_dow_from_first: "jeden %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "jeden %{dows_to_eom} zum letzten %{day_of_week}"
 
   recurring_task_created: "Wiederholung wurde hinzugefügt. "
   recurring_task_saved: "Wiederholung wurde gespeichert. "
