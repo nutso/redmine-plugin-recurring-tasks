@@ -1,0 +1,54 @@
+# Slovak strings go here for Rails i18n
+sk:
+  label_recurring_tasks:    "Opakované úlohy"
+  label_recurring_task:     "Opakovaná úloha"
+  label_current_issue:      "Úloha na opakovanie"
+  label_recurrence_pattern: "Opakovanie každý"
+  label_add_recurring_task: "Nová opakovaná úloha"
+  label_no_recurring_tasks: "Neboli nájdené žiadne opakované úlohy."
+  label_next_scheduled_run: "Najbližšie opakovanie"
+  label_no_recurrence:      "Žiadne opakovanie."
+  label_no_project:         "Žiadny projekt."
+  
+  label_recurs_fixed: "podľa pevného rozvrhu"
+  label_recurs_dependent: "po splnení úlohy"
+  
+  label_recurring_task_issue_empty: "N/A"
+  label_recurring_task_project_empty: "N/A"
+  
+  label_belongs_to_project: "Patrí projektu"
+  label_assigned_to: "Priradené"
+
+  error_invalid_interval:   "Interval nie je platný."
+  error_invalid_modifier:   "Modifikátor intervalu nie je platný."
+  error_recurring_task_not_found: "Opakovaná úloha nebola nájdená."
+  error_recurring_task_could_not_remove: "Nebolo možné odstrániť opakovanie z úlohy."
+  
+  field_interval_number: "Veľkosť intervalu"
+  field_interval_unit: "Jednotka intervalu"
+  field_interval_modifier: "Modifikátor intervalu"
+  field_fixed_schedule: "Pevný rozvrh?"
+  field_recur_subtasks: "Opakovať podúlohy?"
+  field_recurrence: "Opakovanie"
+  field_please_select: "--- Prosím vyberte ---"
+  
+  interval_day:   "deň"
+  interval_week:  "týždeň"
+  interval_month: "mesiac"
+  interval_year:  "rok"
+
+  month_modifier_day_from_first: "na %{days_from_bom} deň"
+  month_modifier_day_to_last: "na %{days_to_eom} deň pred koncom mesiaca"
+  month_modifier_dow_from_first: "na %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "na %{dows_to_eom} %{day_of_week} od konca mesiaca"
+
+  recurring_task_created: "Opakovaná úloha vytvorená."
+  recurring_task_saved: "Opakovaná úloha uložená."
+  recurring_task_removed: "Opakovaná úloha odstránená."
+  
+  help_add_general_recurring_task: "Opakovanie môžete vytvoriť aj priamo v úlohe."
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Zobraziť v hornom menu?"
+  label_recurring_tasks_setting_reopen_issue: "Znovu otvoriť úlohu pri opakovaní?"
+  label_recurring_tasks_setting_journal_user: "Priradiť historické záznamy o úlohe používateľovi číslo:"
