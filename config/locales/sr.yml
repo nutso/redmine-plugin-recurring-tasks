@@ -1,0 +1,54 @@
+# English strings go here for Rails i18n
+en:
+  label_recurring_tasks:    "Понављајући налози"
+  label_recurring_task:     "Понављајући налог"
+  label_current_issue:      "Назив налога"
+  label_recurrence_pattern: "Похавља се сваких"
+  label_add_recurring_task: "Додај понављање"
+  label_no_recurring_tasks: "Понављајући налози нису пронађени у систему."
+  label_next_scheduled_run: "Заказано понављање"
+  label_no_recurrence:      "Нема понављања."
+  label_no_project:         "Нема посла."
+  
+  label_recurs_fixed: "на фиксни распоред"
+  label_recurs_dependent: "након што се претходни налог заврши"
+  
+  label_recurring_task_issue_empty: "НЕМА"
+  label_recurring_task_project_empty: "НЕМА"
+  
+  label_belongs_to_project: "Припада послу"
+  label_assigned_to: "Додељено"
+
+  error_invalid_interval:   "Дати интервал није исправан."
+  error_invalid_modifier:   "Модификација интервала није исправна."
+  error_recurring_task_not_found: "Не могу пронаћи налог који се понавља. "
+  error_recurring_task_could_not_remove: "Немогуће уклонити понављање са налога. "
+  
+  field_interval_number: "Број интервала"
+  field_interval_unit: "Јединица интервала"
+  field_interval_modifier: "Модификација интервала"
+  field_fixed_schedule: "Фиксни распоред?"
+  field_recur_subtasks: "Понављај и подналоге?"
+  field_recurrence: "Понављање"
+  field_please_select: "--- Молим одаберите ---"
+  
+  interval_day:   "дан"
+  interval_week:  "недеља"
+  interval_month: "месец"
+  interval_year:  "година"
+
+  month_modifier_day_from_first: "на %{days_from_bom} дан"
+  month_modifier_day_to_last: "на %{days_to_eom} до задњег дана"
+  month_modifier_dow_from_first: "на %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "на %{dows_to_eom} до задњег %{day_of_week}"
+
+  recurring_task_created: "Понављање креирано. "
+  recurring_task_saved: "Понављање сачувано. "
+  recurring_task_removed: "Понављање уклоњено. "
+  
+  help_add_general_recurring_task: "Можда вам је једноставније да додате понваљање преко странице од налога."
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Прикажи мени на врху?"
+  label_recurring_tasks_setting_reopen_issue: "Поново отвори налог при понављању?"
+  label_recurring_tasks_setting_journal_user: "Атробит мачпга забележити ИД корисника:"
