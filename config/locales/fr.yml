@@ -1,13 +1,13 @@
 # French strings go here for Rails i18n
 fr:
-  label_recurring_tasks:    "Tâches planifiées"
-  label_recurring_task:     "Tâche planifiée"
-  label_current_issue:      "Planifier la tâche"
-  label_recurrence_pattern: "Exécuter la tâche tous les"
-  label_add_recurring_task: "Planifier la tâche"
-  label_no_recurring_tasks: "Aucune tâche planifiée n'a été trouvée dans le système."
+  label_recurring_tasks:    "Demandes répétitives"
+  label_recurring_task:     "Demande répétitive"
+  label_current_issue:      "Répéter la demande"
+  label_recurrence_pattern: "Exécuter la demande tous les"
+  label_add_recurring_task: "Répéter la demande"
+  label_no_recurring_tasks: "Aucune demande répétitive n'a été trouvée dans le système."
   label_next_scheduled_run: "Prochaine exécution le"
-  label_no_recurrence:      "Pas de planification."
+  label_no_recurrence:      "Pas de répétition."
   label_no_project:         "Pas de projet."
 
   label_recurs_fixed: "Regulièrement"
@@ -21,15 +21,15 @@ fr:
 
   error_invalid_interval:   "Intervalle incorrect."
   error_invalid_modifier:   "Le modificateurr d'interval est incorrect."
-  error_recurring_task_not_found: "Pas de tâche planifiée trouvée. "
-  error_recurring_task_could_not_remove: "Échec lors de la suppression de planification. "
+  error_recurring_task_not_found: "Pas de demande répétitive trouvée. "
+  error_recurring_task_could_not_remove: "Échec lors de la suppression de répétition. "
 
   field_interval_number: "Nombre d'intervalles"
   field_interval_unit: "Unité d'intervalle"
   field_interval_modifier: "Modifier l'intervaller"
-  field_fixed_schedule: "Planification fixe ?"
-  field_recur_subtasks: "Répéter les sous-tâches?"
-  field_recurrence: "Planifié"
+  field_fixed_schedule: "Répétition permanente ?"
+  field_recur_subtasks: "Répéter les sous-demandes?"
+  field_recurrence: "Répétition"
   field_please_select: "--- Sélectionner ---"
 
   interval_day:  "jour"
@@ -43,18 +43,19 @@ fr:
   month_modifier_dow_to_last: "Le %{dows_to_eom} avant la fin %{day_of_week}"
 
   
-  recurring_task_created: "Planification créée. "
-  recurring_task_saved: "Planification sauvegardé. "
-  recurring_task_removed: "Planification supprimée. "
+  recurring_task_created: "Répétition créée. "
+  recurring_task_saved: "Répétition sauvegardée. "
+  recurring_task_removed: "Répétition supprimée. "
 
-  help_add_general_recurring_task: "Il est plus pratique d'ajouter une planification depuis la page de la tâche."
+  help_add_general_recurring_task: "Il est plus pratique d'ajouter des répétitions depuis la page de la demande."
 
-  label_view_issue_recurrence: "Voir la planification des tâches"
-  label_add_issue_recurrence: "Planifier une tâche"
-  label_edit_issue_recurrence: "Modifier la planification d'une tâche"
-  label_delete_issue_recurrence: "Supprimer la planification d'une tâche"
+  label_view_issue_recurrence: "Voir la répétition des demandes"
+  label_add_issue_recurrence: "Répéter une demande"
+  label_edit_issue_recurrence: "Modifier la répétition d'une demande"
+  label_delete_issue_recurrence: "Supprimer la répétition d'une demande"
 
   # settings (admins)
   label_recurring_tasks_setting_show_top_menu: "Afficher menu principal?"
-  label_recurring_tasks_setting_reopen_issue: "Ré-ouvrir la tâche pour la planification?"
-  label_recurring_tasks_setting_journal_user: "Attribuer la modification de l'historique de la tâche à l'utilisateur:"
+  label_recurring_tasks_setting_reopen_issue: "Ré-ouvrir la demande pour la répétition?"
+  label_recurring_tasks_setting_journal_user: "Attribuer la modification de l'historique de la demande à l'utilisateur:"
+
