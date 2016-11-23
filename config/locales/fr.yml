@@ -1,5 +1,13 @@
 # French strings go here for Rails i18n
 fr:
+
+  helpers:
+    submit:
+      recurring_task:
+        create: "Définir la répétition"
+        update: "Modifier la répétition"
+        delete: "Supprimer la répétition"
+
   label_recurring_tasks:    "Demandes répétitives"
   label_recurring_task:     "Demande répétitive"
   label_current_issue:      "Répéter la demande"
