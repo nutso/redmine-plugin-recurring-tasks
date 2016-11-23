@@ -49,6 +49,11 @@ fr:
 
   help_add_general_recurring_task: "Il est plus pratique d'ajouter une planification depuis la page de la tâche."
 
+  label_view_issue_recurrence: "Voir la planification des tâches"
+  label_add_issue_recurrence: "Planifier une tâche"
+  label_edit_issue_recurrence: "Modifier la planification d'une tâche"
+  label_delete_issue_recurrence: "Supprimer la planification d'une tâche"
+
   # settings (admins)
   label_recurring_tasks_setting_show_top_menu: "Afficher menu principal?"
   label_recurring_tasks_setting_reopen_issue: "Ré-ouvrir la tâche pour la planification?"
