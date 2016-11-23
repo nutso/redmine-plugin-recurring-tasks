@@ -28,6 +28,7 @@ fr:
   field_interval_unit: "Unité d'intervalle"
   field_interval_modifier: "Modifier l'intervaller"
   field_fixed_schedule: "Planification fixe ?"
+  field_recur_subtasks: "Répéter les sous-tâches?"
   field_recurrence: "Planifié"
   field_please_select: "--- Sélectionner ---"
 
@@ -46,5 +47,9 @@ fr:
   recurring_task_saved: "Planification sauvegardé. "
   recurring_task_removed: "Planification supprimée. "
 
+  help_add_general_recurring_task: "Il est plus pratique d'ajouter une planification depuis la page de la tâche."
+
   # settings (admins)
   label_recurring_tasks_setting_show_top_menu: "Afficher menu principal?"
+  label_recurring_tasks_setting_reopen_issue: "Ré-ouvrir la tâche pour la planification?"
+  label_recurring_tasks_setting_journal_user: "Attribuer la modification de l'historique de la tâche à l'utilisateur:"
