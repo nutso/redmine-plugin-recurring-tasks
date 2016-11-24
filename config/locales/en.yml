@@ -48,6 +48,11 @@ en:
   
   help_add_general_recurring_task: "You may find it easier to add recurrence via the specific issue's page."
 
+  label_view_issue_recurrence: "View issue recurrence"
+  label_add_issue_recurrence: "Add issue recurrence"
+  label_edit_issue_recurrence: "Edit issue recurrence"
+  label_delete_issue_recurrence: "Delete issue recurrence"
+
   # settings (admins)
   label_recurring_tasks_setting_show_top_menu: "Display top menu?"
   label_recurring_tasks_setting_reopen_issue: "Reopen issue on recurrence?"
