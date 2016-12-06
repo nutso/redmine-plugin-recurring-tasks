@@ -1,0 +1,55 @@
+# Polish strings go here for Rails i18n
+pl:
+  label_recurring_tasks:    "Zagadnienia cykliczne"
+  label_recurring_task:     "Zagadnienie cykliczne"
+  label_current_issue:      "Zagadnienie oznaczone jako cykliczne"
+  label_recurrence_pattern: "Powtarzaj co"
+  label_add_recurring_task: "Dodaj cykliczność do zagadnienia"
+  label_no_recurring_tasks: "Brak zagadnień oznaczonych jako cykliczne."
+  label_next_scheduled_run: "Następne planowane wykonanie"
+  label_no_recurrence:      "Brak zdefiniowanej cykliczności."
+  label_no_project:         "Brak zdefiniowanego projektu."
+  
+  label_recurs_fixed: "zawsze według harmonogramu"
+  label_recurs_dependent: "po zamknięciu poprzedniego zagadnienia"
+  
+  label_recurring_task_issue_empty: "N/A"
+  label_recurring_task_project_empty: "N/A"
+  
+  label_belongs_to_project: "Należy do projektu"
+  label_assigned_to: "Przypisany do"
+
+  error_invalid_interval:   "Podany interwał jest nieprawidłowy."
+  error_invalid_modifier:   "Podany modyfikator interwału jest nieprawidłowy."
+  error_recurring_task_not_found: "Nie można znaleźć konfiguracji cykliczności zagadnienia "
+  error_recurring_task_could_not_remove: "Nie można usunąć cykliczności z zagadnienia. "
+  
+  field_interval_number: "Wartość interwału"
+  field_interval_unit: "Jednostka interwału"
+  field_interval_modifier: "Modyfikator interwału"
+  field_fixed_schedule: "Zawsze według harmonogramu?"
+  field_recur_subtasks: "Uwzględniaj podzagadnienia?"
+  field_recurrence: "Cykliczność"
+  field_please_select: "--- Wybierz ---"
+  
+  interval_day:   "dzień"
+  interval_week:  "tydzień"
+  interval_month: "miesiąc"
+  interval_year:  "rok"
+
+  month_modifier_day_from_first: "każdego %{days_from_bom} dnia"
+  month_modifier_day_to_last: "%{days_to_eom} dni przed końcem miesiąca"
+  month_modifier_dow_from_first: "w %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "%{dows_to_eom} %{day_of_week} przed końcem miesiąca"
+
+  recurring_task_created: "Cykliczność dodana. "
+  recurring_task_saved: "Cykliczność zapisana. "
+  recurring_task_removed: "Cykliczność usunięta. "
+  
+  help_add_general_recurring_task: "Dodanie cykliczności jest łatwiejsze z poziomu widoku wybranego zagadnienia."
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Pokazuj w górnym menu?"
+  label_recurring_tasks_setting_reopen_issue: "Otwórz ponownie odświeżane zagadnienie?"
+  label_recurring_tasks_setting_journal_user: "Przypisz aktywność dziennika do użytkownika o id:"
+
