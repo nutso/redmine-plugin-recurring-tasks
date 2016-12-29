@@ -1,5 +1,5 @@
-# English strings go here for Rails i18n
-en:
+# Hungarian strings go here for Rails i18n
+hu:
   label_recurring_tasks:    "Ismétlődő feladatok"
   label_recurring_task:     "Ismétlődő feladat"
   label_current_issue:      "Ismétlendő feladat"
@@ -9,13 +9,13 @@ en:
   label_next_scheduled_run: "Következő ismétlődés"
   label_no_recurrence:      "Nincs ismétlődés."
   label_no_project:         "Nincs projekt."
-  
+
   label_recurs_fixed: "fix ismétlődés"
   label_recurs_dependent: "az előző feladat lezárása után"
-  
+
   label_recurring_task_issue_empty: "N/A"
   label_recurring_task_project_empty: "N/A"
-  
+
   label_belongs_to_project: "Projekthez tartozik"
   label_assigned_to: "Felelős"
 
@@ -23,7 +23,7 @@ en:
   error_invalid_modifier:   "Ciklus módosító helytelen."
   error_recurring_task_not_found: "Nem található ismétlődő feladat. "
   error_recurring_task_could_not_remove: "Nem lehet az ismétlődést eltávolítani. "
-  
+
   field_interval_number: "Ciklus szám"
   field_interval_unit: "Ciklus egység"
   field_interval_modifier: "Ciklus módosító"
@@ -31,7 +31,7 @@ en:
   field_recur_subtasks: "Alfeladatok ismétlődése?"
   field_recurrence: "Ismétlődés"
   field_please_select: "--- Válasszon ---"
-  
+
   interval_day:   "nap"
   interval_week:  "hét"
   interval_month: "hónap"
@@ -45,7 +45,7 @@ en:
   recurring_task_created: "Ismétlődés létrehozva. "
   recurring_task_saved: "Ismétlődés mentve. "
   recurring_task_removed: "Ismétlődés törölve. "
-  
+
   help_add_general_recurring_task: "Feladatot ismételni az adott feladat oldalán is lehet."
 
   # settings (admins)

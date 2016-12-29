@@ -1,5 +1,5 @@
-# English strings go here for Rails i18n
-en:
+# Serbian strings go here for Rails i18n
+sr:
   label_recurring_tasks:    "Понављајући налози"
   label_recurring_task:     "Понављајући налог"
   label_current_issue:      "Назив налога"
@@ -9,13 +9,13 @@ en:
   label_next_scheduled_run: "Заказано понављање"
   label_no_recurrence:      "Нема понављања."
   label_no_project:         "Нема посла."
-  
+
   label_recurs_fixed: "на фиксни распоред"
   label_recurs_dependent: "након што се претходни налог заврши"
-  
+
   label_recurring_task_issue_empty: "НЕМА"
   label_recurring_task_project_empty: "НЕМА"
-  
+
   label_belongs_to_project: "Припада послу"
   label_assigned_to: "Додељено"
 
@@ -23,7 +23,7 @@ en:
   error_invalid_modifier:   "Модификација интервала није исправна."
   error_recurring_task_not_found: "Не могу пронаћи налог који се понавља. "
   error_recurring_task_could_not_remove: "Немогуће уклонити понављање са налога. "
-  
+
   field_interval_number: "Број интервала"
   field_interval_unit: "Јединица интервала"
   field_interval_modifier: "Модификација интервала"
@@ -31,7 +31,7 @@ en:
   field_recur_subtasks: "Понављај и подналоге?"
   field_recurrence: "Понављање"
   field_please_select: "--- Молим одаберите ---"
-  
+
   interval_day:   "дан"
   interval_week:  "недеља"
   interval_month: "месец"
@@ -45,7 +45,7 @@ en:
   recurring_task_created: "Понављање креирано. "
   recurring_task_saved: "Понављање сачувано. "
   recurring_task_removed: "Понављање уклоњено. "
-  
+
   help_add_general_recurring_task: "Можда вам је једноставније да додате понваљање преко странице од налога."
 
   # settings (admins)
