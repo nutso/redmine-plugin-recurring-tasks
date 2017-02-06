@@ -1,0 +1,59 @@
+# Czech strings go here for Rails i18n
+cs:
+  label_recurring_tasks:    "Opakované úlohy"
+  label_recurring_task:     "Opakovaná úloha"
+  label_current_issue:      "Aktuální úloha"
+  label_recurrence_pattern: "Opakování každý"
+  label_add_recurring_task: "Nová opakovaná úloha"
+  label_no_recurring_tasks: "Žádné opakované úlohy."
+  label_next_scheduled_run: "Nejbližší opakování"
+  label_no_recurrence:      "Žádné opakování."
+  label_no_project:         "Žádný projekt."
+  
+  label_recurs_fixed: "podle pevného rozvrhu"
+  label_recurs_dependent: "po splnění úlohy"
+  
+  label_recurring_task_issue_empty: "N/A"
+  label_recurring_task_project_empty: "N/A"
+  
+  label_belongs_to_project: "Patří projektu"
+  label_assigned_to: "Přiřazeno"
+
+  error_invalid_interval:   "Neplatný interval."
+  error_invalid_modifier:   "Neplatný modifikátor intervalu."
+  error_recurring_task_not_found: "Opakovaná úloha nenalezena."
+  error_recurring_task_could_not_remove: "Nelze odstranit opakování z úlohy."
+  
+  field_interval_number: "Velikost intervalu"
+  field_interval_unit: "Jednotka intervalu"
+  field_interval_modifier: "Modifikátor intervalu"
+  field_fixed_schedule: "Pevný rozvrh?"
+  field_recur_subtasks: "Opakovat podúlohy?"
+  field_recurrence: "Opakování "
+  field_please_select: "--- Prosím vyberte ---"
+  
+  interval_day:   "den"
+  interval_week:  "týden"
+  interval_month: "měsíc"
+  interval_year:  "rok"
+
+  month_modifier_day_from_first: "na %{days_from_bom} den"
+  month_modifier_day_to_last: "na %{days_to_eom} den před koncem měsíce"
+  month_modifier_dow_from_first: "na %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "na %{dows_to_eom} %{day_of_week} od konce měsíce"
+
+  recurring_task_created: "Opakovaná úloha vytvořena."
+  recurring_task_saved: "Opakovaná úloha uložena."
+  recurring_task_removed: "Opakovaná úloha odstraněna."
+  
+  help_add_general_recurring_task: "Opakování můžete vytvořit i přímo v úloze."
+
+  label_view_issue_recurrence: "Zobrazit"
+  label_add_issue_recurrence: "Přidat"
+  label_edit_issue_recurrence: "Editovat"
+  label_delete_issue_recurrence: "Odstranit"
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "Display top menu?"
+  label_recurring_tasks_setting_reopen_issue: "Reopen issue on recurrence?"
+  label_recurring_tasks_setting_journal_user: "Attribute issue journals to user id:"
