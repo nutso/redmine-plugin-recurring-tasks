@@ -25,6 +25,7 @@ ru:
   field_interval_number: "Интервал (число)"
   field_interval_unit: "Интервал (элемент)"
   field_fixed_schedule: "Фиксированный график?"
+  field_recur_subtasks: "Повторять подзадачи?"
   field_recurrence: "Повторение"
   
   interval_day:  "день"
@@ -37,4 +38,7 @@ ru:
   recurring_task_removed: "Повторяющаяся задача удалена. "
 
   # settings (admins)
-  label_recurring_tasks_setting_show_top_menu: "отобразить главное меню?"
+  label_recurring_tasks_setting_show_top_menu: "Отобразить главное меню?"
+#  label_recurring_tasks_setting_journal_user: ""
+#  label_recurring_tasks_setting_reopen_issue: ""
+
