@@ -5,7 +5,7 @@ class RecurringTask < ActiveRecord::Base
   has_one :project, :through => :issue
 
   attr_accessible :id, :current_issue_id, :interval_number, :interval_modifier, :interval_unit, :fixed_schedule, :recur_subtasks# list all fields that you want to be accessible here
-  
+
   # these are the flags used in the database to denote the interval
   # the actual text displayed to the user is controlled in the language file
   INTERVAL_DAY = 'd'
@@ -13,7 +13,7 @@ class RecurringTask < ActiveRecord::Base
   INTERVAL_MONTH = 'm'
   INTERVAL_YEAR = 'y'
 
-  #41  
+  #41
   # similar flags for denoting more complex recurrence schemes
   # they are modyfing how due dates are scheduled when INTERVAL_MONTH is in
   # effect
@@ -21,8 +21,8 @@ class RecurringTask < ActiveRecord::Base
   MONTH_MODIFIER_DAY_TO_LAST = 'mdtl'
   MONTH_MODIFIER_DOW_FROM_FIRST = 'mdowff'
   MONTH_MODIFIER_DOW_TO_LAST = 'mdowtl'
-  
-  
+
+
   # must come before validations otherwise uninitialized
   # INTERVAL_UNITS_LOCALIZED = [l(:interval_day), l(:interval_week), l(:interval_month), l(:interval_year)] #41
   INTERVAL_UNITS_LOCALIZED = {
@@ -46,7 +46,7 @@ class RecurringTask < ActiveRecord::Base
   validates_presence_of :interval_modifier, :if => "interval_unit == RecurringTask::INTERVAL_MONTH"
 
   validates_presence_of :interval_number
-  
+
   #41
   # validates_inclusion_of :interval_localized_name, :in => RecurringTask::INTERVAL_UNITS_LOCALIZED, :message => "#{l(:error_invalid_interval)} '%{value}' (Validation)"
   validates_inclusion_of :interval_unit,
@@ -56,12 +56,12 @@ class RecurringTask < ActiveRecord::Base
     :in => RecurringTask::MONTH_MODIFIERS_LOCALIZED.keys,
     :message => "#{l(:error_invalid_modifier)} '%{value}' (Validation)",
     :if => "interval_unit == RecurringTask::INTERVAL_MONTH"
-  
+
   validates_numericality_of :interval_number, :only_integer => true, :greater_than => 0
   # cannot validate presence of issue if want to use other features; requiring presence of fixed_schedule requires it to be true
 
-  validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok  
-  
+  validates_associated :issue # just in case we build in functionality to add an issue at the same time, verify the issue is ok
+
   # text for the interval name
   def interval_localized_name
     if new_record?
@@ -84,14 +84,14 @@ class RecurringTask < ActiveRecord::Base
       end
     end
   end
- 
-#41 
+
+#41
   # interval database name for the localized text
 #  def interval_localized_name=(value)
 #    @interval_localized_name = value
 #    interval_unit= RecurringTask.get_interval_from_localized_name(value)
-#  end  
-  
+#  end
+
   # used for migration #2
 #  def self.get_interval_from_localized_name(value)
 #    case value
@@ -116,7 +116,7 @@ class RecurringTask < ActiveRecord::Base
     retval
   end
 
- 
+
 #41
    # text for the interval modifier
   def interval_localized_modifier
@@ -133,7 +133,7 @@ class RecurringTask < ActiveRecord::Base
   end
 
 
-#41  
+#41
   # time interval value of the recurrence pattern
 #  def recurrence_pattern
 #    case interval_unit
@@ -149,7 +149,7 @@ class RecurringTask < ActiveRecord::Base
   #    raise "#{l(:error_invalid_interval)} #{interval_unit} (recurrence_pattern)"
   #  end
  # end
-  
+
   #41
   def get_modifiers_descriptions
     prev_date = previous_date_for_recurrence
@@ -164,19 +164,19 @@ class RecurringTask < ActiveRecord::Base
     }
     Hash[MONTH_MODIFIERS_LOCALIZED.map{|k,v| [k, v % values]}]
   end
-  
+
   # retrieve all recurring tasks given a project
   def self.all_for_project project
     if project.nil? then all else RecurringTask.includes(:issue).where("issues.project_id" => project.id) end
   end
-  
+
   # next due date for the task, if there is one (relative tasks won't have a next schedule until the current issue is closed)
   def next_scheduled_recurrence
     prev_date = previous_date_for_recurrence
-    if prev_date.nil? 
+    if prev_date.nil?
       logger.error "Previous date for recurrence was nil for recurrence #{id}"
       Date.today
-    else 
+    else
       # previous_date_for_recurrence + recurrence_pattern #41
       case interval_unit
       when INTERVAL_DAY
@@ -210,49 +210,49 @@ class RecurringTask < ActiveRecord::Base
       else
         raise "#{l(:error_invalid_interval)} #{interval_unit} (next_scheduled_recurrence)"
       end
-      
+
     end
   end
-  
+
   # whether a recurrence needs to be added
   def need_to_recur?
     # ensuring we don't have an infinite loop
-    # if the setting is to reopen issues on recurrence, then if the issue is open, no recurrence is needed 
+    # if the setting is to reopen issues on recurrence, then if the issue is open, no recurrence is needed
     return false if(Setting.plugin_recurring_tasks['reopen_issue'] == "1" && !issue.closed?)
 
     # 41
     # if(fixed_schedule and (previous_date_for_recurrence + recurrence_pattern) <= (Time.now.to_date + 1.day)) then true else issue.closed? end
     if fixed_schedule
-      previous_date_for_recurrence <= Time.now.to_date # TODO add a day?
+      next_scheduled_recurrence <= Time.now.to_date # TODO add a day?
     else
       issue.closed?
     end
-      
+
   end
-  
+
   # check whether a recurrence is needed, and add one if not
   def recur_issue_if_needed!
     if issue.nil?
       puts "Recurring a deleted issue is not supported."
       return false
-    end    
-    
+    end
+
     return true unless need_to_recur?
-    
+
     # Add more than one recurrence to 'catch up' if warranted (issue #10)
-    
+
     # calculate the original number of days between start and due date
-    timespan = 0 # default to same day if either a start or due date is not provided  
+    timespan = 0 # default to same day if either a start or due date is not provided
     begin
       timespan = issue.due_date - issue.start_date
     rescue => ex
     end
-    
+
     old_current_user = User.current
-    
+
     while need_to_recur?
       new_issue = issue # default to existing issue
-      
+
       if Setting.plugin_recurring_tasks['journal_attributed_to_user'].blank?
         User.current = issue.author
       else
@@ -291,23 +291,23 @@ class RecurringTask < ActiveRecord::Base
       new_issue.save!
 
       puts "#{l(:recurring_task_created)} #{issue.id}: #{issue.subj_date} => #{new_issue.id}: #{new_issue.subj_date}"
-    
+
       self.issue = new_issue
-      save!  
+      save!
     end
-    
+
     User.current = old_current_user
   end
-  
+
   def recurring_issue_default_status
     # issue status is NOT automatically new, default is whatever the default status for new issues is
-     
+
     # Redmine 3
     return issue.tracker.default_status if issue.tracker.respond_to?(:default_status)
     # Redmine 2
     IssueStatus.default
   end
-  
+
   #41
   def recurrence_to_s
     modifier = (interval_unit == INTERVAL_MONTH) ? " #{interval_localized_modifier}" : ""
@@ -315,7 +315,7 @@ class RecurringTask < ActiveRecord::Base
     "#{l(:label_recurrence_pattern)} #{interval_number} #{interval_localized_name.pluralize(interval_number)}#{modifier}, #{schedule}"
   end
 
-  
+
   def to_s
     i = "No issue associated " # TODO localize
     if !(issue.nil?)
@@ -323,30 +323,30 @@ class RecurringTask < ActiveRecord::Base
     end
     "#{i} (#{l(:label_recurrence_pattern)} #{interval_number} #{interval_unit}s " + (:fixed_schedule ? l(:label_recurs_fixed) : l(:label_recurs_dependent)) + ")"
   end
-  
+
   # for each recurring task, check whether to create a new one
   def self.add_recurrences!
     RecurringTask.all.each do |task|
       task.recur_issue_if_needed!
     end # do each
   end # end add_recurrences
-  
-private
+
+#private
   # the date from which to recur
   # for a fixed schedule, this is the due date
   # for a relative schedule, this is the date closed
   def previous_date_for_recurrence
-    if issue.nil? 
+    if issue.nil?
       logger.error "Issue is nil for recurrence #{id}."
       Date.today
-    elsif fixed_schedule and !issue.due_date.nil? 
+    elsif fixed_schedule and !issue.due_date.nil?
       issue.due_date
     elsif !issue.respond_to?('closed_on') # closed_on introduced in Redmine 2.3, ref http://www.redmine.org/issues/824
       issue.updated_on
-    elsif issue.closed_on.nil? 
+    elsif issue.closed_on.nil?
       issue.updated_on
-    else 
-      issue.closed_on 
+    else
+      issue.closed_on
     end
   end
 end
