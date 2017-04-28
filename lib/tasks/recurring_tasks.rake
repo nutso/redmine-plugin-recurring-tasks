@@ -8,7 +8,7 @@ require File.expand_path(File.dirname(__FILE__) + "/../../../../config/environme
 
 namespace :redmine do
   task :recur_tasks => :environment do
-    puts "Checking for Redmine recurring tasks."
+    puts "Checking for Redmine recurring tasks. #{Time.now.to_date}"
     RecurringTask.add_recurrences!
   end
 end
