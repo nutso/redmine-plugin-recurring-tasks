@@ -1,0 +1,59 @@
+# Japanese strings go here for Rails i18n
+ja:
+  label_recurring_tasks:    "繰り返し課題"
+  label_recurring_task:     "繰り返し課題"
+  label_current_issue:      "現在の繰り返し課題"
+  label_recurrence_pattern: "繰り返し期間"
+  label_add_recurring_task: "繰り返しタスクの追加"
+  label_no_recurring_tasks: "このシステムに繰り返し課題はありません。"
+  label_next_scheduled_run: "次回の実行スケジュール"
+  label_no_recurrence:      "繰り返しません。"
+  label_no_project:         "プロジェクトがありません。"
+  
+  label_recurs_fixed: "on a fixed schedule"
+  label_recurs_dependent: "前回の課題の完了後"
+  
+  label_recurring_task_issue_empty: "N/A"
+  label_recurring_task_project_empty: "N/A"
+  
+  label_belongs_to_project: "プロジェクトに所属"
+  label_assigned_to: "担当"
+
+  error_invalid_interval:   "指定の繰り返し期間は無効です。"
+  error_invalid_modifier:   "指定の繰り返し期間の修正は無効です。"
+  error_recurring_task_not_found: "繰り返し課題が見つかりません。"
+  error_recurring_task_could_not_remove: "課題から繰り返しを除去できません。"
+  
+  field_interval_number: "繰り返し回数"
+  field_interval_unit: "繰り返し単位"
+  field_interval_modifier: "繰り返し修正"
+  field_fixed_schedule: "Fixed schedule?"
+  field_recur_subtasks: "サブタスクを繰り返しますか?"
+  field_recurrence: "繰り返し"
+  field_please_select: "--- 選択してください ---"
+  
+  interval_day:   "日"
+  interval_week:  "週"
+  interval_month: "月"
+  interval_year:  "年"
+
+  month_modifier_day_from_first: "on %{days_from_bom} day"
+  month_modifier_day_to_last: "on %{days_to_eom} to last day"
+  month_modifier_dow_from_first: "on %{dows_from_bom} %{day_of_week}"
+  month_modifier_dow_to_last: "on %{dows_to_eom} to last %{day_of_week}"
+
+  recurring_task_created: "繰り返しを作成しました。"
+  recurring_task_saved: "繰り返しを保存しました。"
+  recurring_task_removed: "繰り返しを削除しました。"
+  
+  help_add_general_recurring_task: "特定の課題ページから簡単に課題を見つけて繰り返しを設定できます。"
+
+  label_view_issue_recurrence: "繰り返し課題の表示"
+  label_add_issue_recurrence: "繰り返し課題の追加"
+  label_edit_issue_recurrence: "繰り返し課題の編集"
+  label_delete_issue_recurrence: "繰り返し課題の削除"
+
+  # settings (admins)
+  label_recurring_tasks_setting_show_top_menu: "トップメニューを表示しますか?"
+  label_recurring_tasks_setting_reopen_issue: "繰り返し課題を再度開きますか?"
+  label_recurring_tasks_setting_journal_user: "課題をユーザーIDでユーザーに割り当て:"
