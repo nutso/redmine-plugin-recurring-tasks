@@ -4,6 +4,8 @@ Plugin for Redmine project management software to configure recurring tasks. The
 
 Released under GPLv2 in accordance with Redmine licensing.
 
+Please note that this plugin is no longer actively advanced (questions and true bug reports are still addressed). The repo is still monitored, and questions will be answered, but new functionality is not planned at this time. Pull requests are still accepted though, so if you want to contribute -- please do! 
+
 ## Features
 
 * Any Redmine issue can have one or more associated recurrence schedules.
